@@ -12,7 +12,7 @@ These PowerShell scripts simplify system tweaks and enhance functionality.
 
 **Clean Context Menu:** Removes unnecessary options from the right-click context menu.
 
-***Core Parking:** Adjusts OS-managed CPU core parking.
+**Core Parking:** Adjusts OS-managed CPU core parking.
 
 **Higher Scaling No Accel:** Disables mouse acceleration when using higher scaling above 100%.
 
