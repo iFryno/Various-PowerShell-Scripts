@@ -1,12 +1,12 @@
-**Various PowerShell Scripts**
+#Various PowerShell Scripts
 
 A collection of useful PowerShell scripts that don't require a dedicated repository.
 
-**Description**
+##Description
 
 These PowerShell scripts simplify system tweaks and enhance functionality.
 
-**Available Scripts**
+##Available Scripts
 
 Black Theme: Applies a true black theme to Windows.
 
@@ -26,4 +26,4 @@ Thread Scheduling Policy: Changes heterogeneous short running thread scheduling 
 
 User Account Control: Enables or disables UAC.
 
-**Note: All scripts are reversible; any change can be undone.**
+> **Note:** All scripts are reversible; any change can be undone.
