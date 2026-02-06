@@ -27,3 +27,4 @@ Thread Scheduling Policy: Changes heterogeneous short running thread scheduling 
 User Account Control: Enables or disables UAC.
 
 > **Note:** All scripts are reversible; any change can be undone.
+> [!NOTE] 
