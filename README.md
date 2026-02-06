@@ -26,4 +26,5 @@ These PowerShell scripts simplify system tweaks and enhance functionality.
 
 **User Account Control:** Enables or disables UAC.
 
-> **Note:** All scripts are reversible; any change can be undone.
+> [!NOTE]
+> All scripts are reversible; any change can be undone.
