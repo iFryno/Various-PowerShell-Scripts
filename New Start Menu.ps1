@@ -11,6 +11,7 @@
     Write-Host ""
     Write-Host "1. Start Menu: New"
     Write-Host "2. Start Menu: Default"
+    Write-Host ""
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
