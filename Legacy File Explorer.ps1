@@ -11,6 +11,7 @@
     Write-Host ""
     Write-Host "1. File Explorer: Legacy"
     Write-Host "2. File Explorer: Default"
+    Write-Host ""
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
