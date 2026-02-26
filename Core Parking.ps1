@@ -11,6 +11,7 @@
     Write-Host ""
     Write-Host "1. Core Parking: Off "
     Write-Host "2. Core Parking: Default"
+    Write-Host ""
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
