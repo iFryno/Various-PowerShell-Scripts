@@ -11,6 +11,7 @@
     Write-Host ""
     Write-Host "1. On"
     Write-Host "2. Default"
+    Write-Host ""
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
