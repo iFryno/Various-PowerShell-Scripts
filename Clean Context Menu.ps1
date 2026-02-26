@@ -13,6 +13,7 @@
 	Write-Host ""
 	Write-Host "1. Context Menu: Clean"
 	Write-Host "2. Context Menu: Default"
+    Write-Host ""
 	while ($true) {
 		$choice = Read-Host " "
 	if ($choice -match '^[1-2]$') {
