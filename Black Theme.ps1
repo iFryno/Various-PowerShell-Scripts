@@ -11,6 +11,7 @@
     Write-Host ""
     Write-Host "1. Theme: Black"
     Write-Host "2. Theme: Default"
+    Write-Host ""
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
