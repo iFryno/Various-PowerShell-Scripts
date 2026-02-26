@@ -15,6 +15,7 @@
     Write-Host "4. 175%"
     Write-Host "5. 200%"
     Write-Host "6. 225%"
+    Write-Host ""
 	while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-6]$') {
