@@ -26,6 +26,8 @@ These PowerShell scripts simplify system tweaks and enhance functionality.
 
 **Thread Scheduling Policy:** Changes heterogeneous short running thread scheduling between all processors or prefer performant processors.
 
+**True Immediate Mode:** Forces the GPU scheduler to use the Flip Immediate presentation model, bypassing the render queue and presenting frames as soon as they're ready.
+
 **User Account Control:** Enables or disables UAC.
 
 > [!NOTE]
