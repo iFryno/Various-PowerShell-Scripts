@@ -14,6 +14,7 @@
     Write-Host ""
 	Write-Host "1. All processors"
     Write-Host "2. Prefer performant processors"
+    Write-Host ""
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
