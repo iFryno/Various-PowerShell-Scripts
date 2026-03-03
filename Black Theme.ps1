@@ -57,6 +57,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers]
 "BackgroundType"=dword:00000001
+
+[HKEY_CURRENT_USER\Console\%SystemRoot%_System32_WindowsPowerShell_v1.0_powershell.exe]
+"ScreenColors"=dword:00000006
 "@
 Set-Content -Path "$env:TEMP\BlackTheme.reg" -Value $MultilineComment -Force
 # edit reg file
@@ -111,6 +114,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "EnableTransparency"=dword:00000001
+
+[HKEY_CURRENT_USER\Console\%SystemRoot%_System32_WindowsPowerShell_v1.0_powershell.exe]
+"ScreenColors"=dword:00000056
 "@
 Set-Content -Path "$env:TEMP\DefaultTheme.reg" -Value $MultilineComment -Force
 # edit reg file
