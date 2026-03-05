@@ -19,49 +19,13 @@
     1 {
 
 Clear-Host
-# create reg file
-$MultilineComment = @"
-Windows Registry Editor Version 5.00
-
-; new 25h2 start menu
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\3036241548]
-"EnabledState"=dword:00000002
-"EnabledStateOptions"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829]
-"EnabledState"=dword:00000002
-"EnabledStateOptions"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\762256525]
-"EnabledState"=dword:00000002
-"EnabledStateOptions"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\734731404]
-"EnabledState"=dword:00000002
-"EnabledStateOptions"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2114784909]
-"EnabledState"=dword:00000002
-"EnabledStateOptions"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\905601679]
-"EnabledState"=dword:00000002
-"EnabledStateOptions"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\1853569164]
-"EnabledState"=dword:00000002
-"EnabledStateOptions"=dword:00000000
-
-; set start menu apps view to list
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start]
-"AllAppsViewMode"=dword:00000002
-"@
-Set-Content -Path "$env:TEMP\NewStartMenu.reg" -Value $MultilineComment -Force
-# edit reg file
-$path = "$env:TEMP\NewStartMenu.reg"
-(Get-Content $path) -replace "\?","$" | Out-File $path
-# import reg file
-Regedit.exe /S "$env:TEMP\NewStartMenu.reg"
+# enable new 25h2 start menu
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829' /v 'EnabledState' /t REG_DWORD /d '2' /f >$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\3036241548' /v 'EnabledState' /t REG_DWORD /d '2' /f >$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\734731404' /v 'EnabledState' /t REG_DWORD /d '2' /f >$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\762256525' /v 'EnabledState' /t REG_DWORD /d '2' /f >$null
+# set start menu apps view to list
+Reg.exe add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Start' /v 'AllAppsViewMode' /t REG_DWORD /d '2' /f >$null
 Clear-Host
 Write-Host "Restart to apply..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
@@ -71,49 +35,13 @@ exit
     2 {
 
 Clear-Host
-# create reg file
-$MultilineComment = @"
-Windows Registry Editor Version 5.00
-
-; remove 25h2 start menu
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\3036241548]
-"EnabledState"=-
-"EnabledStateOptions"=-
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829]
-"EnabledState"=-
-"EnabledStateOptions"=-
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\762256525]
-"EnabledState"=-
-"EnabledStateOptions"=-
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\734731404]
-"EnabledState"=-
-"EnabledStateOptions"=-
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2114784909]
-"EnabledState"=-
-"EnabledStateOptions"=-
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\905601679]
-"EnabledState"=-
-"EnabledStateOptions"=-
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\1853569164]
-"EnabledState"=-
-"EnabledStateOptions"=-
-
-; set start menu apps view to category
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start]
-"AllAppsViewMode"=dword:00000000
-"@
-Set-Content -Path "$env:TEMP\OldStartMenu.reg" -Value $MultilineComment -Force
-# edit reg file
-$path = "$env:TEMP\OldStartMenu.reg"
-(Get-Content $path) -replace "\?","$" | Out-File $path
-# import reg file
-Regedit.exe /S "$env:TEMP\OldStartMenu.reg"
+# revert new 25h2 start menu
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829' /v 'EnabledState' /t REG_DWORD /d '0' /f >$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\3036241548' /v 'EnabledState' /t REG_DWORD /d '0' /f >$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\734731404' /v 'EnabledState' /t REG_DWORD /d '0' /f >$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\762256525' /v 'EnabledState' /t REG_DWORD /d '0' /f >$null
+# set start menu apps view to category
+Reg.exe add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Start' /v 'AllAppsViewMode' /t REG_DWORD /d '0' /f >$null
 Clear-Host
 Write-Host "Restart to apply..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
