@@ -21,7 +21,7 @@
 	1 {
 
 Clear-Host
-# restore legacy context menu
+# legacy context menu
 Reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /ve /t REG_SZ /d "" /f *>$null
 # remove customize this folder
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoCustomizeThisFolder" /t REG_DWORD /d "1" /f *>$null
@@ -55,7 +55,7 @@ exit
 	2 {
 
 Clear-Host
-# revert legacy context menu
+# default context menu
 Reg.exe delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f *>$null
 # restore customize this folder
 Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoCustomizeThisFolder" /f *>$null
@@ -98,4 +98,5 @@ exit
 
 	  }
 	} } else { Write-Host "Invalid input. Please select a valid option (1-2)." } }
+
 
