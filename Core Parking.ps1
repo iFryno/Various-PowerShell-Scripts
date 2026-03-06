@@ -9,7 +9,7 @@
 
     Write-Host "Manage CPU Core Parking"
     Write-Host ""
-    Write-Host "1. Core Parking: Off "
+    Write-Host "1. Core Parking: Off"
     Write-Host "2. Core Parking: Default"
     Write-Host ""
     while ($true) {
