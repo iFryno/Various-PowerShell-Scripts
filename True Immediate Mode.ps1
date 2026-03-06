@@ -18,7 +18,7 @@
     switch ($choice) {
     1 {
 
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Scheduler" /v "ForceFlipTrueImmediateMode" /t REG_DWORD /d 1 /f 2>$null | Out-Null
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Scheduler" /v "ForceFlipTrueImmediateMode" /t REG_DWORD /d 1 /f *>$null
 Clear-Host
 Write-Host "Restart to apply..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
@@ -27,7 +27,7 @@ exit
       }
     2 {
 
-reg delete "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Scheduler" /v "ForceFlipTrueImmediateMode" /f 2>$null | Out-Null
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Scheduler" /v "ForceFlipTrueImmediateMode" /f *>$null
 Clear-Host
 Write-Host "Restart to apply..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
