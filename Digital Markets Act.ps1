@@ -20,7 +20,7 @@
 
 Clear-Host
 Copy-Item (Get-Command reg.exe).Source .\reg1.exe -Force -EA 0
-& .\reg1.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion" /v DeviceRegion /t REG_DWORD /d 68 /f | Out-Null
+& .\reg1.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion" /v DeviceRegion /t REG_DWORD /d 68 /f *>$null
 Remove-Item .\reg1.exe -Force -EA 0
 Write-Host "Restart to apply..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
@@ -31,7 +31,7 @@ exit
 
 Clear-Host
 Copy-Item (Get-Command reg.exe).Source .\reg1.exe -Force -EA 0
-& .\reg1.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion" /v DeviceRegion /t REG_DWORD /d 244 /f | Out-Null
+& .\reg1.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion" /v DeviceRegion /t REG_DWORD /d 244 /f *>$null
 Remove-Item .\reg1.exe -Force -EA 0
 Write-Host "Restart to apply..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
