@@ -28,7 +28,7 @@ Write-Host "100%..."
 $MultilineComment = @"
 Windows Registry Editor Version 5.00
 
-; 6-11 pointer speed
+; default pointer speed
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
@@ -38,7 +38,7 @@ Windows Registry Editor Version 5.00
 "MouseThreshold1"="0"
 "MouseThreshold2"="0"
 
-; mouse curve default
+; 100% scaling curve
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
     00,00,00,00,00,00,00,00,\
@@ -53,7 +53,7 @@ Windows Registry Editor Version 5.00
 	00,00,a8,00,00,00,00,00,\
 	00,00,e0,00,00,00,00,00
 
-; dpi scaling 100%
+; 100% dpi scaling
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "Win8DpiScaling"=dword:00000001
 "LogPixels"=dword:00000060
@@ -80,7 +80,7 @@ Write-Host "125%..."
 $MultilineComment = @"
 Windows Registry Editor Version 5.00
 
-; 6-11 pointer speed
+; default pointer speed
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
@@ -90,7 +90,7 @@ Windows Registry Editor Version 5.00
 "MouseThreshold1"="6"
 "MouseThreshold2"="10"
 
-; mouse curve 125% scaling
+; 125% scaling curve
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 	00,00,00,00,00,00,00,00,\
@@ -105,7 +105,7 @@ Windows Registry Editor Version 5.00
 	00,00,A8,00,00,00,00,00,\
 	00,00,E0,00,00,00,00,00
 
-; dpi scaling 125%
+; 125% dpi scaling
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "Win8DpiScaling"=dword:00000001
 "LogPixels"=dword:00000078
@@ -132,7 +132,7 @@ Write-Host "150%..."
 $MultilineComment = @"
 Windows Registry Editor Version 5.00
 
-; 6-11 pointer speed
+; default pointer speed
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
@@ -142,7 +142,7 @@ Windows Registry Editor Version 5.00
 "MouseThreshold1"="6"
 "MouseThreshold2"="10"
 
-; mouse curve 150% scaling
+; 150% scaling curve
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 	00,00,00,00,00,00,00,00,\
@@ -157,7 +157,7 @@ Windows Registry Editor Version 5.00
 	00,00,A8,00,00,00,00,00,\
 	00,00,E0,00,00,00,00,00
 
-; dpi scaling 150%
+; 150% dpi scaling
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "Win8DpiScaling"=dword:00000001
 "LogPixels"=dword:00000090
@@ -184,7 +184,7 @@ Write-Host "175%..."
 $MultilineComment = @"
 Windows Registry Editor Version 5.00
 
-; 6-11 pointer speed
+; default pointer speed
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
@@ -194,7 +194,7 @@ Windows Registry Editor Version 5.00
 "MouseThreshold1"="6"
 "MouseThreshold2"="10"
 
-; mouse curve 175% scaling
+; 175% scaling curve
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 	00,00,00,00,00,00,00,00,\
@@ -209,7 +209,7 @@ Windows Registry Editor Version 5.00
 	00,00,A8,00,00,00,00,00,\
 	00,00,E0,00,00,00,00,00
 
-; dpi scaling 175%
+; 175% dpi scaling
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "Win8DpiScaling"=dword:00000001
 "LogPixels"=dword:000000a8
@@ -236,7 +236,7 @@ Write-Host "200%..."
 $MultilineComment = @"
 Windows Registry Editor Version 5.00
 
-; 6-11 pointer speed
+; default pointer speed
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
@@ -246,7 +246,7 @@ Windows Registry Editor Version 5.00
 "MouseThreshold1"="6"
 "MouseThreshold2"="10"
 
-; mouse curve 200% scaling
+; 200% scaling curve
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 	00,00,00,00,00,00,00,00,\
@@ -261,7 +261,7 @@ Windows Registry Editor Version 5.00
 	00,00,A8,00,00,00,00,00,\
 	00,00,E0,00,00,00,00,00
 
-; dpi scaling 200%
+; 200% dpi scaling
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "Win8DpiScaling"=dword:00000001
 "LogPixels"=dword:000000c0
@@ -288,7 +288,7 @@ Write-Host "225%..."
 $MultilineComment = @"
 Windows Registry Editor Version 5.00
 
-; 6-11 pointer speed
+; default pointer speed
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
@@ -298,7 +298,7 @@ Windows Registry Editor Version 5.00
 "MouseThreshold1"="6"
 "MouseThreshold2"="10"
 
-; mouse curve 225% scaling
+; 225% scaling curve
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 	00,00,00,00,00,00,00,00,\
@@ -313,7 +313,7 @@ Windows Registry Editor Version 5.00
 	00,00,A8,00,00,00,00,00,\
 	00,00,E0,00,00,00,00,00
 
-; dpi scaling 225%
+; 225% dpi scaling
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "Win8DpiScaling"=dword:00000001
 "LogPixels"=dword:000000d8
