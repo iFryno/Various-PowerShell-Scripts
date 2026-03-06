@@ -20,12 +20,12 @@
 
 Clear-Host
 # enable new 25h2 start menu
-Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829' /v 'EnabledState' /t REG_DWORD /d '2' /f >$null
-Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\3036241548' /v 'EnabledState' /t REG_DWORD /d '2' /f >$null
-Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\734731404' /v 'EnabledState' /t REG_DWORD /d '2' /f >$null
-Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\762256525' /v 'EnabledState' /t REG_DWORD /d '2' /f >$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829' /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\3036241548' /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\734731404' /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\762256525' /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
 # set start menu apps view to list
-Reg.exe add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Start' /v 'AllAppsViewMode' /t REG_DWORD /d '2' /f >$null
+Reg.exe add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Start' /v 'AllAppsViewMode' /t REG_DWORD /d '2' /f *>$null
 Clear-Host
 Write-Host "Restart to apply..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
@@ -36,12 +36,12 @@ exit
 
 Clear-Host
 # revert new 25h2 start menu
-Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829' /v 'EnabledState' /t REG_DWORD /d '0' /f >$null
-Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\3036241548' /v 'EnabledState' /t REG_DWORD /d '0' /f >$null
-Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\734731404' /v 'EnabledState' /t REG_DWORD /d '0' /f >$null
-Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\762256525' /v 'EnabledState' /t REG_DWORD /d '0' /f >$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829' /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\3036241548' /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\734731404' /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\762256525' /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
 # set start menu apps view to category
-Reg.exe add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Start' /v 'AllAppsViewMode' /t REG_DWORD /d '0' /f >$null
+Reg.exe add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Start' /v 'AllAppsViewMode' /t REG_DWORD /d '0' /f *>$null
 Clear-Host
 Write-Host "Restart to apply..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
