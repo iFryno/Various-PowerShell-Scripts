@@ -23,26 +23,6 @@
 Clear-Host
 # restore legacy context menu
 Reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /ve /t REG_SZ /d "" /f *>$null
-# remove print
-Reg.exe add "HKCR\SystemFileAssociations\image\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\batfile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\cmdfile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\docxfile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\fonfile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\htmlfile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\inffile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\inifile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\JSEFile\Shell\Print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\otffile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\pfmfile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\regfile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\rtffile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\ttcfile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\ttffile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\txtfile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\VBEFile\Shell\Print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\VBSFile\Shell\Print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
-Reg.exe add "HKCR\WSFFile\Shell\Print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f *>$null
 # remove customize this folder
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoCustomizeThisFolder" /t REG_DWORD /d "1" /f *>$null
 # remove pin to quick access
@@ -61,7 +41,7 @@ Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blo
 Reg.exe delete "HKCR\Folder\ShellEx\ContextMenuHandlers\Library Location" /f *>$null
 # remove share
 Reg.exe delete "HKCR\AllFilesystemObjects\shellex\ContextMenuHandlers\ModernSharing" /f *>$null
-# remove restore previous versions
+# remove previous versions
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "NoPreviousVersionsPage" /t REG_DWORD /d "1" /f *>$null
 # remove send to
 Reg.exe delete "HKCR\AllFilesystemObjects\shellex\ContextMenuHandlers\SendTo" /f *>$null
@@ -77,26 +57,6 @@ exit
 Clear-Host
 # revert legacy context menu
 Reg.exe delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f *>$null
-# restore print
-Reg.exe delete "HKCR\SystemFileAssociations\image\shell\print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\batfile\shell\print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\cmdfile\shell\print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\docxfile\shell\print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\fonfile\shell\print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\htmlfile\shell\print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\inffile\shell\print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\inifile\shell\print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\JSEFile\Shell\Print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\otffile\shell\print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\pfmfile\shell\print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\regfile\shell\print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\rtffile\shell\print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\ttcfile\shell\print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\ttffile\shell\print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\txtfile\shell\print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\VBEFile\Shell\Print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\VBSFile\Shell\Print" /v "ProgrammaticAccessOnly" /f *>$null
-Reg.exe delete "HKCR\WSFFile\Shell\Print" /v "ProgrammaticAccessOnly" /f *>$null
 # restore customize this folder
 Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoCustomizeThisFolder" /f *>$null
 # restore pin to quick access
@@ -126,7 +86,7 @@ Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\
 Reg.exe add "HKCR\Folder\ShellEx\ContextMenuHandlers\Library Location" /ve /t REG_SZ /d "{3dad6c5d-2167-4cae-9914-f99e41c12cfa}" /f *>$null
 # restore share
 Reg.exe add "HKCR\AllFilesystemObjects\shellex\ContextMenuHandlers\ModernSharing" /ve /t REG_SZ /d "{e2bf9676-5f8f-435c-97eb-11607a5bedf7}" /f *>$null
-# restore restore previous versions
+# restore previous versions
 Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "NoPreviousVersionsPage" /f *>$null
 # restore send to
 Reg.exe add "HKCR\AllFilesystemObjects\shellex\ContextMenuHandlers\SendTo" /ve /t REG_SZ /d "{7BA4C740-9E81-11CF-99D3-00AA004AE837}" /f *>$null
@@ -138,3 +98,4 @@ exit
 
 	  }
 	} } else { Write-Host "Invalid input. Please select a valid option (1-2)." } }
+
