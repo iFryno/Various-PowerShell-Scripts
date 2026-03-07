@@ -52,8 +52,8 @@ Windows Registry Editor Version 5.00
 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Ribbon]
+"MinimizedStateTabletModeOff"=dword:00000000
 "MinimizedStateTabletModeOn"=dword:00000001
-"MinimizedStateTabletModeOff"=dword:00000001
 "@
 Set-Content -Path "$env:TEMP\LegacyExplorer.reg" -Value $MultilineComment -Force
 # edit reg file
@@ -83,8 +83,8 @@ Windows Registry Editor Version 5.00
 "ITBar7Layout"=-
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Ribbon]
-"MinimizedStateTabletModeOn"=-
 "MinimizedStateTabletModeOff"=-
+"MinimizedStateTabletModeOn"=-
 "@
 Set-Content -Path "$env:TEMP\DefaultExplorer.reg" -Value $MultilineComment -Force
 # edit reg file
