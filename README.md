@@ -10,8 +10,6 @@ These PowerShell scripts simplify system tweaks and enhance functionality.
 
 **Black Theme:** Applies a true black theme to Windows.
 
-**Clean Context Menu:** Removes unnecessary options from the right-click context menu.
-
 **Core Parking:** Adjusts OS-managed CPU core parking.
 
 **Digital Markets Act:** Sets the device setup region to Ireland to enable EU DMA compliance, giving you more control over your system by allowing native removal of Microsoft Edge and other enforced apps (your actual region remains unchanged).
