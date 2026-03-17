@@ -7,11 +7,9 @@
     $Host.PrivateData.ProgressForegroundColor = "White"
     Clear-Host
 
-    Write-Host "Restore the Legacy File Explorer on Windows 11"
-    Write-Host ""
+    Write-Host "Restore the Legacy File Explorer on Windows 11`n"
     Write-Host "1. File Explorer: Legacy"
-    Write-Host "2. File Explorer: Default"
-    Write-Host ""
+    Write-Host "2. File Explorer: Default`n"
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
