@@ -7,16 +7,14 @@
     $Host.PrivateData.ProgressForegroundColor = "White"
     Clear-Host
 
-    Write-Host "No Desktop Mouse Acceleration with Higher Scaling"
-    Write-Host ""
+    Write-Host "No Desktop Mouse Acceleration with Higher Scaling`n"
     Write-Host "1. 100%"
     Write-Host "2. 125%"
     Write-Host "3. 150%"
     Write-Host "4. 175%"
     Write-Host "5. 200%"
-    Write-Host "6. 225%"
-    Write-Host ""
-	while ($true) {
+    Write-Host "6. 225%`n"
+    while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-6]$') {
     switch ($choice) {
