@@ -7,11 +7,9 @@
     $Host.PrivateData.ProgressForegroundColor = "White"
     Clear-Host
 
-    Write-Host "EU Digital Markets Act (DMA)"
-    Write-Host ""
+    Write-Host "EU Digital Markets Act (DMA)`n"
     Write-Host "1. DMA: On"
-    Write-Host "2. DMA: Default"
-    Write-Host ""
+    Write-Host "2. DMA: Default`n"
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
