@@ -7,11 +7,9 @@
     $Host.PrivateData.ProgressForegroundColor = "White"
     Clear-Host
 
-    Write-Host "Force Flip True Immediate Mode"
-    Write-Host ""
+    Write-Host "Force Flip True Immediate Mode`n"
     Write-Host "1. On"
-    Write-Host "2. Default"
-    Write-Host ""
+    Write-Host "2. Default`n"
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
