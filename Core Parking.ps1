@@ -7,11 +7,9 @@
     $Host.PrivateData.ProgressForegroundColor = "White"
     Clear-Host
 
-    Write-Host "Manage CPU Core Parking"
-    Write-Host ""
+    Write-Host "Manage CPU Core Parking`n"
     Write-Host "1. Core Parking: Off"
-    Write-Host "2. Core Parking: Default"
-    Write-Host ""
+    Write-Host "2. Core Parking: Default`n"
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
