@@ -7,12 +7,10 @@
     $Host.PrivateData.ProgressForegroundColor = "White"
     Clear-Host
 
-    Write-Host "Manage Automatic Windows Updates"
-    Write-Host ""
+    Write-Host "Manage Automatic Windows Updates`n"
     Write-Host "1. Pause"
     Write-Host "2. Disable"
-    Write-Host "3. Default"
-    Write-Host ""
+    Write-Host "3. Default`n"
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-3]$') {
