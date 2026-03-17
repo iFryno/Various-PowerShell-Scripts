@@ -10,11 +10,9 @@
     $ActivePlan = (powercfg /getactivescheme | ForEach-Object { ($_ -split ':\s+')[1].Split()[0] })
 	Clear-Host
 	
-	Write-Host "Heterogeneous Short Running Thread Scheduling Policy"
-    Write-Host ""
-	Write-Host "1. All processors"
-    Write-Host "2. Prefer performant processors"
-    Write-Host ""
+	Write-Host "Heterogeneous Short Running Thread Scheduling Policy`n"
+    Write-Host "1. All processors"
+    Write-Host "2. Prefer performant processors`n"
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
