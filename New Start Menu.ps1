@@ -7,11 +7,9 @@
     $Host.PrivateData.ProgressForegroundColor = "White"
     Clear-Host
 
-    Write-Host "Activate the New 25H2 Start Menu on Supported Windows 11 Builds"
-    Write-Host ""
+    Write-Host "Activate the New 25H2 Start Menu on Supported Windows 11 Builds`n"
     Write-Host "1. Start Menu: New"
-    Write-Host "2. Start Menu: Default"
-    Write-Host ""
+    Write-Host "2. Start Menu: Default`n"
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
