@@ -7,11 +7,9 @@
     $Host.PrivateData.ProgressForegroundColor = "White"
     Clear-Host
 
-    Write-Host "True Black Windows Theme"
-    Write-Host ""
+    Write-Host "True Black Windows Theme`n"
     Write-Host "1. Theme: Black"
-    Write-Host "2. Theme: Default"
-    Write-Host ""
+    Write-Host "2. Theme: Default`n"
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
