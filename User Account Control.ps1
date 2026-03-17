@@ -7,11 +7,9 @@
     $Host.PrivateData.ProgressForegroundColor = "White"
     Clear-Host
 
-    Write-Host "Manage User Account Control"
-    Write-Host ""
+    Write-Host "Manage User Account Control`n"
     Write-Host "1. UAC: Off"
-    Write-Host "2. UAC: Default"
-    Write-Host ""
+    Write-Host "2. UAC: Default`n"
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
