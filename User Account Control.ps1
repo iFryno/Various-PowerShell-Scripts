@@ -7,9 +7,11 @@
     $Host.PrivateData.ProgressForegroundColor = "White"
     Clear-Host
 
-    Write-Host "Manage User Account Control`n"
-    Write-Host "1. UAC: Off"
-    Write-Host "2. UAC: Default`n"
+    $regPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"
+	
+	Write-Host "Manage User Account Control`n"
+    Write-Host "1. UAC: Disabled"
+    Write-Host "2. UAC: Enabled (Default)`n"
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
@@ -18,7 +20,6 @@
 
 Clear-Host
 # disable uac
-$regPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"
 Set-ItemProperty -Path $regPath -Name "EnableLUA" -Type DWord -Value 0
 Set-ItemProperty -Path $regPath -Name "PromptOnSecureDesktop" -Type DWord -Value 0
 Set-ItemProperty -Path $regPath -Name "ConsentPromptBehaviorAdmin" -Type DWord -Value 0
@@ -31,7 +32,6 @@ exit
 
 Clear-Host
 # enable uac
-$regPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"
 Set-ItemProperty -Path $regPath -Name "EnableLUA" -Type DWord -Value 1
 Set-ItemProperty -Path $regPath -Name "PromptOnSecureDesktop" -Type DWord -Value 1
 Set-ItemProperty -Path $regPath -Name "ConsentPromptBehaviorAdmin" -Type DWord -Value 5
@@ -40,4 +40,4 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 
       }
-    } } else { Write-Host "Invalid input. Please select a valid option (1-2)." } }
+    } } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" } }
