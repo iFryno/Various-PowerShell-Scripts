@@ -29,7 +29,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Control Panel\Colors]
 "Background"="0 0 0"
 
-; clear wallpaper path
+; remove wallpaper
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "WallPaper"=""
 
@@ -38,40 +38,33 @@ Windows Registry Editor Version 5.00
 "AppsUseLightTheme"=dword:00000000
 "SystemUsesLightTheme"=dword:00000000
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
-"AppsUseLightTheme"=dword:00000000
-
 ; disable transparency
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "EnableTransparency"=dword:00000000
 
 ; black accent color
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Accent]
+"AccentColorMenu"=dword:00000000
 "AccentPalette"=hex:64,64,64,00,6b,6b,6b,00,00,00,00,00,00,00,00,00,00,00,00,\
   00,00,00,00,00,00,00,00,00,00,00,00,00
 "StartColorMenu"=dword:00000000
-"AccentColorMenu"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM]
-"EnableWindowColorization"=dword:00000001
 "AccentColor"=dword:ff191919
-"ColorizationColor"=dword:c4191919
 "ColorizationAfterglow"=dword:c4191919
+"ColorizationColor"=dword:c4191919
+"EnableWindowColorization"=dword:00000001
 
 ; enable show accent color on start and taskbar
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "ColorPrevalence"=dword:00000001
-
-; black powershell console
-[HKEY_CURRENT_USER\Console\%SystemRoot%_System32_WindowsPowerShell_v1.0_powershell.exe]
-"ScreenColors"=dword:0000000F
 "@
-Set-Content -Path "$env:TEMP\BlackTheme.reg" -Value $MultilineComment -Force
-# edit reg file
-$path = "$env:TEMP\BlackTheme.reg"
-(Get-Content $path) -replace "\?","$" | Out-File $path
+# save reg file
+Set-Content -Path "$env:SystemRoot\Temp\BlackTheme.reg" -Value $MultilineComment -Force
 # import reg file
-Regedit.exe /S "$env:TEMP\BlackTheme.reg"
+Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\BlackTheme.reg`"" -WindowStyle Hidden
+# delete reg file
+Remove-Item "$env:SystemRoot\Temp\BlackTheme.reg" -Force
 # create new image
 Add-Type -AssemblyName System.Windows.Forms
 $screenWidth = [System.Windows.Forms.SystemInformation]::PrimaryMonitorSize.Width
@@ -85,9 +78,10 @@ $graphics.FillRectangle($color, 0, 0, $edit.Width, $edit.Height)
 $graphics.Dispose()
 $edit.Save($file)
 $edit.Dispose()
-# black lock screen
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP" /v "LockScreenImagePath" /t REG_SZ /d "C:\Windows\Black.png" /f *>$null
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP" /v "LockScreenImageStatus" /t REG_DWORD /d "1" /f *>$null
+# black lockscreen
+New-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Force *>$null
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Name 'LockScreenImagePath' -Value 'C:\Windows\Black.png' -Force
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Name 'LockScreenImageStatus' -Value 1 -Force
 Clear-Host
 Write-Host "Restart to apply..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
@@ -105,7 +99,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers]
 "BackgroundType"=dword:00000000
 
-; default wallpaper path
+; default wallpaper
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "WallPaper"="C:\\Windows\\web\\wallpaper\\Windows\\img0.jpg"
 
@@ -114,48 +108,42 @@ Windows Registry Editor Version 5.00
 "AppsUseLightTheme"=dword:00000001
 "SystemUsesLightTheme"=dword:00000001
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
-
 ; enable transparency
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "EnableTransparency"=dword:00000001
 
 ; default accent color
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent]
+"AccentColorMenu"=dword:ffd47800
 "AccentPalette"=hex:99,eb,ff,00,4c,c2,ff,00,00,91,f8,00,00,78,d4,00,00,67,c0,\
   00,00,3e,92,00,00,1a,68,00,f7,63,0c,00
 "StartColorMenu"=dword:ffc06700
-"AccentColorMenu"=dword:ffd47800
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM]
-"EnableWindowColorization"=dword:00000000
 "AccentColor"=dword:ffd47800
-"ColorizationColor"=dword:c40078d4
 "ColorizationAfterglow"=dword:c40078d4
+"ColorizationColor"=dword:c40078d4
+"EnableWindowColorization"=dword:00000000
 
 ; disable show accent color on start and taskbar
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "ColorPrevalence"=dword:00000000
-
-; default powershell console
-[HKEY_CURRENT_USER\Console\%SystemRoot%_System32_WindowsPowerShell_v1.0_powershell.exe]
-"ScreenColors"=dword:00000056
 "@
-Set-Content -Path "$env:TEMP\DefaultTheme.reg" -Value $MultilineComment -Force
-# edit reg file
-$path = "$env:TEMP\DefaultTheme.reg"
-(Get-Content $path) -replace "\?","$" | Out-File $path
+# save reg file
+Set-Content -Path "$env:SystemRoot\Temp\DefaultTheme.reg" -Value $MultilineComment -Force
 # import reg file
-Regedit.exe /S "$env:TEMP\DefaultTheme.reg"
+Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\DefaultTheme.reg`"" -WindowStyle Hidden
+# delete reg file
+Remove-Item "$env:SystemRoot\Temp\DefaultTheme.reg" -Force
 # delete image
 Remove-Item "C:\Windows\Black.png" -Force *>$null
-# default lock screen
-Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP" /v "LockScreenImagePath" /f *>$null
-Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP" /v "LockScreenImageStatus" /f *>$null
+# default lockscreen
+Remove-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Name 'LockScreenImagePath' -Force *>$null
+Remove-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Name 'LockScreenImageStatus' -Force *>$null
 Clear-Host
 Write-Host "Restart to apply..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 
       }
-    } } else { Write-Host "Invalid input. Please select a valid option (1-2)." } }
+    } } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" } }
