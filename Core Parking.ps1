@@ -7,9 +7,9 @@
     $Host.PrivateData.ProgressForegroundColor = "White"
     Clear-Host
 
-    Write-Host "Manage CPU Core Parking`n"
-    Write-Host "1. Core Parking: Off"
-    Write-Host "2. Core Parking: Default`n"
+	Write-Host "Manage CPU Core Parking`n"
+	Write-Host "1. Core Parking: Disabled"
+	Write-Host "2. Core Parking: Enabled (Default)`n"
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
@@ -51,4 +51,4 @@ Start-Process powercfg.cpl
 exit
 
       }
-    } } else { Write-Host "Invalid input. Please select a valid option (1-2)." } }
+    } } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" } }
