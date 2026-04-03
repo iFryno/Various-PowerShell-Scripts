@@ -8,8 +8,8 @@
     Clear-Host
 
     Write-Host "EU Digital Markets Act (DMA)`n"
-    Write-Host "1. DMA: On"
-    Write-Host "2. DMA: Default`n"
+	Write-Host "1. DMA: Enabled"
+	Write-Host "2. DMA: Disabled (Default)`n"
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
@@ -36,4 +36,4 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 
       }
-    } } else { Write-Host "Invalid input. Please select a valid option (1-2)." } }
+    } } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" } }
