@@ -20,11 +20,7 @@ These PowerShell scripts simplify system tweaks and enhance functionality.
 
 **Manage Windows Updates:** Pauses updates for 1 year or disables them entirely.
 
-**New Start Menu:** Activates the new 25H2 start menu on supported Windows 11 26200 builds.
-
-**Thread Scheduling Policy:** Changes heterogeneous short running thread scheduling between all processors or prefer performant processors.
-
-**True Immediate Mode:** Forces the GPU scheduler to use the Flip Immediate presentation model, bypassing the render queue and presenting frames as soon as they're ready.
+**Start Menu Version:** Activates the new 25H2 start menu or reverts to the 24H2 start menu on supported Windows 11 26200 builds.
 
 **User Account Control:** Enables or disables UAC.
 
