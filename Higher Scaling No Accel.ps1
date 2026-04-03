@@ -60,10 +60,12 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000000
 "@
-Set-Content -Path "$env:TEMP\100%.reg" -Value $MultilineComment -Force
+# save reg file
+Set-Content -Path "$env:SystemRoot\Temp\100%.reg" -Value $MultilineComment -Force
 # import reg file
-Regedit.exe /S "$env:TEMP\100%.reg"
-Timeout /T 5 | Out-Null
+Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\100%.reg`"" -WindowStyle Hidden
+# delete reg file
+Remove-Item "$env:SystemRoot\Temp\100%.reg" -Force
 Clear-Host
 Write-Host "Restart to apply..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
@@ -112,10 +114,12 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
 "@
-Set-Content -Path "$env:TEMP\125%.reg" -Value $MultilineComment -Force
+# save reg file
+Set-Content -Path "$env:SystemRoot\Temp\125%.reg" -Value $MultilineComment -Force
 # import reg file
-Regedit.exe /S "$env:TEMP\125%.reg"
-Timeout /T 5 | Out-Null
+Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\125%.reg`"" -WindowStyle Hidden
+# delete reg file
+Remove-Item "$env:SystemRoot\Temp\125%.reg" -Force
 Clear-Host
 Write-Host "Restart to apply..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
@@ -164,10 +168,12 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
 "@
-Set-Content -Path "$env:TEMP\150%.reg" -Value $MultilineComment -Force
+# save reg file
+Set-Content -Path "$env:SystemRoot\Temp\150%.reg" -Value $MultilineComment -Force
 # import reg file
-Regedit.exe /S "$env:TEMP\150%.reg"
-Timeout /T 5 | Out-Null
+Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\150%.reg`"" -WindowStyle Hidden
+# delete reg file
+Remove-Item "$env:SystemRoot\Temp\150%.reg" -Force
 Clear-Host
 Write-Host "Restart to apply..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
@@ -216,10 +222,12 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
 "@
-Set-Content -Path "$env:TEMP\175%.reg" -Value $MultilineComment -Force
+# save reg file
+Set-Content -Path "$env:SystemRoot\Temp\175%.reg" -Value $MultilineComment -Force
 # import reg file
-Regedit.exe /S "$env:TEMP\175%.reg"
-Timeout /T 5 | Out-Null
+Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\175%.reg`"" -WindowStyle Hidden
+# delete reg file
+Remove-Item "$env:SystemRoot\Temp\175%.reg" -Force
 Clear-Host
 Write-Host "Restart to apply..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
@@ -268,10 +276,12 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
 "@
-Set-Content -Path "$env:TEMP\200%.reg" -Value $MultilineComment -Force
+# save reg file
+Set-Content -Path "$env:SystemRoot\Temp\200%.reg" -Value $MultilineComment -Force
 # import reg file
-Regedit.exe /S "$env:TEMP\200%.reg"
-Timeout /T 5 | Out-Null
+Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\200%.reg`"" -WindowStyle Hidden
+# delete reg file
+Remove-Item "$env:SystemRoot\Temp\200%.reg" -Force
 Clear-Host
 Write-Host "Restart to apply..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
@@ -320,14 +330,16 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
 "@
-Set-Content -Path "$env:TEMP\225%.reg" -Value $MultilineComment -Force
+# save reg file
+Set-Content -Path "$env:SystemRoot\Temp\225%.reg" -Value $MultilineComment -Force
 # import reg file
-Regedit.exe /S "$env:TEMP\225%.reg"
-Timeout /T 5 | Out-Null
+Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\225%.reg`"" -WindowStyle Hidden
+# delete reg file
+Remove-Item "$env:SystemRoot\Temp\225%.reg" -Force
 Clear-Host
 Write-Host "Restart to apply..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 
       }
-    } } else { Write-Host "Invalid input. Please select a valid option (1-6)." } }
+    } } else { Write-Host "Invalid input. Please select a valid option (1-6).`n" } }
