@@ -53,12 +53,12 @@ Windows Registry Editor Version 5.00
 "MinimizedStateTabletModeOff"=dword:00000000
 "MinimizedStateTabletModeOn"=dword:00000001
 "@
-Set-Content -Path "$env:TEMP\LegacyExplorer.reg" -Value $MultilineComment -Force
-# edit reg file
-$path = "$env:TEMP\LegacyExplorer.reg"
-(Get-Content $path) -replace "\?","$" | Out-File $path
+# save reg file
+Set-Content -Path "$env:SystemRoot\Temp\LegacyExplorer.reg" -Value $MultilineComment -Force
 # import reg file
-Regedit.exe /S "$env:TEMP\LegacyExplorer.reg"
+Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\LegacyExplorer.reg`"" -WindowStyle Hidden
+# delete reg file
+Remove-Item "$env:SystemRoot\Temp\LegacyExplorer.reg" -Force
 # stop explorer
 Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
 # start explorer
@@ -84,12 +84,12 @@ Windows Registry Editor Version 5.00
 "MinimizedStateTabletModeOff"=-
 "MinimizedStateTabletModeOn"=-
 "@
-Set-Content -Path "$env:TEMP\DefaultExplorer.reg" -Value $MultilineComment -Force
-# edit reg file
-$path = "$env:TEMP\DefaultExplorer.reg"
-(Get-Content $path) -replace "\?","$" | Out-File $path
+# save reg file
+Set-Content -Path "$env:SystemRoot\Temp\DefaultExplorer.reg" -Value $MultilineComment -Force
 # import reg file
-Regedit.exe /S "$env:TEMP\DefaultExplorer.reg"
+Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\DefaultExplorer.reg`"" -WindowStyle Hidden
+# delete reg file
+Remove-Item "$env:SystemRoot\Temp\DefaultExplorer.reg" -Force
 # stop explorer
 Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
 # start explorer
@@ -97,4 +97,4 @@ Start-Process explorer.exe
 exit
 
       }
-    } } else { Write-Host "Invalid input. Please select a valid option (1-2)." } }
+    } } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" } }
