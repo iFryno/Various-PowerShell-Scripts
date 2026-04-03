@@ -7,10 +7,10 @@
     $Host.PrivateData.ProgressForegroundColor = "White"
     Clear-Host
 
-    Write-Host "Manage Automatic Windows Updates`n"
-    Write-Host "1. Pause"
-    Write-Host "2. Disable"
-    Write-Host "3. Default`n"
+	Write-Host "Manage Automatic Windows Updates`n"
+	Write-Host "1. Updates: Paused"
+	Write-Host "2. Updates: Disabled"
+	Write-Host "3. Updates: Default`n"
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-3]$') {
@@ -88,4 +88,4 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 
       }
-    } } else { Write-Host "Invalid input. Please select a valid option (1-3)." } }
+    } } else { Write-Host "Invalid input. Please select a valid option (1-3).`n" } }
