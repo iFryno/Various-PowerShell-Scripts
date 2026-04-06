@@ -1,17 +1,22 @@
-    If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
-    {Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-    Exit}
-    $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + " (Administrator)"
-    $Host.UI.RawUI.BackgroundColor = "Black"
-	$Host.PrivateData.ProgressBackgroundColor = "Black"
-    $Host.PrivateData.ProgressForegroundColor = "White"
-    Clear-Host
+	# ADMINISTRATOR PRIVILEGES
+	If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
+	{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
+	Exit}
 
-    $regPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"
-	
+	# WINDOW SETTINGS
+	$Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + " (Administrator)"
+	$Host.UI.RawUI.BackgroundColor = "Black"
+	$Host.PrivateData.ProgressBackgroundColor = "Black"
+	$Host.PrivateData.ProgressForegroundColor = "White"
+	Clear-Host
+
+	# REG PATH
+	$regPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"
+
+	# INPUT UI
 	Write-Host "Manage User Account Control`n"
     Write-Host "1. UAC: Disabled"
-    Write-Host "2. UAC: Enabled (Default)`n"
+    Write-Host "2. UAC: Default`n"
     while ($true) {
     $choice = Read-Host " "
     if ($choice -match '^[1-2]$') {
@@ -19,25 +24,33 @@
     1 {
 
 Clear-Host
-# disable uac
+
+# DISABLE UAC
 Set-ItemProperty -Path $regPath -Name "EnableLUA" -Type DWord -Value 0
 Set-ItemProperty -Path $regPath -Name "PromptOnSecureDesktop" -Type DWord -Value 0
 Set-ItemProperty -Path $regPath -Name "ConsentPromptBehaviorAdmin" -Type DWord -Value 0
+
 Write-Host "Restart to apply..."
+
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
 exit
 
       }
     2 {
 
 Clear-Host
-# enable uac
+
+# ENABLE UAC
 Set-ItemProperty -Path $regPath -Name "EnableLUA" -Type DWord -Value 1
 Set-ItemProperty -Path $regPath -Name "PromptOnSecureDesktop" -Type DWord -Value 1
 Set-ItemProperty -Path $regPath -Name "ConsentPromptBehaviorAdmin" -Type DWord -Value 5
+
 Write-Host "Restart to apply..."
+
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
 exit
 
       }
-    } } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" } }
+    } } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" -ForegroundColor Red } }
