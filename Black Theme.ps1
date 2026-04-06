@@ -1,12 +1,16 @@
-    If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
-    {Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-    Exit}
-    $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + " (Administrator)"
-    $Host.UI.RawUI.BackgroundColor = "Black"
-	$Host.PrivateData.ProgressBackgroundColor = "Black"
-    $Host.PrivateData.ProgressForegroundColor = "White"
-    Clear-Host
+	# ADMINISTRATOR PRIVILEGES
+	If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
+	{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
+	Exit}
 
+	# WINDOW SETTINGS
+	$Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + " (Administrator)"
+	$Host.UI.RawUI.BackgroundColor = "Black"
+	$Host.PrivateData.ProgressBackgroundColor = "Black"
+	$Host.PrivateData.ProgressForegroundColor = "White"
+	Clear-Host
+
+	# INPUT UI
     Write-Host "True Black Windows Theme`n"
     Write-Host "1. Theme: Black"
     Write-Host "2. Theme: Default`n"
@@ -17,32 +21,33 @@
     1 {
 
 Clear-Host
-# create reg file
+
+# CREATE REG FILE
 $MultilineComment = @"
 Windows Registry Editor Version 5.00
 
-; background type solid color
+; BACKGROUND TYPE SOLID COLOR
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers]
 "BackgroundType"=dword:00000001
 
-; solid color black
+; SOLID COLOR BLACK
 [HKEY_CURRENT_USER\Control Panel\Colors]
 "Background"="0 0 0"
 
-; remove wallpaper
+; REMOVE WALLPAPER
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "WallPaper"=""
 
-; dark mode
+; DARK MODE
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "AppsUseLightTheme"=dword:00000000
 "SystemUsesLightTheme"=dword:00000000
 
-; disable transparency
+; DISABLE TRANSPARENCY
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "EnableTransparency"=dword:00000000
 
-; black accent color
+; BLACK ACCENT COLOR
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Accent]
 "AccentColorMenu"=dword:00000000
 "AccentPalette"=hex:64,64,64,00,6b,6b,6b,00,00,00,00,00,00,00,00,00,00,00,00,\
@@ -55,17 +60,21 @@ Windows Registry Editor Version 5.00
 "ColorizationColor"=dword:c4191919
 "EnableWindowColorization"=dword:00000001
 
-; enable show accent color on start and taskbar
+; ENABLE SHOW ACCENT COLOR ON START AND TASKBAR
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "ColorPrevalence"=dword:00000001
 "@
-# save reg file
+
+# SAVE REG FILE
 Set-Content -Path "$env:SystemRoot\Temp\BlackTheme.reg" -Value $MultilineComment -Force
-# import reg file
+
+# IMPORT REG FILE
 Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\BlackTheme.reg`"" -WindowStyle Hidden
-# delete reg file
+
+# DELETE REG FILE
 Remove-Item "$env:SystemRoot\Temp\BlackTheme.reg" -Force
-# create new image
+
+# CREATE BLACK IMAGE
 Add-Type -AssemblyName System.Windows.Forms
 $screenWidth = [System.Windows.Forms.SystemInformation]::PrimaryMonitorSize.Width
 $screenHeight = [System.Windows.Forms.SystemInformation]::PrimaryMonitorSize.Height
@@ -78,41 +87,47 @@ $graphics.FillRectangle($color, 0, 0, $edit.Width, $edit.Height)
 $graphics.Dispose()
 $edit.Save($file)
 $edit.Dispose()
-# black lockscreen
+
+# BLACK LOCK SCREEN
 New-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Force *>$null
 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Name 'LockScreenImagePath' -Value 'C:\Windows\Black.png' -Force
 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Name 'LockScreenImageStatus' -Value 1 -Force
+
 Clear-Host
+
 Write-Host "Restart to apply..."
+
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
 exit
 
       }
     2 {
 
 Clear-Host
-# create reg file
+
+# CREATE REG FILE
 $MultilineComment = @"
 Windows Registry Editor Version 5.00
 
-; background type picture
+; BACKGROUND TYPE PICTURE
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers]
 "BackgroundType"=dword:00000000
 
-; default wallpaper
+; DEFAULT WALLPAPER
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "WallPaper"="C:\\Windows\\web\\wallpaper\\Windows\\img0.jpg"
 
-; light mode
+; LIGHT MODE
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "AppsUseLightTheme"=dword:00000001
 "SystemUsesLightTheme"=dword:00000001
 
-; enable transparency
+; ENABLE TRANSPARENCY
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "EnableTransparency"=dword:00000001
 
-; default accent color
+; DEFAULT ACCENT COLOR
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent]
 "AccentColorMenu"=dword:ffd47800
 "AccentPalette"=hex:99,eb,ff,00,4c,c2,ff,00,00,91,f8,00,00,78,d4,00,00,67,c0,\
@@ -125,25 +140,34 @@ Windows Registry Editor Version 5.00
 "ColorizationColor"=dword:c40078d4
 "EnableWindowColorization"=dword:00000000
 
-; disable show accent color on start and taskbar
+; DISABLE SHOW ACCENT COLOR ON START AND TASKBAR
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "ColorPrevalence"=dword:00000000
 "@
-# save reg file
+
+# SAVE REG FILE
 Set-Content -Path "$env:SystemRoot\Temp\DefaultTheme.reg" -Value $MultilineComment -Force
-# import reg file
+
+# IMPORT REG FILE
 Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\DefaultTheme.reg`"" -WindowStyle Hidden
-# delete reg file
+
+# DELETE REG FILE
 Remove-Item "$env:SystemRoot\Temp\DefaultTheme.reg" -Force
-# delete image
+
+# DELETE BLACK IMAGE
 Remove-Item "C:\Windows\Black.png" -Force *>$null
-# default lockscreen
+
+# DEFAULT LOCK SCREEN
 Remove-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Name 'LockScreenImagePath' -Force *>$null
 Remove-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Name 'LockScreenImageStatus' -Force *>$null
+
 Clear-Host
+
 Write-Host "Restart to apply..."
+
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
 exit
 
       }
-    } } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" } }
+    } } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" -ForegroundColor Red } }
