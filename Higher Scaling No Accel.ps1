@@ -1,12 +1,16 @@
-    If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
-    {Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-    Exit}
-    $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + " (Administrator)"
-    $Host.UI.RawUI.BackgroundColor = "Black"
-	$Host.PrivateData.ProgressBackgroundColor = "Black"
-    $Host.PrivateData.ProgressForegroundColor = "White"
-    Clear-Host
+	# ADMINISTRATOR PRIVILEGES
+	If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
+	{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
+	Exit}
 
+	# WINDOW SETTINGS
+	$Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + " (Administrator)"
+	$Host.UI.RawUI.BackgroundColor = "Black"
+	$Host.PrivateData.ProgressBackgroundColor = "Black"
+	$Host.PrivateData.ProgressForegroundColor = "White"
+	Clear-Host
+
+	# INPUT UI
     Write-Host "No Desktop Mouse Acceleration with Higher Scaling`n"
     Write-Host "1. 100%"
     Write-Host "2. 125%"
@@ -21,22 +25,24 @@
     1 {
 
 Clear-Host
+
 Write-Host "100%..."
-# create reg file
+
+# CREATE REG FILE
 $MultilineComment = @"
 Windows Registry Editor Version 5.00
 
-; default pointer speed
+; DEFAULT POINTER SPEED
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
-; disable enhance pointer precision
+; DISABLE ENHANCE POINTER PRECISION
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSpeed"="0"
 "MouseThreshold1"="0"
 "MouseThreshold2"="0"
 
-; 100% scaling curve
+; 100% SCALING CURVE
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
     00,00,00,00,00,00,00,00,\
@@ -51,46 +57,55 @@ Windows Registry Editor Version 5.00
 	00,00,a8,00,00,00,00,00,\
 	00,00,e0,00,00,00,00,00
 
-; 100% dpi scaling
+; 100% DPI SCALING
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "Win8DpiScaling"=dword:00000001
 "LogPixels"=dword:00000060
 
-; disable fix scaling for apps
+; DISABLE FIX SCALING FOR APPS
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000000
 "@
-# save reg file
+
+# SAVE REG FILE
 Set-Content -Path "$env:SystemRoot\Temp\100%.reg" -Value $MultilineComment -Force
-# import reg file
+
+# IMPORT REG FILE
 Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\100%.reg`"" -WindowStyle Hidden
-# delete reg file
+
+# DELETE REG FILE
 Remove-Item "$env:SystemRoot\Temp\100%.reg" -Force
+
 Clear-Host
+
 Write-Host "Restart to apply..."
+
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
 exit
 
       }
     2 {
 
 Clear-Host
+
 Write-Host "125%..."
-# create reg file
+
+# CREATE REG FILE
 $MultilineComment = @"
 Windows Registry Editor Version 5.00
 
-; default pointer speed
+; DEFAULT POINTER SPEED
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
-; enable enhance pointer precision
+; ENABLE ENHANCE POINTER PRECISION
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSpeed"="1"
 "MouseThreshold1"="6"
 "MouseThreshold2"="10"
 
-; 125% scaling curve
+; 125% SCALING CURVE
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 	00,00,00,00,00,00,00,00,\
@@ -105,46 +120,55 @@ Windows Registry Editor Version 5.00
 	00,00,A8,00,00,00,00,00,\
 	00,00,E0,00,00,00,00,00
 
-; 125% dpi scaling
+; 125% DPI SCALING
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "Win8DpiScaling"=dword:00000001
 "LogPixels"=dword:00000078
 
-; enable fix scaling for apps
+; ENABLE FIX SCALING FOR APPS
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
 "@
-# save reg file
+
+# SAVE REG FILE
 Set-Content -Path "$env:SystemRoot\Temp\125%.reg" -Value $MultilineComment -Force
-# import reg file
+
+# IMPORT REG FILE
 Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\125%.reg`"" -WindowStyle Hidden
-# delete reg file
+
+# DELETE REG FILE
 Remove-Item "$env:SystemRoot\Temp\125%.reg" -Force
+
 Clear-Host
+
 Write-Host "Restart to apply..."
+
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
 exit
 
       }
     3 {
 
 Clear-Host
+
 Write-Host "150%..."
-# create reg file
+
+# CREATE REG FILE
 $MultilineComment = @"
 Windows Registry Editor Version 5.00
 
-; default pointer speed
+; DEFAULT POINTER SPEED
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
-; enable enhance pointer precision
+; ENABLE ENHANCE POINTER PRECISION
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSpeed"="1"
 "MouseThreshold1"="6"
 "MouseThreshold2"="10"
 
-; 150% scaling curve
+; 150% SCALING CURVE
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 	00,00,00,00,00,00,00,00,\
@@ -159,46 +183,55 @@ Windows Registry Editor Version 5.00
 	00,00,A8,00,00,00,00,00,\
 	00,00,E0,00,00,00,00,00
 
-; 150% dpi scaling
+; 150% DPI SCALING
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "Win8DpiScaling"=dword:00000001
 "LogPixels"=dword:00000090
 
-; enable fix scaling for apps
+; ENABLE FIX SCALING FOR APPS
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
 "@
-# save reg file
+
+# SAVE REG FILE
 Set-Content -Path "$env:SystemRoot\Temp\150%.reg" -Value $MultilineComment -Force
-# import reg file
+
+# IMPORT REG FILE
 Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\150%.reg`"" -WindowStyle Hidden
-# delete reg file
+
+# DELETE REG FILE
 Remove-Item "$env:SystemRoot\Temp\150%.reg" -Force
+
 Clear-Host
+
 Write-Host "Restart to apply..."
+
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
 exit
 
       }
     4 {
 
 Clear-Host
+
 Write-Host "175%..."
-# create reg file
+
+# CREATE REG FILE
 $MultilineComment = @"
 Windows Registry Editor Version 5.00
 
-; default pointer speed
+; DEFAULT POINTER SPEED
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
-; enable enhance pointer precision
+; ENABLE ENHANCE POINTER PRECISION
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSpeed"="1"
 "MouseThreshold1"="6"
 "MouseThreshold2"="10"
 
-; 175% scaling curve
+; 175% SCALING CURVE
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 	00,00,00,00,00,00,00,00,\
@@ -213,46 +246,55 @@ Windows Registry Editor Version 5.00
 	00,00,A8,00,00,00,00,00,\
 	00,00,E0,00,00,00,00,00
 
-; 175% dpi scaling
+; 175% DPI SCALING
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "Win8DpiScaling"=dword:00000001
 "LogPixels"=dword:000000a8
 
-; enable fix scaling for apps
+; ENABLE FIX SCALING FOR APPS
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
 "@
-# save reg file
+
+# SAVE REG FILE
 Set-Content -Path "$env:SystemRoot\Temp\175%.reg" -Value $MultilineComment -Force
-# import reg file
+
+# IMPORT REG FILE
 Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\175%.reg`"" -WindowStyle Hidden
-# delete reg file
+
+# DELETE REG FILE
 Remove-Item "$env:SystemRoot\Temp\175%.reg" -Force
+
 Clear-Host
+
 Write-Host "Restart to apply..."
+
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
 exit
 
       }
     5 {
 
 Clear-Host
+
 Write-Host "200%..."
-# create reg file
+
+# CREATE REG FILE
 $MultilineComment = @"
 Windows Registry Editor Version 5.00
 
-; default pointer speed
+; DEFAULT POINTER SPEED
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
-; enable enhance pointer precision
+; ENABLE ENHANCE POINTER PRECISION
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSpeed"="1"
 "MouseThreshold1"="6"
 "MouseThreshold2"="10"
 
-; 200% scaling curve
+; 200% SCALING CURVE
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 	00,00,00,00,00,00,00,00,\
@@ -267,46 +309,55 @@ Windows Registry Editor Version 5.00
 	00,00,A8,00,00,00,00,00,\
 	00,00,E0,00,00,00,00,00
 
-; 200% dpi scaling
+; 200% DPI SCALING
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "Win8DpiScaling"=dword:00000001
 "LogPixels"=dword:000000c0
 
-; enable fix scaling for apps
+; ENABLE FIX SCALING FOR APPS
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
 "@
-# save reg file
+
+# SAVE REG FILE
 Set-Content -Path "$env:SystemRoot\Temp\200%.reg" -Value $MultilineComment -Force
-# import reg file
+
+# IMPORT REG FILE
 Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\200%.reg`"" -WindowStyle Hidden
-# delete reg file
+
+# DELETE REG FILE
 Remove-Item "$env:SystemRoot\Temp\200%.reg" -Force
+
 Clear-Host
+
 Write-Host "Restart to apply..."
+
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
 exit
 
       }
     6 {
 
 Clear-Host
+
 Write-Host "225%..."
-# create reg file
+
+# CREATE REG FILE
 $MultilineComment = @"
 Windows Registry Editor Version 5.00
 
-; default pointer speed
+; DEFAULT POINTER SPEED
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
-; enable enhance pointer precision
+; ENABLE ENHANCE POINTER PRECISION
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSpeed"="1"
 "MouseThreshold1"="6"
 "MouseThreshold2"="10"
 
-; 225% scaling curve
+; 225% SCALING CURVE
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 	00,00,00,00,00,00,00,00,\
@@ -321,25 +372,32 @@ Windows Registry Editor Version 5.00
 	00,00,A8,00,00,00,00,00,\
 	00,00,E0,00,00,00,00,00
 
-; 225% dpi scaling
+; 225% DPI SCALING
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "Win8DpiScaling"=dword:00000001
 "LogPixels"=dword:000000d8
 
-; enable fix scaling for apps
+; ENABLE FIX SCALING FOR APPS
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
 "@
-# save reg file
+
+# SAVE REG FILE
 Set-Content -Path "$env:SystemRoot\Temp\225%.reg" -Value $MultilineComment -Force
-# import reg file
+
+# IMPORT REG FILE
 Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\225%.reg`"" -WindowStyle Hidden
-# delete reg file
+
+# DELETE REG FILE
 Remove-Item "$env:SystemRoot\Temp\225%.reg" -Force
+
 Clear-Host
+
 Write-Host "Restart to apply..."
+
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
 exit
 
       }
-    } } else { Write-Host "Invalid input. Please select a valid option (1-6).`n" } }
+    } } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" -ForegroundColor Red } }
