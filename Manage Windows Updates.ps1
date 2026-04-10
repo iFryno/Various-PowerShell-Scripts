@@ -103,4 +103,4 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 
       }
-    } } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" -ForegroundColor Red } }
+    } } else { Write-Host "Invalid input. Please select a valid option (1-3).`n" -ForegroundColor Red } }
