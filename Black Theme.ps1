@@ -79,7 +79,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $screenWidth = [System.Windows.Forms.SystemInformation]::PrimaryMonitorSize.Width
 $screenHeight = [System.Windows.Forms.SystemInformation]::PrimaryMonitorSize.Height
 Add-Type -AssemblyName System.Drawing
-$file = "$env:SystemRoot\Web\Black.png"
+$file = "$env:SystemRoot\Black.png"
 $edit = New-Object System.Drawing.Bitmap $screenWidth, $screenHeight
 $color = [System.Drawing.Brushes]::Black
 $graphics = [System.Drawing.Graphics]::FromImage($edit)
@@ -90,7 +90,7 @@ $edit.Dispose()
 
 # BLACK LOCK SCREEN
 New-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Force *>$null
-Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Name 'LockScreenImagePath' -Value '$env:SystemRoot\Web\Black.png' -Force
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Name 'LockScreenImagePath' -Value '$env:SystemRoot\Black.png' -Force
 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Name 'LockScreenImageStatus' -Value 1 -Force
 
 Clear-Host
@@ -155,7 +155,7 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Defau
 Remove-Item "$env:SystemRoot\Temp\DefaultTheme.reg" -Force
 
 # DELETE BLACK IMAGE
-Remove-Item "$env:SystemRoot\Web\Black.png" -Force *>$null
+Remove-Item "$env:SystemRoot\Black.png" -Force *>$null
 
 # DEFAULT LOCK SCREEN
 Remove-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Name 'LockScreenImagePath' -Force *>$null
