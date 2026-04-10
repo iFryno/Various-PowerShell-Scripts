@@ -2,10 +2,6 @@
 
 A collection of useful PowerShell scripts that don't require a dedicated repository.
 
-## Description
-
-These PowerShell scripts simplify system tweaks and enhance functionality.
-
 ## Available Scripts
 
 **Black Theme:** Applies a true black theme to Windows.
