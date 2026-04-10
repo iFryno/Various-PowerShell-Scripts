@@ -1,5 +1,5 @@
 	# ADMINISTRATOR PRIVILEGES
-	If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
+	if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
 	{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
 	Exit}
 
@@ -10,23 +10,40 @@
 	$Host.PrivateData.ProgressForegroundColor = "White"
 	Clear-Host
 
+	# BUILD CHECK
+	$key = [Microsoft.Win32.Registry]::LocalMachine.OpenSubKey('SOFTWARE\Microsoft\Windows NT\CurrentVersion')
+	$OSBuild = [version]"$($key.GetValue('CurrentBuild')).$($key.GetValue('UBR'))"
+	$key.Close()
+	$build = [int]$OSBuild.Major
+	if ($build -lt 26200) {
+	Write-Host "Warning: This script requires Windows 11 25H2 (Build 26200+).`n" -ForegroundColor Red
+	Write-Host "Your current build: $build`n"
+	Write-Host "Press any key to exit..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
+	}
+
 	# INPUT UI
 	Write-Host "Start Menu Version`n"
 	Write-Host "1. Start Menu: 25H2"
 	Write-Host "2. Start Menu: 24H2`n"
-    while ($true) {
-    $choice = Read-Host " "
-    if ($choice -match '^[1-2]$') {
-    switch ($choice) {
-    1 {
+	while ($true) {
+	$choice = Read-Host " "
+	if ($choice -match '^[1-2]$') {
+	switch ($choice) {
+	1 {
 
 Clear-Host
 
 # 25H2 START MENU
-Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829' /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
+if ($OSBuild -lt [version]'26200.8037') {
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\3036241548' /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
-Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\734731404' /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
-Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\762256525' /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829' /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\762256525'  /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\734731404'  /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
+} else {
+Reg.exe delete 'HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer' /v 'NoStartMenuMorePrograms' /f *>$null
+}
 
 # SET START MENU APPS VIEW TO LIST
 Reg.exe add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Start' /v 'AllAppsViewMode' /t REG_DWORD /d '2' /f *>$null
@@ -40,15 +57,19 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 
       }
-    2 {
+	2 {
 
 Clear-Host
 
 # 24H2 START MENU
-Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829' /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
+if ($OSBuild -lt [version]'26200.8037') {
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\3036241548' /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
-Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\734731404' /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
-Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\762256525' /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829' /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\762256525'  /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
+Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\734731404'  /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
+} else {
+Reg.exe add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer' /v 'NoStartMenuMorePrograms' /t REG_DWORD /d '1' /f *>$null
+}
 
 # RESET START MENU APPS VIEW
 Reg.exe delete 'HKCU\Software\Microsoft\Windows\CurrentVersion\Start' /v 'AllAppsViewMode' /f *>$null
@@ -62,4 +83,4 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 
       }
-    } } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" -ForegroundColor Red } }
+	} } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" -ForegroundColor Red } }
