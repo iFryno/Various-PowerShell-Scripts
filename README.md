@@ -16,6 +16,8 @@ A collection of useful PowerShell scripts that don't require a dedicated reposit
 
 **Manage Windows Updates:** Pauses updates for 1 year or disables them entirely.
 
+**Open File Security Warning:** Removes the security warning and automatic file blocking for downloaded files.
+
 **Start Menu Version:** Activates the new 25H2 start menu or reverts to the 24H2 start menu on supported Windows 11 26200 builds.
 
 **User Account Control:** Enables or disables UAC.
