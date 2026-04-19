@@ -10,19 +10,6 @@
 	$Host.PrivateData.ProgressForegroundColor = "White"
 	Clear-Host
 
-	# BUILD CHECK
-	$key = [Microsoft.Win32.Registry]::LocalMachine.OpenSubKey('SOFTWARE\Microsoft\Windows NT\CurrentVersion')
-	$OSBuild = [version]"$($key.GetValue('CurrentBuild')).$($key.GetValue('UBR'))"
-	$key.Close()
-	$build = [int]$OSBuild.Major
-	if ($build -lt 26200) {
-	Write-Host "Warning: This script requires Windows 11 25H2 (Build 26200+).`n" -ForegroundColor Red
-	Write-Host "Your current build: $build`n"
-	Write-Host "Press any key to exit..."
-	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-	exit
-	}
-
 	# INPUT UI
 	Write-Host "Start Menu Version`n"
 	Write-Host "1. Start Menu: 25H2"
@@ -36,14 +23,10 @@
 Clear-Host
 
 # 25H2 START MENU
-if ($OSBuild -lt [version]'26200.8037') {
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\3036241548' /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829' /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\762256525'  /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\734731404'  /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
-} else {
-Reg.exe delete 'HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer' /v 'NoStartMenuMorePrograms' /f *>$null
-}
 
 # SET START MENU APPS VIEW TO LIST
 Reg.exe add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Start' /v 'AllAppsViewMode' /t REG_DWORD /d '2' /f *>$null
@@ -62,14 +45,10 @@ exit
 Clear-Host
 
 # 24H2 START MENU
-if ($OSBuild -lt [version]'26200.8037') {
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\3036241548' /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829' /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\762256525'  /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\734731404'  /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
-} else {
-Reg.exe add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer' /v 'NoStartMenuMorePrograms' /t REG_DWORD /d '1' /f *>$null
-}
 
 # RESET START MENU APPS VIEW
 Reg.exe delete 'HKCU\Software\Microsoft\Windows\CurrentVersion\Start' /v 'AllAppsViewMode' /f *>$null
