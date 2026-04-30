@@ -10,7 +10,7 @@ A collection of useful PowerShell scripts that don't require a dedicated reposit
 
 **Digital Markets Act:** Sets the device setup region to Ireland to enable EU DMA compliance, giving you more control over your system by allowing native removal of Microsoft Edge and other enforced apps (your actual region remains unchanged).
 
-**Higher Scaling No Accel:** Disables mouse acceleration when using higher scaling above 100%.
+**Higher Scaling No Accel:** Removes mouse acceleration when using higher scaling above 100%.
 
 **Legacy File Explorer:** Restores the classic file explorer ribbon on Windows 11.
 
