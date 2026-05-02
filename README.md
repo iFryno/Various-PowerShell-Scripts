@@ -5,7 +5,7 @@ A collection of useful PowerShell scripts that don't require a dedicated reposit
 ### Available Scripts
 - **Black Theme** - Applies a true black theme to Windows.
 - **Core Parking** - Adjusts OS-managed CPU core parking.
-- **Digital Markets Act** - Sets the device setup region to Ireland to enable EU DMA compliance, giving you more control over your system by allowing native removal of Microsoft Edge and other enforced apps (your actual region remains unchanged).
+- **Digital Markets Act** - Enables EU DMA compliance, allowing native removal of Microsoft Edge and other enforced apps.
 - **Higher Scaling No Accel** - Removes mouse acceleration on the desktop when using scaling above 100%.
 - **Legacy File Explorer** - Restores the classic file explorer ribbon on Windows 11.
 - **Manage Windows Updates** - Pauses updates for 1 year or disables them entirely.
