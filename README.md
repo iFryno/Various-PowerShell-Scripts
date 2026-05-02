@@ -1,11 +1,8 @@
-Various PowerShell Scripts
-==========================
-
+# Various PowerShell Scripts
 
 A collection of useful PowerShell scripts that don't require a dedicated repository.
 
-Available Scripts
------------------
+## Available Scripts
 
 - **Black Theme** - Applies a true black theme to Windows.
 - **Core Parking** - Adjusts OS-managed CPU core parking.
