@@ -9,7 +9,7 @@ A collection of useful PowerShell scripts that don't require a dedicated reposit
 - **Digital Markets Act** - Enables EU DMA compliance, allowing native removal of Microsoft Edge and other enforced apps.
 - **Higher Scaling No Accel** - Removes mouse acceleration on the desktop when using scaling above 100%.
 - **Legacy File Explorer** - Restores the classic file explorer ribbon on Windows 11.
-- **Legacy Settings** - Adds a Legacy Settings flyout to the desktop context menu with quick access to classic Control Panel options.
+- **Legacy Settings** - Adds a Legacy Settings flyout to the desktop context menu with quick access to classic Control Panel applets.
 - **Manage Windows Updates** - Pauses updates for 1 year or disables them entirely.
 - **Open File Security Warning** - Removes the security warning and automatic file blocking for downloaded files.
 - **Start Menu Version** - Activates the new 25H2 start menu or reverts to the 24H2 style on supported Windows 11 26200 builds.
