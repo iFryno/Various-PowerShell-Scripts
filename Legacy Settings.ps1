@@ -24,7 +24,7 @@ Clear-Host
 
 # ADD LEGACY SETTINGS
 Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization' /v 'Icon' /t REG_SZ /d 'shell32.dll,-137' /f *>$null
-Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization' /v 'MUIVerb' /t REG_SZ /d 'Legacy Settings' /f *>$null
+Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization' /v 'MUIVerb' /t REG_SZ /d 'Legacy settings' /f *>$null
 Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization' /v 'Position' /t REG_SZ /d 'Bottom' /f *>$null
 Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization' /v 'SubCommands' /t REG_SZ /d '""' /f *>$null
 Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization\shell\005flyout' /v 'Icon' /t REG_SZ /d 'SndVol.exe,-101' /f *>$null
