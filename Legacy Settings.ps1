@@ -11,7 +11,7 @@
 	Clear-Host
 
 	# INPUT UI
-    Write-Host "Legacy Settings Desktop Context Menu Option`n"
+    Write-Host "Desktop Right-Click Context Menu`n"
     Write-Host "1. Legacy Settings: Add"
     Write-Host "2. Legacy Settings: Remove`n"
     while ($true) {
