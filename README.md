@@ -23,4 +23,4 @@ A collection of useful PowerShell scripts that don't require a dedicated reposit
 > ```
 
 > [!NOTE]
-> All scripts are reversible; any change can be undone.
+> All scripts include a revert option.
