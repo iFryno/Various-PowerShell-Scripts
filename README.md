@@ -5,7 +5,7 @@ A collection of useful PowerShell scripts that don't require a dedicated reposit
 ## Available Scripts
 
 - **Black Theme** - Applies a true black theme to Windows.
-- **Browser Policies** - Adds policies to handle essential browser settings such as disabling background mode, startup boost, hardware acceleration, and AI features.
+- **Browser Policies** - Adds policies to handle essential browser settings such as disabling background mode, hardware acceleration, and AI features.
 - **Core Parking** - Adjusts OS-managed CPU core parking.
 - **Digital Markets Act** - Enables EU DMA compliance, allowing native removal of Microsoft Edge and other enforced apps.
 - **Higher Scaling No Accel** - Removes mouse acceleration on the desktop when using scaling above 100%.
