@@ -114,7 +114,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers]
 "BackgroundType"=dword:00000000
 
-; Set default wallpaper
+; Set wallpaper to default
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "WallPaper"="C:\\Windows\\web\\wallpaper\\Windows\\img0.jpg"
 
