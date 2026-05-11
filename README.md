@@ -17,7 +17,7 @@ A collection of useful PowerShell scripts that don't require a dedicated reposit
 - **User Account Control** - Enables or disables UAC.
 
 > [!TIP]
-> To be able to run PowerShell scripts, run the following command in an elevated PowerShell window:
+> If the script closes immediately, open PowerShell as Administrator and run:
 > ```powershell
 > Set-ExecutionPolicy Unrestricted -Force
 > ```
