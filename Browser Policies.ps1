@@ -1,16 +1,16 @@
-	# ADMINISTRATOR PRIVILEGES
+	# Check for administrator privileges
 	if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
 	{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
 	Exit}
 
-	# WINDOW SETTINGS
+	# Configure window settings
 	$Host.UI.RawUI.WindowTitle = (Split-Path -Leaf $myInvocation.MyCommand.Definition) + " (Administrator)"
 	$Host.UI.RawUI.BackgroundColor = "Black"
 	$Host.PrivateData.ProgressBackgroundColor = "Black"
 	$Host.PrivateData.ProgressForegroundColor = "White"
 	Clear-Host
 
-	# INPUT UI
+	# Show input UI
 	Write-Host "Manage Browser Policies`n"
 	Write-Host "1. Edge"
 	Write-Host "2. Brave"
@@ -24,7 +24,7 @@
 
 Clear-Host
 
-# ADD EDGE POLICIES
+# Add policies to Edge
 Reg.exe add 'HKLM\SOFTWARE\Policies\Microsoft\Edge' /v 'StartupBoostEnabled' /t REG_DWORD /d '0' /f *>$null
 Reg.exe add 'HKLM\SOFTWARE\Policies\Microsoft\Edge' /v 'BackgroundModeEnabled' /t REG_DWORD /d '0' /f *>$null
 Reg.exe add 'HKLM\SOFTWARE\Policies\Microsoft\Edge' /v 'HardwareAccelerationModeEnabled' /t REG_DWORD /d '0' /f *>$null
@@ -43,7 +43,7 @@ exit
 
 Clear-Host
 
-# ADD BRAVE POLICIES
+# Add policies to Brave
 Reg.exe add 'HKLM\SOFTWARE\Policies\BraveSoftware\Brave' /v 'BackgroundModeEnabled' /t REG_DWORD /d '0' /f *>$null
 Reg.exe add 'HKLM\SOFTWARE\Policies\BraveSoftware\Brave' /v 'HighEfficiencyModeEnabled' /t REG_DWORD /d '1' /f *>$null
 Reg.exe add 'HKLM\SOFTWARE\Policies\BraveSoftware\Brave' /v 'HardwareAccelerationModeEnabled' /t REG_DWORD /d '0' /f *>$null
@@ -61,7 +61,7 @@ exit
 
 Clear-Host
 
-# ADD CHROME POLICIES
+# Add policies to Chrome
 Reg.exe add 'HKLM\SOFTWARE\Policies\Google\Chrome' /v 'BackgroundModeEnabled' /t REG_DWORD /d '0' /f *>$null
 Reg.exe add 'HKLM\SOFTWARE\Policies\Google\Chrome' /v 'HighEfficiencyModeEnabled' /t REG_DWORD /d '1' /f *>$null
 Reg.exe add 'HKLM\SOFTWARE\Policies\Google\Chrome' /v 'HardwareAccelerationModeEnabled' /t REG_DWORD /d '0' /f *>$null
@@ -80,7 +80,7 @@ exit
 
 Clear-Host
 
-# REMOVE BROWSER POLICIES
+# Remove policies from Edge, Brave, and Chrome
 Reg.exe delete 'HKLM\SOFTWARE\Policies\Google\Chrome' /f *>$null
 Reg.exe delete 'HKLM\SOFTWARE\Policies\Microsoft\Edge' /f *>$null
 Reg.exe delete 'HKLM\SOFTWARE\Policies\BraveSoftware\Brave' /f *>$null
