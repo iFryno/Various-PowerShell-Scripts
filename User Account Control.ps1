@@ -1,31 +1,31 @@
-	# ADMINISTRATOR PRIVILEGES
+	# Check for administrator privileges
 	if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
 	{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
 	Exit}
 
-	# WINDOW SETTINGS
+	# Configure window settings
 	$Host.UI.RawUI.WindowTitle = (Split-Path -Leaf $myInvocation.MyCommand.Definition) + " (Administrator)"
 	$Host.UI.RawUI.BackgroundColor = "Black"
 	$Host.PrivateData.ProgressBackgroundColor = "Black"
 	$Host.PrivateData.ProgressForegroundColor = "White"
 	Clear-Host
 
-	# REG PATH
+	# Registry path
 	$regPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"
 
-	# INPUT UI
+	# Show input UI
 	Write-Host "Manage User Account Control`n"
-    Write-Host "1. UAC: Disabled"
-    Write-Host "2. UAC: Default`n"
-    while ($true) {
-    $choice = Read-Host " "
-    if ($choice -match '^[1-2]$') {
-    switch ($choice) {
-    1 {
+	Write-Host "1. Disable"
+	Write-Host "2. Default`n"
+	while ($true) {
+	$choice = Read-Host " "
+	if ($choice -match '^[1-2]$') {
+	switch ($choice) {
+	1 {
 
 Clear-Host
 
-# DISABLE UAC
+# Disable user account control
 Set-ItemProperty -Path $regPath -Name "EnableLUA" -Type DWord -Value 0
 Set-ItemProperty -Path $regPath -Name "PromptOnSecureDesktop" -Type DWord -Value 0
 Set-ItemProperty -Path $regPath -Name "ConsentPromptBehaviorAdmin" -Type DWord -Value 0
@@ -36,12 +36,12 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 exit
 
-      }
-    2 {
+	  }
+	2 {
 
 Clear-Host
 
-# ENABLE UAC
+# Enable user account control
 Set-ItemProperty -Path $regPath -Name "EnableLUA" -Type DWord -Value 1
 Set-ItemProperty -Path $regPath -Name "PromptOnSecureDesktop" -Type DWord -Value 1
 Set-ItemProperty -Path $regPath -Name "ConsentPromptBehaviorAdmin" -Type DWord -Value 5
@@ -52,5 +52,5 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 exit
 
-      }
-    } } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" -ForegroundColor Red } }
+	  }
+	} } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" -ForegroundColor Red } }
