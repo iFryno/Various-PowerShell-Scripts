@@ -1,28 +1,28 @@
-	# ADMINISTRATOR PRIVILEGES
+	# Check for administrator privileges
 	if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
 	{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
 	Exit}
 
-	# WINDOW SETTINGS
+	# Configure window settings
 	$Host.UI.RawUI.WindowTitle = (Split-Path -Leaf $myInvocation.MyCommand.Definition) + " (Administrator)"
 	$Host.UI.RawUI.BackgroundColor = "Black"
 	$Host.PrivateData.ProgressBackgroundColor = "Black"
 	$Host.PrivateData.ProgressForegroundColor = "White"
 	Clear-Host
 
-	# INPUT UI
-    Write-Host "Desktop Right-Click Context Menu`n"
-    Write-Host "1. Legacy Settings: Add"
-    Write-Host "2. Legacy Settings: Remove`n"
-    while ($true) {
-    $choice = Read-Host " "
-    if ($choice -match '^[1-2]$') {
-    switch ($choice) {
-    1 {
+	# Show input UI
+	Write-Host "Legacy Settings in Desktop Context Menu`n"
+	Write-Host "1. Add"
+	Write-Host "2. Remove`n"
+	while ($true) {
+	$choice = Read-Host " "
+	if ($choice -match '^[1-2]$') {
+	switch ($choice) {
+	1 {
 
 Clear-Host
 
-# ADD LEGACY SETTINGS
+# Add legacy settings to desktop context menu
 Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization' /v 'Icon' /t REG_SZ /d 'shell32.dll,-137' /f *>$null
 Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization' /v 'MUIVerb' /t REG_SZ /d 'Legacy settings' /f *>$null
 Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization' /v 'Position' /t REG_SZ /d 'Bottom' /f *>$null
@@ -45,12 +45,12 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 exit
 
-      }
-    2 {
+	  }
+	2 {
 
 Clear-Host
 
-# REMOVE LEGACY SETTINGS
+# Remove legacy settings from desktop context menu
 Reg.exe delete 'HKCR\DesktopBackground\Shell\Personalization' /f *>$null
 
 Clear-Host
@@ -61,5 +61,5 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 exit
 
-      }
-    } } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" -ForegroundColor Red } }
+	  }
+	} } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" -ForegroundColor Red } }
