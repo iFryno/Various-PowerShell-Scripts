@@ -157,7 +157,7 @@ Remove-Item "$env:SystemRoot\Temp\DefaultTheme.reg" -Force
 # Delete black image
 Remove-Item "C:\Windows\Black.png" -Force *>$null
 
-# Set lock screen to default
+# Reset lockscreen to default
 Remove-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Recurse -Force *>$null
 
 Clear-Host
