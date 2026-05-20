@@ -158,8 +158,7 @@ Remove-Item "$env:SystemRoot\Temp\DefaultTheme.reg" -Force
 Remove-Item "C:\Windows\Black.png" -Force *>$null
 
 # Set lock screen to default
-Remove-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Name 'LockScreenImagePath' -Force *>$null
-Remove-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Name 'LockScreenImageStatus' -Force *>$null
+Remove-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Recurse -Force *>$null
 
 Clear-Host
 
