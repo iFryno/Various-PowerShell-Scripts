@@ -89,9 +89,11 @@ $edit.Save($file)
 $edit.Dispose()
 
 # Set lock screen to black
-New-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Force *>$null
-Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Name 'LockScreenImagePath' -Value 'C:\Windows\Black.png' -Force
-Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Name 'LockScreenImageStatus' -Value 1 -Force
+Reg.exe add 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' /v 'LockScreenImagePath' /t REG_SZ /d 'C:\Windows\Black.png' /f *>$null
+Reg.exe add 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' /v 'LockScreenImageStatus' /t REG_DWORD /d '1' /f *>$null
+
+# Disable acrylic background
+Reg.exe add 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\System' /v 'DisableAcrylicBackgroundOnLogon' /t REG_DWORD /d '1' /f *>$null
 
 Clear-Host
 
@@ -157,8 +159,11 @@ Remove-Item "$env:SystemRoot\Temp\DefaultTheme.reg" -Force
 # Delete black image
 Remove-Item "C:\Windows\Black.png" -Force *>$null
 
-# Reset lock screen to default
-Remove-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' -Recurse -Force *>$null
+# Reset lock screen
+Reg.exe delete 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' /f *>$null
+
+# Reset acrylic background
+Reg.exe delete 'HKLM\SOFTWARE\Policies\Microsoft\Windows\System' /v 'DisableAcrylicBackgroundOnLogon' /f *>$null
 
 Clear-Host
 
