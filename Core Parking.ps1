@@ -1,24 +1,24 @@
-	if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
-	{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-	exit}
+		if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
+		{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
+		exit}
 
-	$Host.UI.RawUI.WindowTitle = "Administrator: " + (Split-Path -Leaf $myInvocation.MyCommand.Definition)
-	$Host.UI.RawUI.BackgroundColor = "Black"
-	$Host.PrivateData.ProgressBackgroundColor = "Black"
-	$Host.PrivateData.ProgressForegroundColor = "White"
-	Clear-Host
+		$Host.UI.RawUI.WindowTitle = "Administrator: " + (Split-Path -Leaf $myInvocation.MyCommand.Definition)
+		$Host.UI.RawUI.BackgroundColor = "Black"
+		$Host.PrivateData.ProgressBackgroundColor = "Black"
+		$Host.PrivateData.ProgressForegroundColor = "White"
+		Clear-Host
 
-	Write-Host "Core Parking`n"
-	Write-Host "1. Disable"
-	Write-Host "2. Enable`n"
+		Write-Host "Core Parking`n"
+		Write-Host "1. Disable"
+		Write-Host "2. Enable`n"
 
-	while ($true) {
-	$choice = Read-Host " "
-	if ($choice -match '^[1-2]$') {
-	switch ($choice) {
-	1 {
+		while ($true) {
+		$choice = Read-Host " "
+		if ($choice -match '^[1-2]$') {
+		switch ($choice) {
+		1 {
 
-	Clear-Host
+		Clear-Host
 
 # Unhide processor performance core parking min cores
 powercfg /attributes SUB_PROCESSOR CPMINCORES -ATTRIB_HIDE
@@ -33,12 +33,12 @@ powercfg /setactive SCHEME_CURRENT
 # Open power plan settings
 Start-Process powercfg.cpl
 
-	exit
+		exit
 
-	  }
-	2 {
+		  }
+		2 {
 
-	Clear-Host
+		Clear-Host
 
 # Unhide processor performance core parking min cores
 powercfg /attributes SUB_PROCESSOR CPMINCORES -ATTRIB_HIDE
@@ -53,7 +53,7 @@ powercfg /setactive SCHEME_CURRENT
 # Open power plan settings
 Start-Process powercfg.cpl
 
-	exit
+		exit
 
-	  }
-	} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
+		  }
+		} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
