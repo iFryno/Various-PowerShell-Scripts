@@ -1,16 +1,13 @@
-	# Check for administrator privileges
 	if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
 	{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-	Exit}
+	exit}
 
-	# Configure window settings
-	$Host.UI.RawUI.WindowTitle = (Split-Path -Leaf $myInvocation.MyCommand.Definition) + " (Administrator)"
+	$Host.UI.RawUI.WindowTitle = "Administrator: " + (Split-Path -Leaf $myInvocation.MyCommand.Definition)
 	$Host.UI.RawUI.BackgroundColor = "Black"
 	$Host.PrivateData.ProgressBackgroundColor = "Black"
 	$Host.PrivateData.ProgressForegroundColor = "White"
 	Clear-Host
 
-	# Show input UI
 	Write-Host "Windows Theme`n"
 	Write-Host "1. Black"
 	Write-Host "2. Default`n"
@@ -21,7 +18,7 @@
 	switch ($choice) {
 	1 {
 
-Clear-Host
+	Clear-Host
 
 # Create reg file
 $MultilineComment = @"
@@ -96,18 +93,15 @@ Reg.exe add 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' 
 # Disable acrylic background
 Reg.exe add 'HKLM\SOFTWARE\Policies\Microsoft\Windows\System' /v 'DisableAcrylicBackgroundOnLogon' /t REG_DWORD /d '1' /f *>$null
 
-Clear-Host
-
-Write-Host "Restart to apply..."
-
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
-exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
 	  }
 	2 {
 
-Clear-Host
+	Clear-Host
 
 # Create reg file
 $MultilineComment = @"
@@ -166,13 +160,10 @@ Reg.exe delete 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCS
 # Reset acrylic background
 Reg.exe delete 'HKLM\SOFTWARE\Policies\Microsoft\Windows\System' /v 'DisableAcrylicBackgroundOnLogon' /f *>$null
 
-Clear-Host
-
-Write-Host "Restart to apply..."
-
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
-exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
 	  }
-	} } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" -ForegroundColor Red } }
+	} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
