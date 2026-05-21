@@ -14,6 +14,7 @@
 	Write-Host "Open File Security Warning`n"
 	Write-Host "1. Disable"
 	Write-Host "2. Default`n"
+
 	while ($true) {
 	$choice = Read-Host " "
 	if ($choice -match '^[1-2]$') {
