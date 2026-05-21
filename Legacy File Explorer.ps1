@@ -1,19 +1,16 @@
-	# Check for administrator privileges
 	if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
 	{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-	Exit}
+	exit}
 
-	# Configure window settings
-	$Host.UI.RawUI.WindowTitle = (Split-Path -Leaf $myInvocation.MyCommand.Definition) + " (Administrator)"
+	$Host.UI.RawUI.WindowTitle = "Administrator: " + (Split-Path -Leaf $myInvocation.MyCommand.Definition)
 	$Host.UI.RawUI.BackgroundColor = "Black"
 	$Host.PrivateData.ProgressBackgroundColor = "Black"
 	$Host.PrivateData.ProgressForegroundColor = "White"
 	Clear-Host
 
-	# Show input UI
-	Write-Host "Restore the Legacy File Explorer on Windows 11`n"
-	Write-Host "1. Legacy"
-	Write-Host "2. Default`n"
+	Write-Host "Legacy File Explorer`n"
+	Write-Host "1. Enable"
+	Write-Host "2. Disable`n"
 
 	while ($true) {
 	$choice = Read-Host " "
@@ -21,13 +18,13 @@
 	switch ($choice) {
 	1 {
 
-Clear-Host
+	Clear-Host
 
 # Create reg file
 $MultilineComment = @"
 Windows Registry Editor Version 5.00
 
-; Restore legacy file explorer ribbon
+; Enable legacy file explorer ribbon
 [HKEY_CURRENT_USER\Software\Classes\CLSID\{2aa9162e-c906-4dd9-ad0b-3d24a8eef5a0}]
 @="CLSID_ItemsViewAdapter"
 
@@ -75,18 +72,18 @@ Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
 # Open explorer
 Start-Process explorer.exe
 
-exit
+	exit
 
 	  }
 	2 {
 
-Clear-Host
+	Clear-Host
 
 # Create reg file
 $MultilineComment = @"
 Windows Registry Editor Version 5.00
 
-; Restore default file explorer ribbon
+; Disable legacy file explorer ribbon
 [-HKEY_CURRENT_USER\Software\Classes\CLSID\{2aa9162e-c906-4dd9-ad0b-3d24a8eef5a0}]
 [-HKEY_CURRENT_USER\Software\Classes\CLSID\{6480100b-5a83-4d1e-9f69-8ae5a88e9a33}]
 
@@ -113,7 +110,7 @@ Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
 # Open explorer
 Start-Process explorer.exe
 
-exit
+	exit
 
 	  }
-	} } else { Write-Host "Invalid input. Please select a valid option (1-2).`n" -ForegroundColor Red } }
+	} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
