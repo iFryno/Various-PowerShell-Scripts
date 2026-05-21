@@ -1,20 +1,17 @@
-	# Check for administrator privileges
 	if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
 	{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-	Exit}
+	exit}
 
-	# Configure window settings
-	$Host.UI.RawUI.WindowTitle = (Split-Path -Leaf $myInvocation.MyCommand.Definition) + " (Administrator)"
+	$Host.UI.RawUI.WindowTitle = "Administrator: " + (Split-Path -Leaf $myInvocation.MyCommand.Definition)
 	$Host.UI.RawUI.BackgroundColor = "Black"
 	$Host.PrivateData.ProgressBackgroundColor = "Black"
 	$Host.PrivateData.ProgressForegroundColor = "White"
 	Clear-Host
 
-	# Show input UI
-	Write-Host "Manage Automatic Windows Updates`n"
+	Write-Host "Manage Windows Updates`n"
 	Write-Host "1. Pause"
 	Write-Host "2. Disable"
-	Write-Host "3. Default`n"
+	Write-Host "3. Enable`n"
 
 	while ($true) {
 	$choice = Read-Host " "
@@ -22,7 +19,7 @@
 	switch ($choice) {
 	1 {
 
-Clear-Host
+	Clear-Host
 
 # Pause Windows updates for 1 year
 $pause = (Get-Date).AddDays(365)
@@ -39,14 +36,13 @@ Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings' -Nam
 # Open Windows Update page
 Start-Process ms-settings:windowsupdate
 
-exit
+	exit
 
 	  }
 	2 {
 
-Clear-Host
-
-Write-Host "Disabling Updates. Please wait..."
+	Clear-Host
+	Write-Host "Disabling Updates. Please wait..."
 
 # Disable Windows updates
 Reg.exe add 'HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate' /v 'WUServer' /t REG_SZ /d 'https://blocked.invalid/' /f *>$null
@@ -64,20 +60,16 @@ Reg.exe add 'HKU\S-1-5-20\Software\Microsoft\Windows\CurrentVersion\DeliveryOpti
 # Disable Windows Update scheduled task
 Disable-ScheduledTask -TaskName 'Microsoft\Windows\WindowsUpdate\Scheduled Start' -ErrorAction SilentlyContinue | Out-Null
 
-Clear-Host
-
-Write-Host "Restart to apply..."
-
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
-exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
 	  }
 	3 {
 
-Clear-Host
-
-Write-Host "Enabling Updates. Please wait..."
+	Clear-Host
+	Write-Host "Enabling Updates. Please wait..."
 
 # Enable Windows updates
 Reg.exe delete 'HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate' /v 'WUServer' /f *>$null
@@ -95,13 +87,10 @@ Reg.exe delete 'HKU\S-1-5-20\Software\Microsoft\Windows\CurrentVersion\DeliveryO
 # Enable Windows Update scheduled task
 Enable-ScheduledTask -TaskName 'Microsoft\Windows\WindowsUpdate\Scheduled Start' -ErrorAction SilentlyContinue | Out-Null
 
-Clear-Host
-
-Write-Host "Restart to apply..."
-
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
-exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
 	  }
-	} } else { Write-Host "Invalid input. Please select a valid option (1-3).`n" -ForegroundColor Red } }
+	} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
