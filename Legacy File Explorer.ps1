@@ -1,24 +1,24 @@
-	if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
-	{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-	exit}
+		if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
+		{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
+		exit}
 
-	$Host.UI.RawUI.WindowTitle = "Administrator: " + (Split-Path -Leaf $myInvocation.MyCommand.Definition)
-	$Host.UI.RawUI.BackgroundColor = "Black"
-	$Host.PrivateData.ProgressBackgroundColor = "Black"
-	$Host.PrivateData.ProgressForegroundColor = "White"
-	Clear-Host
+		$Host.UI.RawUI.WindowTitle = "Administrator: " + (Split-Path -Leaf $myInvocation.MyCommand.Definition)
+		$Host.UI.RawUI.BackgroundColor = "Black"
+		$Host.PrivateData.ProgressBackgroundColor = "Black"
+		$Host.PrivateData.ProgressForegroundColor = "White"
+		Clear-Host
 
-	Write-Host "Legacy File Explorer`n"
-	Write-Host "1. Enable"
-	Write-Host "2. Disable`n"
+		Write-Host "Legacy File Explorer`n"
+		Write-Host "1. Enable"
+		Write-Host "2. Disable`n"
 
-	while ($true) {
-	$choice = Read-Host " "
-	if ($choice -match '^[1-2]$') {
-	switch ($choice) {
-	1 {
+		while ($true) {
+		$choice = Read-Host " "
+		if ($choice -match '^[1-2]$') {
+		switch ($choice) {
+		1 {
 
-	Clear-Host
+		Clear-Host
 
 # Create reg file
 $MultilineComment = @"
@@ -72,12 +72,12 @@ Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
 # Open explorer
 Start-Process explorer.exe
 
-	exit
+		exit
 
-	  }
-	2 {
+		  }
+		2 {
 
-	Clear-Host
+		Clear-Host
 
 # Create reg file
 $MultilineComment = @"
@@ -110,7 +110,7 @@ Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
 # Open explorer
 Start-Process explorer.exe
 
-	exit
+		exit
 
-	  }
-	} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
+		  }
+		} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
