@@ -15,6 +15,7 @@
 	Write-Host "1. Pause"
 	Write-Host "2. Disable"
 	Write-Host "3. Default`n"
+
 	while ($true) {
 	$choice = Read-Host " "
 	if ($choice -match '^[1-3]$') {
