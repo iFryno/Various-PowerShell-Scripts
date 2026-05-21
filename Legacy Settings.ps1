@@ -14,6 +14,7 @@
 	Write-Host "Legacy Settings in Desktop Context Menu`n"
 	Write-Host "1. Add"
 	Write-Host "2. Remove`n"
+
 	while ($true) {
 	$choice = Read-Host " "
 	if ($choice -match '^[1-2]$') {
