@@ -14,6 +14,7 @@
 	Write-Host "Start Menu Version`n"
 	Write-Host "1. 25H2"
 	Write-Host "2. 24H2`n"
+
 	while ($true) {
 	$choice = Read-Host " "
 	if ($choice -match '^[1-2]$') {
