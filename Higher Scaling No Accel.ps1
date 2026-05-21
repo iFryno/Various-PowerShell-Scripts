@@ -1,17 +1,14 @@
-	# Check for administrator privileges
 	if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
 	{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-	Exit}
+	exit}
 
-	# Configure window settings
-	$Host.UI.RawUI.WindowTitle = (Split-Path -Leaf $myInvocation.MyCommand.Definition) + " (Administrator)"
+	$Host.UI.RawUI.WindowTitle = "Administrator: " + (Split-Path -Leaf $myInvocation.MyCommand.Definition)
 	$Host.UI.RawUI.BackgroundColor = "Black"
 	$Host.PrivateData.ProgressBackgroundColor = "Black"
 	$Host.PrivateData.ProgressForegroundColor = "White"
 	Clear-Host
 
-	# Show input UI
-	Write-Host "No Desktop Mouse Acceleration with Higher Scaling`n"
+	Write-Host "Higher Scaling No Accel`n"
 	Write-Host "1. 100%"
 	Write-Host "2. 125%"
 	Write-Host "3. 150%"
@@ -26,9 +23,8 @@
 	switch ($choice) {
 	1 {
 
-Clear-Host
-
-Write-Host "100%..."
+	Clear-Host
+	Write-Host "100%..."
 
 # Create reg file
 $MultilineComment = @"
@@ -78,20 +74,16 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\100%.
 # Delete reg file
 Remove-Item "$env:SystemRoot\Temp\100%.reg" -Force
 
-Clear-Host
-
-Write-Host "Restart to apply..."
-
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
-exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
 	  }
 	2 {
 
-Clear-Host
-
-Write-Host "125%..."
+	Clear-Host
+	Write-Host "125%..."
 
 # Create reg file
 $MultilineComment = @"
@@ -141,20 +133,16 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\125%.
 # Delete reg file
 Remove-Item "$env:SystemRoot\Temp\125%.reg" -Force
 
-Clear-Host
-
-Write-Host "Restart to apply..."
-
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
-exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
 	  }
 	3 {
 
-Clear-Host
-
-Write-Host "150%..."
+	Clear-Host
+	Write-Host "150%..."
 
 # Create reg file
 $MultilineComment = @"
@@ -204,20 +192,16 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\150%.
 # Delete reg file
 Remove-Item "$env:SystemRoot\Temp\150%.reg" -Force
 
-Clear-Host
-
-Write-Host "Restart to apply..."
-
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
-exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
 	  }
 	4 {
 
-Clear-Host
-
-Write-Host "175%..."
+	Clear-Host
+	Write-Host "175%..."
 
 # Create reg file
 $MultilineComment = @"
@@ -267,20 +251,16 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\175%.
 # Delete reg file
 Remove-Item "$env:SystemRoot\Temp\175%.reg" -Force
 
-Clear-Host
-
-Write-Host "Restart to apply..."
-
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
-exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
 	  }
 	5 {
 
-Clear-Host
-
-Write-Host "200%..."
+	Clear-Host
+	Write-Host "200%..."
 
 # Create reg file
 $MultilineComment = @"
@@ -330,20 +310,16 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\200%.
 # Delete reg file
 Remove-Item "$env:SystemRoot\Temp\200%.reg" -Force
 
-Clear-Host
-
-Write-Host "Restart to apply..."
-
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
-exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
 	  }
 	6 {
 
-Clear-Host
-
-Write-Host "225%..."
+	Clear-Host
+	Write-Host "225%..."
 
 # Create reg file
 $MultilineComment = @"
@@ -393,20 +369,16 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\225%.
 # Delete reg file
 Remove-Item "$env:SystemRoot\Temp\225%.reg" -Force
 
-Clear-Host
-
-Write-Host "Restart to apply..."
-
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
-exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
 	  }
 	7 {
 
-Clear-Host
-
-Write-Host "Default..."
+	Clear-Host
+	Write-Host "Default..."
 
 # Create reg file
 $MultilineComment = @"
@@ -456,13 +428,10 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Defau
 # Delete reg file
 Remove-Item "$env:SystemRoot\Temp\Default.reg" -Force
 
-Clear-Host
-
-Write-Host "Restart to apply..."
-
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
-exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
 	  }
-	} } else { Write-Host "Invalid input. Please select a valid option (1-7).`n" -ForegroundColor Red } }
+	} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
