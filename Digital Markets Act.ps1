@@ -14,6 +14,7 @@
 	Write-Host "EU Digital Markets Act`n"
 	Write-Host "1. Enable"
 	Write-Host "2. Default`n"
+
 	while ($true) {
 	$choice = Read-Host " "
 	if ($choice -match '^[1-2]$') {
