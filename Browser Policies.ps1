@@ -16,6 +16,7 @@
 	Write-Host "2. Brave"
 	Write-Host "3. Chrome"
 	Write-Host "4. Remove`n"
+
 	while ($true) {
 	$choice = Read-Host " "
 	if ($choice -match '^[1-4]$') {
