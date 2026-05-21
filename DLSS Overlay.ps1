@@ -14,6 +14,7 @@
 	Write-Host "DLSS Version Overlay`n"
 	Write-Host "1. Enable"
 	Write-Host "2. Disable`n"
+
 	while ($true) {
 	$choice = Read-Host " "
 	if ($choice -match '^[1-2]$') {
