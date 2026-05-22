@@ -1,33 +1,32 @@
-		if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
-		{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-		exit}
+	if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
+	{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
+	exit}
 
-		$Host.UI.RawUI.WindowTitle = "Administrator: " + (Split-Path -Leaf $myInvocation.MyCommand.Definition)
-		$Host.UI.RawUI.BackgroundColor = "Black"
-		$Host.PrivateData.ProgressBackgroundColor = "Black"
-		$Host.PrivateData.ProgressForegroundColor = "White"
-		Clear-Host
+	$Host.UI.RawUI.WindowTitle = "Administrator: " + (Split-Path -Leaf $myInvocation.MyCommand.Definition)
+	$Host.UI.RawUI.BackgroundColor = "Black"
+	$Host.PrivateData.ProgressBackgroundColor = "Black"
+	$Host.PrivateData.ProgressForegroundColor = "White"
 
-		Write-Host "Higher Scaling No Accel`n"
-		Write-Host "1. 100%"
-		Write-Host "2. 125%"
-		Write-Host "3. 150%"
-		Write-Host "4. 175%"
-		Write-Host "5. 200%"
-		Write-Host "6. 225%"
-		Write-Host "7. Default`n"
+	Write-Host "Higher Scaling No Accel`n"
+	Write-Host "1. 100%"
+	Write-Host "2. 125%"
+	Write-Host "3. 150%"
+	Write-Host "4. 175%"
+	Write-Host "5. 200%"
+	Write-Host "6. 225%"
+	Write-Host "7. Default`n"
 
-		while ($true) {
-		$choice = Read-Host " "
-		if ($choice -match '^[1-7]$') {
-		switch ($choice) {
-		1 {
+	while ($true) {
+	$choice = Read-Host " "
+	if ($choice -match '^[1-7]$') {
+	switch ($choice) {
+	1 {
 
-		Clear-Host
-		Write-Host "100%..."
+	Clear-Host
+	Write-Host "100%..."
 
-# Create reg file
-$MultilineComment = @"
+	# Create reg file
+	$regContent = @"
 Windows Registry Editor Version 5.00
 
 ; Set pointer speed to default
@@ -65,28 +64,28 @@ c0,cc,0c,00,00,00,00,00,\
 "EnablePerProcessSystemDPI"=dword:00000000
 "@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\100%.reg" -Value $MultilineComment -Force
+	# Save reg file
+	Set-Content -Path "$env:SystemRoot\Temp\100%.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\100%.reg`"" -WindowStyle Hidden
+	# Import reg file
+	Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\100%.reg`"" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\100%.reg" -Force
+	# Delete reg file
+	Remove-Item "$env:SystemRoot\Temp\100%.reg" -Force
 
-		Clear-Host
-		Write-Host "Restart to apply..."
-		$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-		exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
-		  }
-		2 {
+	  }
+	2 {
 
-		Clear-Host
-		Write-Host "125%..."
+	Clear-Host
+	Write-Host "125%..."
 
-# Create reg file
-$MultilineComment = @"
+	# Create reg file
+	$regContent = @"
 Windows Registry Editor Version 5.00
 
 ; Set pointer speed to default
@@ -124,28 +123,28 @@ Windows Registry Editor Version 5.00
 "EnablePerProcessSystemDPI"=dword:00000001
 "@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\125%.reg" -Value $MultilineComment -Force
+	# Save reg file
+	Set-Content -Path "$env:SystemRoot\Temp\125%.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\125%.reg`"" -WindowStyle Hidden
+	# Import reg file
+	Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\125%.reg`"" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\125%.reg" -Force
+	# Delete reg file
+	Remove-Item "$env:SystemRoot\Temp\125%.reg" -Force
 
-		Clear-Host
-		Write-Host "Restart to apply..."
-		$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-		exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
-		  }
-		3 {
+	  }
+	3 {
 
-		Clear-Host
-		Write-Host "150%..."
+	Clear-Host
+	Write-Host "150%..."
 
-# Create reg file
-$MultilineComment = @"
+	# Create reg file
+	$regContent = @"
 Windows Registry Editor Version 5.00
 
 ; Set pointer speed to default
@@ -183,28 +182,28 @@ C0,CC,4C,00,00,00,00,00
 "EnablePerProcessSystemDPI"=dword:00000001
 "@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\150%.reg" -Value $MultilineComment -Force
+	# Save reg file
+	Set-Content -Path "$env:SystemRoot\Temp\150%.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\150%.reg`"" -WindowStyle Hidden
+	# Import reg file
+	Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\150%.reg`"" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\150%.reg" -Force
+	# Delete reg file
+	Remove-Item "$env:SystemRoot\Temp\150%.reg" -Force
 
-		Clear-Host
-		Write-Host "Restart to apply..."
-		$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-		exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
-		  }
-		4 {
+	  }
+	4 {
 
-		Clear-Host
-		Write-Host "175%..."
+	Clear-Host
+	Write-Host "175%..."
 
-# Create reg file
-$MultilineComment = @"
+	# Create reg file
+	$regContent = @"
 Windows Registry Editor Version 5.00
 
 ; Set pointer speed to default
@@ -242,28 +241,28 @@ C0,CC,2C,00,00,00,00,00,\
 "EnablePerProcessSystemDPI"=dword:00000001
 "@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\175%.reg" -Value $MultilineComment -Force
+	# Save reg file
+	Set-Content -Path "$env:SystemRoot\Temp\175%.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\175%.reg`"" -WindowStyle Hidden
+	# Import reg file
+	Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\175%.reg`"" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\175%.reg" -Force
+	# Delete reg file
+	Remove-Item "$env:SystemRoot\Temp\175%.reg" -Force
 
-		Clear-Host
-		Write-Host "Restart to apply..."
-		$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-		exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
-		  }
-		5 {
+	  }
+	5 {
 
-		Clear-Host
-		Write-Host "200%..."
+	Clear-Host
+	Write-Host "200%..."
 
-# Create reg file
-$MultilineComment = @"
+	# Create reg file
+	$regContent = @"
 Windows Registry Editor Version 5.00
 
 ; Set pointer speed to default
@@ -301,28 +300,28 @@ B0,CC,4C,00,00,00,00,00,\
 "EnablePerProcessSystemDPI"=dword:00000001
 "@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\200%.reg" -Value $MultilineComment -Force
+	# Save reg file
+	Set-Content -Path "$env:SystemRoot\Temp\200%.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\200%.reg`"" -WindowStyle Hidden
+	# Import reg file
+	Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\200%.reg`"" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\200%.reg" -Force
+	# Delete reg file
+	Remove-Item "$env:SystemRoot\Temp\200%.reg" -Force
 
-		Clear-Host
-		Write-Host "Restart to apply..."
-		$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-		exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
-		  }
-		6 {
+	  }
+	6 {
 
-		Clear-Host
-		Write-Host "225%..."
+	Clear-Host
+	Write-Host "225%..."
 
-# Create reg file
-$MultilineComment = @"
+	# Create reg file
+	$regContent = @"
 Windows Registry Editor Version 5.00
 
 ; Set pointer speed to default
@@ -360,28 +359,28 @@ C0,CC,1C,00,00,00,00,00,\
 "EnablePerProcessSystemDPI"=dword:00000001
 "@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\225%.reg" -Value $MultilineComment -Force
+	# Save reg file
+	Set-Content -Path "$env:SystemRoot\Temp\225%.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\225%.reg`"" -WindowStyle Hidden
+	# Import reg file
+	Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\225%.reg`"" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\225%.reg" -Force
+	# Delete reg file
+	Remove-Item "$env:SystemRoot\Temp\225%.reg" -Force
 
-		Clear-Host
-		Write-Host "Restart to apply..."
-		$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-		exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
-		  }
-		7 {
+	  }
+	7 {
 
-		Clear-Host
-		Write-Host "Default..."
+	Clear-Host
+	Write-Host "Default..."
 
-# Create reg file
-$MultilineComment = @"
+	# Create reg file
+	$regContent = @"
 Windows Registry Editor Version 5.00
 
 ; Set pointer speed to default
@@ -419,19 +418,19 @@ fd,11,01,00,00,00,00,00,\
 "EnablePerProcessSystemDPI"=-
 "@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\Default.reg" -Value $MultilineComment -Force
+	# Save reg file
+	Set-Content -Path "$env:SystemRoot\Temp\Default.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Default.reg`"" -WindowStyle Hidden
+	# Import reg file
+	Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Default.reg`"" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\Default.reg" -Force
+	# Delete reg file
+	Remove-Item "$env:SystemRoot\Temp\Default.reg" -Force
 
-		Clear-Host
-		Write-Host "Restart to apply..."
-		$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-		exit
+	Clear-Host
+	Write-Host "Restart to apply..."
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	exit
 
-		  }
-		} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
+	  }
+	} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
