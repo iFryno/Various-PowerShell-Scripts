@@ -1,27 +1,26 @@
-		if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
-		{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-		exit}
+	if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
+	{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
+	exit}
 
-		$Host.UI.RawUI.WindowTitle = "Administrator: " + (Split-Path -Leaf $myInvocation.MyCommand.Definition)
-		$Host.UI.RawUI.BackgroundColor = "Black"
-		$Host.PrivateData.ProgressBackgroundColor = "Black"
-		$Host.PrivateData.ProgressForegroundColor = "White"
-		Clear-Host
+	$Host.UI.RawUI.WindowTitle = "Administrator: " + (Split-Path -Leaf $myInvocation.MyCommand.Definition)
+	$Host.UI.RawUI.BackgroundColor = "Black"
+	$Host.PrivateData.ProgressBackgroundColor = "Black"
+	$Host.PrivateData.ProgressForegroundColor = "White"
 
-		Write-Host "Legacy File Explorer`n"
-		Write-Host "1. Enable"
-		Write-Host "2. Disable`n"
+	Write-Host "Legacy File Explorer`n"
+	Write-Host "1. Enable"
+	Write-Host "2. Disable`n"
 
-		while ($true) {
-		$choice = Read-Host " "
-		if ($choice -match '^[1-2]$') {
-		switch ($choice) {
-		1 {
+	while ($true) {
+	$choice = Read-Host " "
+	if ($choice -match '^[1-2]$') {
+	switch ($choice) {
+	1 {
 
-		Clear-Host
+	Clear-Host
 
-# Create reg file
-$MultilineComment = @"
+	# Create reg file
+	$regContent = @"
 Windows Registry Editor Version 5.00
 
 ; Enable legacy file explorer ribbon
@@ -57,30 +56,30 @@ Windows Registry Editor Version 5.00
 "MinimizedStateTabletModeOn"=dword:00000001
 "@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\LegacyExplorer.reg" -Value $MultilineComment -Force
+	# Save reg file
+	Set-Content -Path "$env:SystemRoot\Temp\LegacyExplorer.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\LegacyExplorer.reg`"" -WindowStyle Hidden
+	# Import reg file
+	Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\LegacyExplorer.reg`"" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\LegacyExplorer.reg" -Force
+	# Delete reg file
+	Remove-Item "$env:SystemRoot\Temp\LegacyExplorer.reg" -Force
 
-# Restart explorer
-Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
+	# Restart explorer
+	Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
 
-# Open explorer
-Start-Process explorer.exe
+	# Open explorer
+	Start-Process explorer.exe
 
-		exit
+	exit
 
-		  }
-		2 {
+	  }
+	2 {
 
-		Clear-Host
+	Clear-Host
 
-# Create reg file
-$MultilineComment = @"
+	# Create reg file
+	$regContent = @"
 Windows Registry Editor Version 5.00
 
 ; Disable legacy file explorer ribbon
@@ -95,22 +94,22 @@ Windows Registry Editor Version 5.00
 "MinimizedStateTabletModeOn"=-
 "@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\DefaultExplorer.reg" -Value $MultilineComment -Force
+	# Save reg file
+	Set-Content -Path "$env:SystemRoot\Temp\DefaultExplorer.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\DefaultExplorer.reg`"" -WindowStyle Hidden
+	# Import reg file
+	Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\DefaultExplorer.reg`"" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\DefaultExplorer.reg" -Force
+	# Delete reg file
+	Remove-Item "$env:SystemRoot\Temp\DefaultExplorer.reg" -Force
 
-# Restart explorer
-Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
+	# Restart explorer
+	Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
 
-# Open explorer
-Start-Process explorer.exe
+	# Open explorer
+	Start-Process explorer.exe
 
-		exit
+	exit
 
-		  }
-		} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
+	  }
+	} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
