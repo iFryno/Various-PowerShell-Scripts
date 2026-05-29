@@ -13,6 +13,7 @@ A collection of useful PowerShell scripts that don't require a dedicated reposit
 - **Legacy File Explorer** - Restores the classic file explorer ribbon on Windows 11.
 - **Legacy Settings** - Adds a Legacy Settings flyout to the desktop context menu with quick access to classic Control Panel applets.
 - **Manage Windows Updates** - Pauses updates for 1 year or disables them entirely.
+- **NetFx3** - Installs .NET Framework 3.5 instantly using local installation media instead of Windows Update servers, avoiding slow download times.
 - **Open File Security Warning** - Removes the security warning and automatic file blocking for downloaded files.
 - **Start Menu Version** - Activates the new 25H2 start menu or reverts to the 24H2 version on supported Windows 11 26200 builds.
 - **User Account Control** - Disables the UAC elevation prompt for administrative tasks.
