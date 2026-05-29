@@ -6,6 +6,7 @@
 	$Host.UI.RawUI.BackgroundColor = "Black"
 	$Host.PrivateData.ProgressBackgroundColor = "Black"
 	$Host.PrivateData.ProgressForegroundColor = "White"
+	Clear-Host
 
 	Write-Host "Legacy Settings`n"
 	Write-Host "1. Add"
