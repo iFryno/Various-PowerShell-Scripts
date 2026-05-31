@@ -28,6 +28,9 @@
 	Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization\shell\005flyout' /v 'Icon' /t REG_SZ /d 'SndVol.exe,-101' /f *>$null
 	Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization\shell\005flyout' /v 'MUIVerb' /t REG_SZ /d 'Sound' /f *>$null
 	Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization\shell\005flyout\command' /ve /t REG_SZ /d 'rundll32.exe shell32.dll,Control_RunDLL mmsys.cpl,,0' /f *>$null
+	Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization\shell\006flyout' /v 'Icon' /t REG_SZ /d 'powercpl.dll,0' /f *>$null
+	Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization\shell\006flyout' /v 'MUIVerb' /t REG_SZ /d 'Power Options' /f *>$null
+	Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization\shell\006flyout\command' /ve /t REG_SZ /d 'rundll32.exe shell32.dll,Control_RunDLL powercfg.cpl' /f *>$null
 	Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization\shell\008flyout' /v 'Icon' /t REG_SZ /d 'main.cpl' /f *>$null
 	Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization\shell\008flyout' /v 'MUIVerb' /t REG_SZ /d 'Mouse Properties' /f *>$null
 	Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization\shell\008flyout\command' /ve /t REG_SZ /d 'rundll32.exe shell32.dll,Control_RunDLL main.cpl,,0' /f *>$null
