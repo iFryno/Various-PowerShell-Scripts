@@ -5,7 +5,7 @@ A collection of useful PowerShell scripts that don't require a dedicated reposit
 ## Available Scripts
 
 - **Black Theme** - Applies a true black theme to Windows.
-- **Browser Policies** - Adds policies to handle essential browser settings for Edge, Brave, and Chrome.
+- **Browser Policies** - Adds policies to configure essential browser settings in Edge, Brave, and Chrome.
 - **Core Parking** - Adjusts OS-managed CPU core parking.
 - **DLSS Overlay** - Shows the DLSS version overlay in-game.
 - **Digital Markets Act** - Enables EU DMA compliance, allowing native removal of enforced apps like Edge and Store, reducing the amount of diagnostic data sent, and unlocking additional system settings. Learn more [here](https://youtu.be/MfBNxGw_5J8?is=VMEVvqxa6HWFmF2N).
