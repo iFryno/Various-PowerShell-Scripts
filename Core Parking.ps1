@@ -1,59 +1,76 @@
-	if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
-	{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-	exit}
+if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]'Administrator')) {
+Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
+exit
+}
 
-	$Host.UI.RawUI.WindowTitle = "Administrator: " + (Split-Path -Leaf $myInvocation.MyCommand.Definition)
-	$Host.UI.RawUI.BackgroundColor = "Black"
-	$Host.PrivateData.ProgressBackgroundColor = "Black"
-	$Host.PrivateData.ProgressForegroundColor = "White"
-	Clear-Host
+function Get-State($v) {
+if ($v -eq 100) { return "unparked" }
+else { return "parked" }
+}
 
-	Write-Host "Core Parking`n"
-	Write-Host "1. Disable"
-	Write-Host "2. Enable`n"
+function Show-Status {
+$raw = powercfg /query SCHEME_CURRENT SUB_PROCESSOR CPMINCORES
 
-	while ($true) {
-	$choice = Read-Host " "
-	if ($choice -match '^[1-2]$') {
-	switch ($choice) {
-	1 {
+$acHex = ($raw | Select-String "AC Power Setting Index").ToString().Split(':')[1].Trim()
+$dcHex = ($raw | Select-String "DC Power Setting Index").ToString().Split(':')[1].Trim()
 
-	Clear-Host
+$ac = [int]$acHex
+$dc = [int]$dcHex
 
-	# Unhide processor performance core parking min cores
-	powercfg /attributes SUB_PROCESSOR CPMINCORES -ATTRIB_HIDE
+Write-Host "Core Parking Status`n"
+Write-Host "AC (plugged in): $ac% - $(Get-State $ac)"
+Write-Host "DC (battery)   : $dc% - $(Get-State $dc)"
+}
 
-	# Unpark CPU cores
-	powercfg /setacvalueindex SCHEME_CURRENT SUB_PROCESSOR CPMINCORES 100
-	powercfg /setdcvalueindex SCHEME_CURRENT SUB_PROCESSOR CPMINCORES 100
+Write-Host "Core Parking`n"
+Write-Host "1. Disable"
+Write-Host "2. Enable`n"
 
-	# Apply changes
-	powercfg /setactive SCHEME_CURRENT
+while ($true) {
+$choice = Read-Host " "
+if ($choice -match '^[1-2]$') {
+switch ($choice) {
 
-	# Open power plan settings
-	Start-Process powercfg.cpl
+1 {
 
-	exit
+Clear-Host
 
-	  }
-	2 {
+# Unhide processor performance core parking min cores
+powercfg /attributes SUB_PROCESSOR CPMINCORES -ATTRIB_HIDE
 
-	Clear-Host
+# Unpark CPU cores
+powercfg /setacvalueindex SCHEME_CURRENT SUB_PROCESSOR CPMINCORES 100
+powercfg /setdcvalueindex SCHEME_CURRENT SUB_PROCESSOR CPMINCORES 100
 
-	# Unhide processor performance core parking min cores
-	powercfg /attributes SUB_PROCESSOR CPMINCORES -ATTRIB_HIDE
+# Apply changes
+powercfg /setactive SCHEME_CURRENT
 
-	# Park CPU cores
-	powercfg /setacvalueindex SCHEME_CURRENT SUB_PROCESSOR CPMINCORES 10
-	powercfg /setdcvalueindex SCHEME_CURRENT SUB_PROCESSOR CPMINCORES 10
+Show-Status
 
-	# Apply changes
-	powercfg /setactive SCHEME_CURRENT
+Write-Host "`nPress any key to exit..."
+$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+exit
+}
 
-	# Open power plan settings
-	Start-Process powercfg.cpl
+2 {
 
-	exit
+Clear-Host
 
-	  }
-	} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
+# Unhide processor performance core parking min cores
+powercfg /attributes SUB_PROCESSOR CPMINCORES -ATTRIB_HIDE
+
+# Park CPU cores
+powercfg /setacvalueindex SCHEME_CURRENT SUB_PROCESSOR CPMINCORES 10
+powercfg /setdcvalueindex SCHEME_CURRENT SUB_PROCESSOR CPMINCORES 10
+
+# Apply changes
+powercfg /setactive SCHEME_CURRENT
+
+Show-Status
+
+Write-Host "`nPress any key to exit..."
+$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+exit
+}
+
+} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
