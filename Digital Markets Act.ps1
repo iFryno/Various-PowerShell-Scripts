@@ -1,55 +1,51 @@
-	if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator"))
-	{Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-	exit}
+if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]'Administrator')) {
+Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
+exit
+}
 
-	$Host.UI.RawUI.WindowTitle = "Administrator: " + (Split-Path -Leaf $myInvocation.MyCommand.Definition)
-	$Host.UI.RawUI.BackgroundColor = "Black"
-	$Host.PrivateData.ProgressBackgroundColor = "Black"
-	$Host.PrivateData.ProgressForegroundColor = "White"
-	Clear-Host
+Write-Host "Digital Markets Act`n"
+Write-Host "1. Enable"
+Write-Host "2. Disable`n"
 
-	Write-Host "Digital Markets Act`n"
-	Write-Host "1. Enable"
-	Write-Host "2. Disable`n"
+while ($true) {
+$choice = Read-Host " "
+if ($choice -match '^[1-2]$') {
+switch ($choice) {
 
-	while ($true) {
-	$choice = Read-Host " "
-	if ($choice -match '^[1-2]$') {
-	switch ($choice) {
-	1 {
+1 {
 
-	Clear-Host
+# Create reg1.exe to bypass UCPD (credit: zoicware)
+Copy-Item (Get-Command reg.exe).Source .\reg1.exe -Force -EA 0
 
-	# Create reg1.exe to bypass UCPD (credit: zoicware)
-	Copy-Item (Get-Command reg.exe).Source .\reg1.exe -Force -EA 0
+# Set device setup region to Ireland
+& .\reg1.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion" /v DeviceRegion /t REG_DWORD /d 68 /f *>$null
 
-	# Set device setup region to Ireland
-	& .\reg1.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion" /v DeviceRegion /t REG_DWORD /d 68 /f *>$null
+# Remove reg1.exe
+Remove-Item .\reg1.exe -Force -EA 0
 
-	# Remove reg1.exe
-	Remove-Item .\reg1.exe -Force -EA 0
+Clear-Host
+Write-Host "Restart to apply."
+Write-Host "Press any key to exit..."
+$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+exit
+}
 
-	Write-Host "Restart to apply..."
-	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-	exit
+2 {
 
-	  }
-	2 {
+# Create reg1.exe to bypass UCPD
+Copy-Item (Get-Command reg.exe).Source .\reg1.exe -Force -EA 0
 
-	Clear-Host
+# Set device setup region to United States
+& .\reg1.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion" /v DeviceRegion /t REG_DWORD /d 244 /f *>$null
 
-	# Create reg1.exe to bypass UCPD
-	Copy-Item (Get-Command reg.exe).Source .\reg1.exe -Force -EA 0
+# Remove reg1.exe
+Remove-Item .\reg1.exe -Force -EA 0
 
-	# Set device setup region to United States
-	& .\reg1.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion" /v DeviceRegion /t REG_DWORD /d 244 /f *>$null
+Clear-Host
+Write-Host "Restart to apply."
+Write-Host "Press any key to exit..."
+$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+exit
+}
 
-	# Remove reg1.exe
-	Remove-Item .\reg1.exe -Force -EA 0
-
-	Write-Host "Restart to apply..."
-	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-	exit
-
-	  }
-	} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
+} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
