@@ -15,7 +15,7 @@ switch ($choice) {
 1 {
 
 Clear-Host
-Write-Host "Black..."
+Write-Host "Black..." -NoNewline
 
 # Create reg file
 $regContent = @"
@@ -91,8 +91,8 @@ Reg.exe add 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' 
 Reg.exe add 'HKLM\SOFTWARE\Policies\Microsoft\Windows\System' /v 'DisableAcrylicBackgroundOnLogon' /t REG_DWORD /d '1' /f *>$null
 
 Clear-Host
-Write-Host "Restart to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
@@ -100,7 +100,7 @@ exit
 2 {
 
 Clear-Host
-Write-Host "Default..."
+Write-Host "Default..." -NoNewline
 
 # Create reg file
 $regContent = @"
@@ -160,8 +160,8 @@ Reg.exe delete 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCS
 Reg.exe delete 'HKLM\SOFTWARE\Policies\Microsoft\Windows\System' /v 'DisableAcrylicBackgroundOnLogon' /f *>$null
 
 Clear-Host
-Write-Host "Restart to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
