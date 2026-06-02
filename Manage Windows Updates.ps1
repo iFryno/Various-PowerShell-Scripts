@@ -35,7 +35,7 @@ exit
 2 {
 
 Clear-Host
-Write-Host "Disabling..."
+Write-Host "Disabling..." -NoNewline
 
 # Disable Windows updates
 Reg.exe add 'HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate' /v 'WUServer' /t REG_SZ /d 'https://blocked.invalid/' /f *>$null
@@ -54,8 +54,8 @@ Reg.exe add 'HKU\S-1-5-20\Software\Microsoft\Windows\CurrentVersion\DeliveryOpti
 Disable-ScheduledTask -TaskName 'Microsoft\Windows\WindowsUpdate\Scheduled Start' -ErrorAction SilentlyContinue | Out-Null
 
 Clear-Host
-Write-Host "Restart to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
@@ -63,7 +63,7 @@ exit
 3 {
 
 Clear-Host
-Write-Host "Enabling..."
+Write-Host "Enabling..." -NoNewline
 
 # Enable Windows updates
 Reg.exe delete 'HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate' /v 'WUServer' /f *>$null
@@ -82,8 +82,8 @@ Reg.exe delete 'HKU\S-1-5-20\Software\Microsoft\Windows\CurrentVersion\DeliveryO
 Enable-ScheduledTask -TaskName 'Microsoft\Windows\WindowsUpdate\Scheduled Start' -ErrorAction SilentlyContinue | Out-Null
 
 Clear-Host
-Write-Host "Restart to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
