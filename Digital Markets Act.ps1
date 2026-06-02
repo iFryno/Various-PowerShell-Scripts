@@ -24,8 +24,8 @@ Copy-Item (Get-Command reg.exe).Source .\reg1.exe -Force -EA 0
 Remove-Item .\reg1.exe -Force -EA 0
 
 Clear-Host
-Write-Host "Restart to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
@@ -42,8 +42,8 @@ Copy-Item (Get-Command reg.exe).Source .\reg1.exe -Force -EA 0
 Remove-Item .\reg1.exe -Force -EA 0
 
 Clear-Host
-Write-Host "Restart to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
