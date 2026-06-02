@@ -20,7 +20,7 @@ switch ($choice) {
 1 {
 
 Clear-Host
-Write-Host "100%..."
+Write-Host "100%..." -NoNewline
 
 # Create reg file
 $regContent = @"
@@ -71,8 +71,8 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\100%.
 Remove-Item "$env:SystemRoot\Temp\100%.reg" -Force
 
 Clear-Host
-Write-Host "Restart to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
@@ -80,7 +80,7 @@ exit
 2 {
 
 Clear-Host
-Write-Host "125%..."
+Write-Host "125%..." -NoNewline
 
 # Create reg file
 $regContent = @"
@@ -131,8 +131,8 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\125%.
 Remove-Item "$env:SystemRoot\Temp\125%.reg" -Force
 
 Clear-Host
-Write-Host "Restart to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
@@ -140,7 +140,7 @@ exit
 3 {
 
 Clear-Host
-Write-Host "150%..."
+Write-Host "150%..." -NoNewline
 
 # Create reg file
 $regContent = @"
@@ -191,8 +191,8 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\150%.
 Remove-Item "$env:SystemRoot\Temp\150%.reg" -Force
 
 Clear-Host
-Write-Host "Restart to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
@@ -200,7 +200,7 @@ exit
 4 {
 
 Clear-Host
-Write-Host "175%..."
+Write-Host "175%..." -NoNewline
 
 # Create reg file
 $regContent = @"
@@ -251,8 +251,8 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\175%.
 Remove-Item "$env:SystemRoot\Temp\175%.reg" -Force
 
 Clear-Host
-Write-Host "Restart to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
@@ -260,7 +260,7 @@ exit
 5 {
 
 Clear-Host
-Write-Host "200%..."
+Write-Host "200%..." -NoNewline
 
 # Create reg file
 $regContent = @"
@@ -311,8 +311,8 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\200%.
 Remove-Item "$env:SystemRoot\Temp\200%.reg" -Force
 
 Clear-Host
-Write-Host "Restart to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
@@ -320,7 +320,7 @@ exit
 6 {
 
 Clear-Host
-Write-Host "225%..."
+Write-Host "225%..." -NoNewline
 
 # Create reg file
 $regContent = @"
@@ -371,8 +371,8 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\225%.
 Remove-Item "$env:SystemRoot\Temp\225%.reg" -Force
 
 Clear-Host
-Write-Host "Restart to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
@@ -380,7 +380,7 @@ exit
 7 {
 
 Clear-Host
-Write-Host "Default..."
+Write-Host "Default..." -NoNewline
 
 # Create reg file
 $regContent = @"
@@ -431,8 +431,8 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Defau
 Remove-Item "$env:SystemRoot\Temp\Default.reg" -Force
 
 Clear-Host
-Write-Host "Restart to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
