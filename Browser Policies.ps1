@@ -23,8 +23,8 @@ Reg.exe add 'HKLM\SOFTWARE\Policies\Microsoft\Edge' /v 'HardwareAccelerationMode
 Reg.exe add 'HKLM\SOFTWARE\Policies\Microsoft\Edge' /v 'GenAILocalFoundationalModelSettings' /t REG_DWORD /d '1' /f *>$null
 
 Clear-Host
-Write-Host "Restart Edge to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart Edge to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
@@ -37,8 +37,8 @@ Reg.exe add 'HKLM\SOFTWARE\Policies\BraveSoftware\Brave' /v 'HighEfficiencyModeE
 Reg.exe add 'HKLM\SOFTWARE\Policies\BraveSoftware\Brave' /v 'HardwareAccelerationModeEnabled' /t REG_DWORD /d '0' /f *>$null
 
 Clear-Host
-Write-Host "Restart Brave to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart Brave to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
@@ -52,8 +52,8 @@ Reg.exe add 'HKLM\SOFTWARE\Policies\Google\Chrome' /v 'HardwareAccelerationModeE
 Reg.exe add 'HKLM\SOFTWARE\Policies\Google\Chrome' /v 'GenAILocalFoundationalModelSettings' /t REG_DWORD /d '1' /f *>$null
 
 Clear-Host
-Write-Host "Restart Chrome to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart Chrome to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
@@ -66,8 +66,8 @@ Reg.exe delete 'HKLM\SOFTWARE\Policies\Microsoft\Edge' /f *>$null
 Reg.exe delete 'HKLM\SOFTWARE\Policies\BraveSoftware\Brave' /f *>$null
 
 Clear-Host
-Write-Host "Restart your browser to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart your browser to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
