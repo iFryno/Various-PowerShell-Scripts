@@ -47,7 +47,7 @@ powercfg /setactive SCHEME_CURRENT
 
 Show-Status
 
-Write-Host "`nPress any key to exit..."
+Write-Host "`nPress any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
@@ -68,7 +68,7 @@ powercfg /setactive SCHEME_CURRENT
 
 Show-Status
 
-Write-Host "`nPress any key to exit..."
+Write-Host "`nPress any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
