@@ -15,7 +15,7 @@ switch ($choice) {
 1 {
 
 Clear-Host
-Write-Host "Enabling..."
+Write-Host "Enabling..." -NoNewline
 
 # Create reg file
 $regContent = @"
@@ -75,7 +75,7 @@ exit
 2 {
 
 Clear-Host
-Write-Host "Disabling..."
+Write-Host "Disabling..." -NoNewline
 
 # Create reg file
 $regContent = @"
