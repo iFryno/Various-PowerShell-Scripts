@@ -20,8 +20,8 @@ Reg.exe add 'HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zo
 Reg.exe add 'HKLM\SOFTWARE\Policies\Microsoft\Internet Explorer\Security' /v 'DisableSecuritySettingsCheck' /t REG_DWORD /d '1' /f *>$null
 
 Clear-Host
-Write-Host "Restart to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
@@ -34,8 +34,8 @@ Reg.exe delete 'HKLM\SOFTWARE\Policies\Microsoft\Internet Explorer\Security' /v 
 Reg.exe add 'HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3' /v '1806' /t REG_DWORD /d '1' /f *>$null
 
 Clear-Host
-Write-Host "Restart to apply."
-Write-Host "Press any key to exit..."
+Write-Host "Restart to apply.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
