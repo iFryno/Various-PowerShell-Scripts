@@ -1,30 +1,39 @@
 if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]'Administrator')) {
-Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-exit
+    Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
+    exit
 }
 
-Write-Host "Installation Media (USB Boot Drive) needs to be plugged in! Press Enter to continue..." -ForegroundColor Red
-do { $key = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") } while ($key.VirtualKeyCode -ne 13)
+Write-Host "Installation media (USB boot drive) needs to be connected.`n"
+Write-Host "Press Enter to continue..." -NoNewline
+do {
+    $key = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+} while ($key.VirtualKeyCode -ne 13)
 
 Clear-Host
 
-$usbDrive = Read-Host -Prompt "Enter USB Drive Letter"
-$usbDrive = $usbDrive.TrimEnd(":")
-$sourcePath = "$usbDrive`:\sources\sxs"
+$sourcePath = $null
 
-Clear-Host
+foreach ($drive in (Get-PSDrive -PSProvider FileSystem)) {
+    $testPath = Join-Path $drive.Root "sources\sxs"
 
-if (-Not (Test-Path $sourcePath)) {
-Write-Host "Error: Path $sourcePath does not exist. Make sure the USB drive is correct and contains sources\sxs folder." -ForegroundColor Red
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-exit
+    if (Test-Path $testPath) {
+        $sourcePath = $testPath
+        break
+    }
+}
+
+if (-not $sourcePath -or -not (Test-Path $sourcePath)) {
+    Write-Host "Error: Could not find a drive containing \sources\sxs. Make sure the installation media is connected.`n" -ForegroundColor Red
+    Write-Host "Press any key to exit..." -NoNewline
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    exit
 }
 
 # Install NetFx3
-Write-Host "Installing NetFx3..."
+Write-Host "Installing NetFx3..." -NoNewline
 dism /online /enable-feature /featurename:NetFx3 /all /source:$sourcePath /limitaccess | Out-Null
 
 # Open optional features
-Start-Process "$env:SystemDrive\Windows\system32\optionalfeatures.exe"
+Start-Process optionalfeatures.exe
 
 exit
