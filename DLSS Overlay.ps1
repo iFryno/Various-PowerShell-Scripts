@@ -18,8 +18,8 @@ switch ($choice) {
 Reg.exe add 'HKLM\SOFTWARE\NVIDIA Corporation\Global\NGXCore' /v 'ShowDlssIndicator' /t REG_DWORD /d '1024' /f *>$null
 
 Clear-Host
-Write-Host "Changes will take effect on next game launch."
-Write-Host "Press any key to exit..."
+Write-Host "Changes will take effect on next game launch.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
@@ -30,8 +30,8 @@ exit
 Reg.exe delete 'HKLM\SOFTWARE\NVIDIA Corporation\Global\NGXCore' /v 'ShowDlssIndicator' /f *>$null
 
 Clear-Host
-Write-Host "Changes will take effect on next game launch."
-Write-Host "Press any key to exit..."
+Write-Host "Changes will take effect on next game launch.`n"
+Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
