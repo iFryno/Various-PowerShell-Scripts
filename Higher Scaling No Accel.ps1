@@ -36,8 +36,27 @@ Windows Registry Editor Version 5.00
 "MouseThreshold1"="0"
 "MouseThreshold2"="0"
 
+[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
+"MouseSpeed"="0"
+"MouseThreshold1"="0"
+"MouseThreshold2"="0"
+
 ; Set EPP curve for 100% scaling with no acceleration
 [HKEY_CURRENT_USER\Control Panel\Mouse]
+"SmoothMouseXCurve"=hex:\
+00,00,00,00,00,00,00,00,\
+c0,cc,0c,00,00,00,00,00,\
+80,99,19,00,00,00,00,00,\
+40,66,26,00,00,00,00,00,\
+00,33,33,00,00,00,00,00
+"SmoothMouseYCurve"=hex:\
+00,00,00,00,00,00,00,00,\
+00,00,38,00,00,00,00,00,\
+00,00,70,00,00,00,00,00,\
+00,00,a8,00,00,00,00,00,\
+00,00,e0,00,00,00,00,00
+
+[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 00,00,00,00,00,00,00,00,\
 c0,cc,0c,00,00,00,00,00,\
@@ -96,8 +115,27 @@ Windows Registry Editor Version 5.00
 "MouseThreshold1"="6"
 "MouseThreshold2"="10"
 
+[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
+"MouseSpeed"="1"
+"MouseThreshold1"="6"
+"MouseThreshold2"="10"
+
 ; Set EPP curve for 125% scaling with no acceleration
 [HKEY_CURRENT_USER\Control Panel\Mouse]
+"SmoothMouseXCurve"=hex:\
+00,00,00,00,00,00,00,00,\
+00,00,10,00,00,00,00,00,\
+00,00,20,00,00,00,00,00,\
+00,00,30,00,00,00,00,00,\
+00,00,40,00,00,00,00,00
+"SmoothMouseYCurve"=hex:\
+00,00,00,00,00,00,00,00,\
+00,00,38,00,00,00,00,00,\
+00,00,70,00,00,00,00,00,\
+00,00,A8,00,00,00,00,00,\
+00,00,E0,00,00,00,00,00
+
+[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 00,00,00,00,00,00,00,00,\
 00,00,10,00,00,00,00,00,\
@@ -156,8 +194,27 @@ Windows Registry Editor Version 5.00
 "MouseThreshold1"="6"
 "MouseThreshold2"="10"
 
+[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
+"MouseSpeed"="1"
+"MouseThreshold1"="6"
+"MouseThreshold2"="10"
+
 ; Set EPP curve for 150% scaling with no acceleration
 [HKEY_CURRENT_USER\Control Panel\Mouse]
+"SmoothMouseXCurve"=hex:\
+00,00,00,00,00,00,00,00,\
+30,33,13,00,00,00,00,00,\
+60,66,26,00,00,00,00,00,\
+90,99,39,00,00,00,00,00,\
+C0,CC,4C,00,00,00,00,00
+"SmoothMouseYCurve"=hex:\
+00,00,00,00,00,00,00,00,\
+00,00,38,00,00,00,00,00,\
+00,00,70,00,00,00,00,00,\
+00,00,A8,00,00,00,00,00,\
+00,00,E0,00,00,00,00,00
+
+[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 00,00,00,00,00,00,00,00,\
 30,33,13,00,00,00,00,00,\
@@ -216,8 +273,27 @@ Windows Registry Editor Version 5.00
 "MouseThreshold1"="6"
 "MouseThreshold2"="10"
 
+[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
+"MouseSpeed"="1"
+"MouseThreshold1"="6"
+"MouseThreshold2"="10"
+
 ; Set EPP curve for 175% scaling with no acceleration
 [HKEY_CURRENT_USER\Control Panel\Mouse]
+"SmoothMouseXCurve"=hex:\
+00,00,00,00,00,00,00,00,\
+60,66,16,00,00,00,00,00,\
+C0,CC,2C,00,00,00,00,00,\
+20,33,43,00,00,00,00,00,\
+80,99,59,00,00,00,00,00
+"SmoothMouseYCurve"=hex:\
+00,00,00,00,00,00,00,00,\
+00,00,38,00,00,00,00,00,\
+00,00,70,00,00,00,00,00,\
+00,00,A8,00,00,00,00,00,\
+00,00,E0,00,00,00,00,00
+
+[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 00,00,00,00,00,00,00,00,\
 60,66,16,00,00,00,00,00,\
@@ -276,8 +352,27 @@ Windows Registry Editor Version 5.00
 "MouseThreshold1"="6"
 "MouseThreshold2"="10"
 
+[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
+"MouseSpeed"="1"
+"MouseThreshold1"="6"
+"MouseThreshold2"="10"
+
 ; Set EPP curve for 200% scaling with no acceleration
 [HKEY_CURRENT_USER\Control Panel\Mouse]
+"SmoothMouseXCurve"=hex:\
+00,00,00,00,00,00,00,00,\
+90,99,19,00,00,00,00,00,\
+20,33,33,00,00,00,00,00,\
+B0,CC,4C,00,00,00,00,00,\
+40,66,66,00,00,00,00,00
+"SmoothMouseYCurve"=hex:\
+00,00,00,00,00,00,00,00,\
+00,00,38,00,00,00,00,00,\
+00,00,70,00,00,00,00,00,\
+00,00,A8,00,00,00,00,00,\
+00,00,E0,00,00,00,00,00
+
+[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 00,00,00,00,00,00,00,00,\
 90,99,19,00,00,00,00,00,\
@@ -336,8 +431,27 @@ Windows Registry Editor Version 5.00
 "MouseThreshold1"="6"
 "MouseThreshold2"="10"
 
+[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
+"MouseSpeed"="1"
+"MouseThreshold1"="6"
+"MouseThreshold2"="10"
+
 ; Set EPP curve for 225% scaling with no acceleration
 [HKEY_CURRENT_USER\Control Panel\Mouse]
+"SmoothMouseXCurve"=hex:\
+00,00,00,00,00,00,00,00,\
+C0,CC,1C,00,00,00,00,00,\
+80,99,39,00,00,00,00,00,\
+40,66,56,00,00,00,00,00,\
+00,33,73,00,00,00,00,00
+"SmoothMouseYCurve"=hex:\
+00,00,00,00,00,00,00,00,\
+00,00,38,00,00,00,00,00,\
+00,00,70,00,00,00,00,00,\
+00,00,A8,00,00,00,00,00,\
+00,00,E0,00,00,00,00,00
+
+[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 00,00,00,00,00,00,00,00,\
 C0,CC,1C,00,00,00,00,00,\
@@ -396,8 +510,27 @@ Windows Registry Editor Version 5.00
 "MouseThreshold1"="0"
 "MouseThreshold2"="0"
 
+[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
+"MouseSpeed"="0"
+"MouseThreshold1"="0"
+"MouseThreshold2"="0"
+
 ; Set EPP curve to default
 [HKEY_CURRENT_USER\Control Panel\Mouse]
+"SmoothMouseXCurve"=hex:\
+00,00,00,00,00,00,00,00,\
+15,6e,00,00,00,00,00,00,\
+00,40,01,00,00,00,00,00,\
+29,dc,03,00,00,00,00,00,\
+00,00,28,00,00,00,00,00
+"SmoothMouseYCurve"=hex:\
+00,00,00,00,00,00,00,00,\
+fd,11,01,00,00,00,00,00,\
+00,24,04,00,00,00,00,00,\
+00,fc,12,00,00,00,00,00,\
+00,c0,bb,01,00,00,00,00
+
+[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 00,00,00,00,00,00,00,00,\
 15,6e,00,00,00,00,00,00,\
