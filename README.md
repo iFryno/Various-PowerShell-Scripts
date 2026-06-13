@@ -10,7 +10,7 @@ A collection of useful PowerShell scripts that don't require a dedicated reposit
 - **Core Parking** - Adjusts OS-managed CPU core parking.
 - **DLSS Overlay** - Shows the DLSS version overlay in-game.
 - **Digital Markets Act** - Enables EU DMA compliance, allowing native removal of enforced apps like Edge and Store, reducing the amount of diagnostic data sent, and unlocking additional system settings. Learn more [here](https://youtu.be/MfBNxGw_5J8?is=VMEVvqxa6HWFmF2N).
-- **Higher Scaling No Accel** - Removes desktop mouse acceleration when using scaling above 100%. Recommended for setups where all monitors use the same scaling. (Credit: MarkC)
+- **Higher Scaling No Accel** - Removes desktop mouse acceleration when using scaling above 100%. Recommended for setups where all monitors use the same scaling.
 - **Legacy File Explorer** - Restores the classic file explorer ribbon on Windows 11.
 - **Legacy Settings** - Adds a Legacy Settings flyout to the desktop context menu with quick access to classic Control Panel applets.
 - **Manage Windows Updates** - Pauses updates for 1 year or disables them entirely.
