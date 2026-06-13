@@ -41,7 +41,7 @@ Windows Registry Editor Version 5.00
 "MouseThreshold1"="0"
 "MouseThreshold2"="0"
 
-; Set EPP curve for 100% scaling with no acceleration
+; Set EPP curve for 100% scaling with no acceleration (credit: MarkC)
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "SmoothMouseXCurve"=hex:\
 00,00,00,00,00,00,00,00,\
@@ -74,6 +74,9 @@ c0,cc,0c,00,00,00,00,00,\
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "LogPixels"=dword:00000060
 "Win8DpiScaling"=dword:00000001
+
+[HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
+"AppliedDPI"=dword:00000060
 
 ; Disable fix scaling for apps
 [HKEY_CURRENT_USER\Control Panel\Desktop]
@@ -154,6 +157,9 @@ Windows Registry Editor Version 5.00
 "LogPixels"=dword:00000078
 "Win8DpiScaling"=dword:00000001
 
+[HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
+"AppliedDPI"=dword:00000078
+
 ; Enable fix scaling for apps
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
@@ -232,6 +238,9 @@ C0,CC,4C,00,00,00,00,00
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "LogPixels"=dword:00000090
 "Win8DpiScaling"=dword:00000001
+
+[HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
+"AppliedDPI"=dword:00000090
 
 ; Enable fix scaling for apps
 [HKEY_CURRENT_USER\Control Panel\Desktop]
@@ -312,6 +321,9 @@ C0,CC,2C,00,00,00,00,00,\
 "LogPixels"=dword:000000a8
 "Win8DpiScaling"=dword:00000001
 
+[HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
+"AppliedDPI"=dword:000000a8
+
 ; Enable fix scaling for apps
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
@@ -390,6 +402,9 @@ B0,CC,4C,00,00,00,00,00,\
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "LogPixels"=dword:000000c0
 "Win8DpiScaling"=dword:00000001
+
+[HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
+"AppliedDPI"=dword:000000c0
 
 ; Enable fix scaling for apps
 [HKEY_CURRENT_USER\Control Panel\Desktop]
@@ -470,6 +485,9 @@ C0,CC,1C,00,00,00,00,00,\
 "LogPixels"=dword:000000d8
 "Win8DpiScaling"=dword:00000001
 
+[HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
+"AppliedDPI"=dword:000000d8
+
 ; Enable fix scaling for apps
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
@@ -548,6 +566,9 @@ fd,11,01,00,00,00,00,00,\
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "LogPixels"=-
 "Win8DpiScaling"=-
+
+[HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
+"AppliedDPI"=-
 
 ; Reset fix scaling for apps
 [HKEY_CURRENT_USER\Control Panel\Desktop]
