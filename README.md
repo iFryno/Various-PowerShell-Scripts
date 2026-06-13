@@ -1,5 +1,6 @@
-# Various PowerShell Scripts
-A collection of useful PowerShell scripts that don't require a dedicated repository.
+<h1 align="center">Various PowerShell Scripts</h1>
+<p align="center">A collection of useful PowerShell scripts that don't require a dedicated repository.</p>
+<hr>
 
 ### Available Scripts
 - **Black Theme** - Applies a true black theme to Windows.
