@@ -1,9 +1,7 @@
 # Various PowerShell Scripts
-
 A collection of useful PowerShell scripts that don't require a dedicated repository.
 
-## Available Scripts
-
+### Available Scripts
 - **Black Theme** - Applies a true black theme to Windows.
 - **Browser Policies** - Adds policies to configure essential browser settings in Edge, Brave, and Chrome.
 - **Clean Context Menu** - Removes unnecessary options from the right-click context menu.
