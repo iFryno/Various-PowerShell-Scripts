@@ -26,7 +26,7 @@ Write-Host "100%..." -NoNewline
 $regContent = @"
 Windows Registry Editor Version 5.00
 
-; Set pointer speed to default
+; Set pointer speed to 6/11
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
@@ -108,7 +108,7 @@ Write-Host "125%..." -NoNewline
 $regContent = @"
 Windows Registry Editor Version 5.00
 
-; Set pointer speed to default
+; Set pointer speed to 6/11
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
@@ -190,7 +190,7 @@ Write-Host "150%..." -NoNewline
 $regContent = @"
 Windows Registry Editor Version 5.00
 
-; Set pointer speed to default
+; Set pointer speed to 6/11
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
@@ -272,7 +272,7 @@ Write-Host "175%..." -NoNewline
 $regContent = @"
 Windows Registry Editor Version 5.00
 
-; Set pointer speed to default
+; Set pointer speed to 6/11
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
@@ -354,7 +354,7 @@ Write-Host "200%..." -NoNewline
 $regContent = @"
 Windows Registry Editor Version 5.00
 
-; Set pointer speed to default
+; Set pointer speed to 6/11
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
@@ -436,7 +436,7 @@ Write-Host "225%..." -NoNewline
 $regContent = @"
 Windows Registry Editor Version 5.00
 
-; Set pointer speed to default
+; Set pointer speed to 6/11
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
@@ -518,7 +518,7 @@ Write-Host "Default..." -NoNewline
 $regContent = @"
 Windows Registry Editor Version 5.00
 
-; Set pointer speed to default
+; Set pointer speed to 6/11
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSensitivity"="10"
 
