@@ -9,7 +9,7 @@ A collection of useful PowerShell scripts for Windows.
 - **[Clean Context Menu](Clean%20Context%20Menu.ps1)** - Removes unnecessary options from the right-click context menu.
 - **[Core Parking](Core%20Parking.ps1)** - Prevents Windows from parking CPU cores.
 - **[DLSS Overlay](DLSS%20Overlay.ps1)** - Shows the DLSS version overlay in-game.
-- **[Digital Markets Act](Digital%20Markets%20Act.ps1)** - Enables EU DMA compliance, allowing native removal of enforced apps like Edge and Store, reduces telemetry, and unlocks additional system settings. Learn more [here](https://youtu.be/MfBNxGw_5J8?is=VMEVvqxa6HWFmF2N).
+- **[Digital Markets Act](Digital%20Markets%20Act.ps1)** - Enables EU DMA compliance, allowing native removal of enforced apps like Edge and Store, reducing telemetry, and unlocking additional system settings. Learn more [here](https://youtu.be/MfBNxGw_5J8?is=VMEVvqxa6HWFmF2N).
 - **[Higher Scaling No Accel](Higher%20Scaling%20No%20Accel.ps1)** - Removes desktop mouse acceleration when using scaling above 100% (recommended only when all monitors use the same scaling value).
 - **[Legacy File Explorer](Legacy%20File%20Explorer.ps1)** - Restores the classic file explorer ribbon on Windows 11.
 - **[Legacy Settings](Legacy%20Settings.ps1)** - Adds a Legacy Settings flyout to the desktop context menu with quick access to classic Control Panel applets.
