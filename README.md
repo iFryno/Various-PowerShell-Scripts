@@ -1,6 +1,7 @@
-<h1 align="center">Various PowerShell Scripts</h1>
-<p align="center">A collection of useful PowerShell scripts that don't require a dedicated repository.</p>
-<hr>
+# Various PowerShell Scripts
+A collection of useful PowerShell scripts that don't require a dedicated repository.
+
+---
 
 ### Available Scripts
 - **Black Theme** - Applies a true black theme to Windows.
@@ -17,6 +18,8 @@
 - **Open File Security Warning** - Removes the security warning and automatic file blocking for downloaded files.
 - **Start Menu Version** - Activates the new 25H2 start menu or reverts to the 24H2 version on supported Windows 11 26200 builds.
 - **User Account Control** - Disables the UAC elevation prompt for administrative tasks.
+
+---
 
 > [!TIP]
 > If the script closes immediately, open PowerShell as Administrator and run:
