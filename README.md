@@ -1,5 +1,5 @@
-<h1 align="center">Various PowerShell Scripts</h1>
-<p align="center">A collection of useful PowerShell scripts for Windows.</p>
+# Various PowerShell Scripts
+A collection of useful PowerShell scripts for Windows.
 
 ---
 
