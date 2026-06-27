@@ -71,6 +71,7 @@ Windows Registry Editor Version 5.00
 ; Remove extract all
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked]
 "{b8cdcb65-b1bf-4b42-9428-1dfdb7ee92af}"=""
+"{EE07CEF5-3441-4CFB-870A-4002C724783A}"=""
 
 ; Remove give access to
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked]
@@ -173,6 +174,7 @@ Windows Registry Editor Version 5.00
 ; Restore extract all
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked]
 "{b8cdcb65-b1bf-4b42-9428-1dfdb7ee92af}"=-
+"{EE07CEF5-3441-4CFB-870A-4002C724783A}"=-
 
 ; Restore give access to
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked]
