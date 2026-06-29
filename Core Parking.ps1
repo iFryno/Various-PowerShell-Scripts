@@ -19,7 +19,7 @@ $dc = [int]$dcHex
 
 Write-Host "Core Parking Status`n"
 Write-Host "AC (plugged in): $ac% - $(Get-State $ac)"
-Write-Host "DC (on battery)   : $dc% - $(Get-State $dc)"
+Write-Host "DC (on battery): $dc% - $(Get-State $dc)"
 }
 
 Write-Host "Core Parking`n"
