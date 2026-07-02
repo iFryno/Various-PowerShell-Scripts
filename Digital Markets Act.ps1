@@ -18,7 +18,7 @@ switch ($choice) {
 Copy-Item (Get-Command reg.exe).Source .\reg1.exe -Force -EA 0
 
 # Set device setup region to Ireland
-& .\reg1.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion" /v DeviceRegion /t REG_DWORD /d 68 /f *>$null
+& .\reg1.exe add 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion' /v 'DeviceRegion' /t REG_DWORD /d '68' /f *>$null
 
 # Remove reg1.exe
 Remove-Item .\reg1.exe -Force -EA 0
@@ -36,7 +36,7 @@ exit
 Copy-Item (Get-Command reg.exe).Source .\reg1.exe -Force -EA 0
 
 # Set device setup region to United States
-& .\reg1.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion" /v DeviceRegion /t REG_DWORD /d 244 /f *>$null
+& .\reg1.exe add 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion' /v 'DeviceRegion' /t REG_DWORD /d '244' /f *>$null
 
 # Remove reg1.exe
 Remove-Item .\reg1.exe -Force -EA 0
