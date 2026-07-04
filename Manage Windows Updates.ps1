@@ -3,10 +3,14 @@ Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass 
 exit
 }
 
+$Host.UI.RawUI.BackgroundColor = "Black"
+$Host.UI.RawUI.ForegroundColor = "White"
+Clear-Host
+
 Write-Host "Manage Windows Updates`n"
 Write-Host "1. Pause"
 Write-Host "2. Disable"
-Write-Host "3. Enable`n"
+Write-Host "3. Enable (Default)`n"
 
 while ($true) {
 $choice = Read-Host " "
@@ -88,4 +92,4 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
 
-} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
+} } else { Write-Host "Invalid option.`n" -ForegroundColor Red } }
