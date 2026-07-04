@@ -3,6 +3,10 @@ Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass 
 exit
 }
 
+$Host.UI.RawUI.BackgroundColor = "Black"
+$Host.UI.RawUI.ForegroundColor = "White"
+Clear-Host
+
 Write-Host "Higher Scaling No Accel`n"
 Write-Host "1. 100%"
 Write-Host "2. 125%"
@@ -90,7 +94,7 @@ c0,cc,0c,00,00,00,00,00,\
 Set-Content -Path "$env:SystemRoot\Temp\100%.reg" -Value $regContent -Force
 
 # Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\100%.reg`"" -WindowStyle Hidden
+Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\100%.reg" -WindowStyle Hidden
 
 # Delete reg file
 Remove-Item "$env:SystemRoot\Temp\100%.reg" -Force
@@ -175,7 +179,7 @@ Windows Registry Editor Version 5.00
 Set-Content -Path "$env:SystemRoot\Temp\125%.reg" -Value $regContent -Force
 
 # Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\125%.reg`"" -WindowStyle Hidden
+Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\125%.reg" -WindowStyle Hidden
 
 # Delete reg file
 Remove-Item "$env:SystemRoot\Temp\125%.reg" -Force
@@ -260,7 +264,7 @@ C0,CC,4C,00,00,00,00,00
 Set-Content -Path "$env:SystemRoot\Temp\150%.reg" -Value $regContent -Force
 
 # Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\150%.reg`"" -WindowStyle Hidden
+Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\150%.reg" -WindowStyle Hidden
 
 # Delete reg file
 Remove-Item "$env:SystemRoot\Temp\150%.reg" -Force
@@ -345,7 +349,7 @@ C0,CC,2C,00,00,00,00,00,\
 Set-Content -Path "$env:SystemRoot\Temp\175%.reg" -Value $regContent -Force
 
 # Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\175%.reg`"" -WindowStyle Hidden
+Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\175%.reg" -WindowStyle Hidden
 
 # Delete reg file
 Remove-Item "$env:SystemRoot\Temp\175%.reg" -Force
@@ -430,7 +434,7 @@ B0,CC,4C,00,00,00,00,00,\
 Set-Content -Path "$env:SystemRoot\Temp\200%.reg" -Value $regContent -Force
 
 # Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\200%.reg`"" -WindowStyle Hidden
+Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\200%.reg" -WindowStyle Hidden
 
 # Delete reg file
 Remove-Item "$env:SystemRoot\Temp\200%.reg" -Force
@@ -515,7 +519,7 @@ C0,CC,1C,00,00,00,00,00,\
 Set-Content -Path "$env:SystemRoot\Temp\225%.reg" -Value $regContent -Force
 
 # Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\225%.reg`"" -WindowStyle Hidden
+Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\225%.reg" -WindowStyle Hidden
 
 # Delete reg file
 Remove-Item "$env:SystemRoot\Temp\225%.reg" -Force
@@ -600,7 +604,7 @@ fd,11,01,00,00,00,00,00,\
 Set-Content -Path "$env:SystemRoot\Temp\Default.reg" -Value $regContent -Force
 
 # Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Default.reg`"" -WindowStyle Hidden
+Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\Default.reg" -WindowStyle Hidden
 
 # Delete reg file
 Remove-Item "$env:SystemRoot\Temp\Default.reg" -Force
@@ -612,4 +616,4 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
 
-} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
+} } else { Write-Host "Invalid option.`n" -ForegroundColor Red } }
