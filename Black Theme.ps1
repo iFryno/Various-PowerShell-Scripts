@@ -3,6 +3,10 @@ Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass 
 exit
 }
 
+$Host.UI.RawUI.BackgroundColor = "Black"
+$Host.UI.RawUI.ForegroundColor = "White"
+Clear-Host
+
 Write-Host "Windows Theme`n"
 Write-Host "1. Black"
 Write-Host "2. Default`n"
@@ -61,13 +65,13 @@ Windows Registry Editor Version 5.00
 "@
 
 # Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\BlackTheme.reg" -Value $regContent -Force
+Set-Content -Path "$env:SystemRoot\Temp\Black Theme.reg" -Value $regContent -Force
 
 # Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\BlackTheme.reg`"" -WindowStyle Hidden
+Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Black Theme.reg`"" -WindowStyle Hidden
 
 # Delete reg file
-Remove-Item "$env:SystemRoot\Temp\BlackTheme.reg" -Force
+Remove-Item "$env:SystemRoot\Temp\Black Theme.reg" -Force
 
 # Create black image
 Add-Type -AssemblyName System.Windows.Forms
@@ -142,13 +146,13 @@ Windows Registry Editor Version 5.00
 "@
 
 # Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\DefaultTheme.reg" -Value $regContent -Force
+Set-Content -Path "$env:SystemRoot\Temp\Default Theme.reg" -Value $regContent -Force
 
 # Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\DefaultTheme.reg`"" -WindowStyle Hidden
+Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Default Theme.reg`"" -WindowStyle Hidden
 
 # Delete reg file
-Remove-Item "$env:SystemRoot\Temp\DefaultTheme.reg" -Force
+Remove-Item "$env:SystemRoot\Temp\Default Theme.reg" -Force
 
 # Delete black image
 Remove-Item "C:\Windows\Black.png" -Force *>$null
@@ -166,4 +170,4 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
 
-} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
+} } else { Write-Host "Invalid option.`n" -ForegroundColor Red } }
