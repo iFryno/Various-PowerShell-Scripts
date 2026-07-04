@@ -3,6 +3,10 @@ Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass 
 exit
 }
 
+$Host.UI.RawUI.BackgroundColor = "Black"
+$Host.UI.RawUI.ForegroundColor = "White"
+Clear-Host
+
 function Get-State($v) {
 if ($v -eq 100) { return "unparked" }
 else { return "parked" }
@@ -10,21 +14,19 @@ else { return "parked" }
 
 function Show-Status {
 $raw = powercfg /query SCHEME_CURRENT SUB_PROCESSOR CPMINCORES
-
 $acHex = ($raw | Select-String "AC Power Setting Index").ToString().Split(':')[1].Trim()
 $dcHex = ($raw | Select-String "DC Power Setting Index").ToString().Split(':')[1].Trim()
-
 $ac = [int]$acHex
 $dc = [int]$dcHex
 
 Write-Host "Core Parking Status`n"
-Write-Host "AC (plugged in): $ac% - $(Get-State $ac)"
-Write-Host "DC (on battery): $dc% - $(Get-State $dc)"
+Write-Host "AC (plugged in): $(Get-State $ac)"
+Write-Host "DC (on battery): $(Get-State $dc)"
 }
 
 Write-Host "Core Parking`n"
 Write-Host "1. Disable"
-Write-Host "2. Enable`n"
+Write-Host "2. Enable (Default)`n"
 
 while ($true) {
 $choice = Read-Host " "
@@ -73,4 +75,4 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
 
-} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
+} } else { Write-Host "Invalid option.`n" -ForegroundColor Red } }
