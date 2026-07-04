@@ -3,9 +3,13 @@ Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass 
 exit
 }
 
-Write-Host "Legacy File Explorer`n"
-Write-Host "1. Enable"
-Write-Host "2. Disable`n"
+$Host.UI.RawUI.BackgroundColor = "Black"
+$Host.UI.RawUI.ForegroundColor = "White"
+Clear-Host
+
+Write-Host "File Explorer`n"
+Write-Host "1. Legacy"
+Write-Host "2. Default`n"
 
 while ($true) {
 $choice = Read-Host " "
@@ -15,7 +19,7 @@ switch ($choice) {
 1 {
 
 Clear-Host
-Write-Host "Enabling..." -NoNewline
+Write-Host "Legacy..." -NoNewline
 
 # Create reg file
 $regContent = @"
@@ -55,13 +59,13 @@ Windows Registry Editor Version 5.00
 "@
 
 # Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\LegacyExplorer.reg" -Value $regContent -Force
+Set-Content -Path "$env:SystemRoot\Temp\Legacy Explorer.reg" -Value $regContent -Force
 
 # Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\LegacyExplorer.reg`"" -WindowStyle Hidden
+Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Legacy Explorer.reg`"" -WindowStyle Hidden
 
 # Delete reg file
-Remove-Item "$env:SystemRoot\Temp\LegacyExplorer.reg" -Force
+Remove-Item "$env:SystemRoot\Temp\Legacy Explorer.reg" -Force
 
 # Restart explorer
 Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
@@ -75,7 +79,7 @@ exit
 2 {
 
 Clear-Host
-Write-Host "Disabling..." -NoNewline
+Write-Host "Default..." -NoNewline
 
 # Create reg file
 $regContent = @"
@@ -94,13 +98,13 @@ Windows Registry Editor Version 5.00
 "@
 
 # Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\DefaultExplorer.reg" -Value $regContent -Force
+Set-Content -Path "$env:SystemRoot\Temp\Default Explorer.reg" -Value $regContent -Force
 
 # Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\DefaultExplorer.reg`"" -WindowStyle Hidden
+Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Default Explorer.reg`"" -WindowStyle Hidden
 
 # Delete reg file
-Remove-Item "$env:SystemRoot\Temp\DefaultExplorer.reg" -Force
+Remove-Item "$env:SystemRoot\Temp\Default Explorer.reg" -Force
 
 # Restart explorer
 Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
@@ -111,4 +115,4 @@ Start-Process explorer.exe
 exit
 }
 
-} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
+} } else { Write-Host "Invalid option.`n" -ForegroundColor Red } }
