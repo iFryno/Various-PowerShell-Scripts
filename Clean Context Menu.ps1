@@ -3,9 +3,13 @@ Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass 
 exit
 }
 
-Write-Host "Clean Context Menu`n"
-Write-Host "1. Enable"
-Write-Host "2. Disable`n"
+$Host.UI.RawUI.BackgroundColor = "Black"
+$Host.UI.RawUI.ForegroundColor = "White"
+Clear-Host
+
+Write-Host "Context Menu`n"
+Write-Host "1. Clean"
+Write-Host "2. Default`n"
 
 while ($true) {
 $choice = Read-Host " "
@@ -15,7 +19,7 @@ switch ($choice) {
 1 {
 
 Clear-Host
-Write-Host "Enabling..." -NoNewline
+Write-Host "Clean..." -NoNewline
 
 # Create reg file
 $regContent = @"
@@ -79,13 +83,13 @@ Windows Registry Editor Version 5.00
 "@
 
 # Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\CleanContextMenu.reg" -Value $regContent -Force
+Set-Content -Path "$env:SystemRoot\Temp\Clean Context Menu.reg" -Value $regContent -Force
 
 # Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\CleanContextMenu.reg`"" -WindowStyle Hidden
+Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Clean Context Menu.reg`"" -WindowStyle Hidden
 
 # Delete reg file
-Remove-Item "$env:SystemRoot\Temp\CleanContextMenu.reg" -Force
+Remove-Item "$env:SystemRoot\Temp\Clean Context Menu.reg" -Force
 
 Clear-Host
 Write-Host "Restart to apply.`n"
@@ -97,7 +101,7 @@ exit
 2 {
 
 Clear-Host
-Write-Host "Disabling..." -NoNewline
+Write-Host "Default..." -NoNewline
 
 # Create reg file
 $regContent = @"
@@ -182,13 +186,13 @@ Windows Registry Editor Version 5.00
 "@
 
 # Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\DefaultContextMenu.reg" -Value $regContent -Force
+Set-Content -Path "$env:SystemRoot\Temp\Default Context Menu.reg" -Value $regContent -Force
 
 # Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\DefaultContextMenu.reg`"" -WindowStyle Hidden
+Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Default Context Menu.reg`"" -WindowStyle Hidden
 
 # Delete reg file
-Remove-Item "$env:SystemRoot\Temp\DefaultContextMenu.reg" -Force
+Remove-Item "$env:SystemRoot\Temp\Default Context Menu.reg" -Force
 
 Clear-Host
 Write-Host "Restart to apply.`n"
@@ -197,4 +201,4 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
 }
 
-} } else { Write-Host "Invalid input.`n" -ForegroundColor Red } }
+} } else { Write-Host "Invalid option.`n" -ForegroundColor Red } }
