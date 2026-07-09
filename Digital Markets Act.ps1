@@ -36,11 +36,14 @@ exit
 
 2 {
 
+# Get original device setup region
+$Nation = (Reg.exe query 'HKEY_USERS\.DEFAULT\Control Panel\International\Geo' /v 'Nation' | Select-String 'REG_SZ\s+(\d+)').Matches.Groups[1].Value
+
 # Create reg1.exe to bypass UCPD
 Copy-Item (Get-Command reg.exe).Source .\reg1.exe -Force -EA 0
 
-# Set device setup region to United States
-& .\reg1.exe add 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion' /v 'DeviceRegion' /t REG_DWORD /d '244' /f *>$null
+# Set device setup region back to original
+& .\reg1.exe add 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion' /v 'DeviceRegion' /t REG_DWORD /d $Nation /f *>$null
 
 # Remove reg1.exe
 Remove-Item .\reg1.exe -Force -EA 0
