@@ -13,7 +13,7 @@ else { return "parked" }
 }
 
 function Show-Status {
-$raw = powercfg /query SCHEME_CURRENT SUB_PROCESSOR CPMINCORES
+$raw = powercfg /qh SCHEME_CURRENT SUB_PROCESSOR CPMINCORES
 $acHex = ($raw | Select-String "AC Power Setting Index").ToString().Split(':')[1].Trim()
 $dcHex = ($raw | Select-String "DC Power Setting Index").ToString().Split(':')[1].Trim()
 $ac = [int]$acHex
