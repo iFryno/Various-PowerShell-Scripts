@@ -37,7 +37,7 @@ exit
 2 {
 
 # Get original device setup region
-$Nation = (Reg.exe query 'HKEY_USERS\.DEFAULT\Control Panel\International\Geo' /v 'Nation' | Select-String 'REG_SZ\s+(\d+)').Matches.Groups[1].Value
+$Nation = Get-ItemPropertyValue -Path 'Registry::HKEY_USERS\.DEFAULT\Control Panel\International\Geo' -Name 'Nation'
 
 # Create reg1.exe to bypass UCPD
 Copy-Item (Get-Command reg.exe).Source .\reg1.exe -Force -EA 0
