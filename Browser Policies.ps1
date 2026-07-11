@@ -64,7 +64,7 @@ exit
 
 4 {
 
-# Remove policies from Edge, Brave, and Chrome
+# Remove policies from Edge, Brave and Chrome
 Reg.exe delete 'HKLM\SOFTWARE\Policies\Google\Chrome' /f *>$null
 Reg.exe delete 'HKLM\SOFTWARE\Policies\Microsoft\Edge' /f *>$null
 Reg.exe delete 'HKLM\SOFTWARE\Policies\BraveSoftware\Brave' /f *>$null
