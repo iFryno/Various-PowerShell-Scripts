@@ -5,7 +5,7 @@
 
 ### Available Scripts
 - **[Black Theme](Black%20Theme.ps1)** - Applies a true black theme to Windows.
-- **[Browser Policies](Browser%20Policies.ps1)** - Adds policies to configure essential browser settings (supports Edge, Brave, and Chrome).
+- **[Browser Policies](Browser%20Policies.ps1)** - Adds policies to configure essential browser settings (supports Edge, Brave and Chrome).
 - **[Clean Context Menu](Clean%20Context%20Menu.ps1)** - Removes unnecessary options from the right-click context menu.
 - **[Core Parking](Core%20Parking.ps1)** - Prevents Windows from parking CPU cores.
 - **[DLSS Overlay](DLSS%20Overlay.ps1)** - Shows the DLSS version overlay in-game.
