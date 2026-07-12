@@ -46,7 +46,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "EnableTransparency"=dword:00000000
 
-; Set accent color to black
+; Set accent color to black (credit: zoicware)
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Accent]
 "AccentColorMenu"=dword:00000000
 "AccentPalette"=hex:64,64,64,00,6b,6b,6b,00,00,00,00,00,\
