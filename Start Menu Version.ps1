@@ -18,13 +18,13 @@ switch ($choice) {
 
 1 {
 
-# Set start menu version to 25H2
+# Set Start Menu version to 25H2
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829' /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\3036241548' /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\734731404'  /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\762256525'  /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
 
-# Set start menu apps view to list
+# Set Start Menu apps view to list
 Reg.exe add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Start' /v 'AllAppsViewMode' /t REG_DWORD /d '2' /f *>$null
 
 Clear-Host
@@ -36,13 +36,13 @@ exit
 
 2 {
 
-# Set start menu version to 24H2
+# Set Start Menu version to 24H2
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829' /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\3036241548' /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\734731404'  /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
 Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\762256525'  /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
 
-# Reset start menu apps view
+# Reset Start Menu apps view
 Reg.exe delete 'HKCU\Software\Microsoft\Windows\CurrentVersion\Start' /v 'AllAppsViewMode' /f *>$null
 
 Clear-Host
