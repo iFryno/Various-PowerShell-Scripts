@@ -59,7 +59,7 @@ Windows Registry Editor Version 5.00
 "ColorizationColor"=dword:c4191919
 "EnableWindowColorization"=dword:00000001
 
-; Enable show accent color on start and taskbar
+; Enable show accent color on Start and taskbar
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "ColorPrevalence"=dword:00000001
 "@
@@ -140,7 +140,7 @@ Windows Registry Editor Version 5.00
 "ColorizationColor"=dword:c40078d4
 "EnableWindowColorization"=dword:00000000
 
-; Disable show accent color on start and taskbar
+; Disable show accent color on Start and taskbar
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "ColorPrevalence"=dword:00000000
 "@
