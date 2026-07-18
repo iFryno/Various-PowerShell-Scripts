@@ -25,7 +25,7 @@ Write-Host "Legacy..." -NoNewline
 $regContent = @"
 Windows Registry Editor Version 5.00
 
-; Enable legacy file explorer ribbon
+; Enable legacy File Explorer ribbon
 [HKEY_CURRENT_USER\Software\Classes\CLSID\{2aa9162e-c906-4dd9-ad0b-3d24a8eef5a0}]
 @="CLSID_ItemsViewAdapter"
 
@@ -67,10 +67,10 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Legac
 # Delete reg file
 Remove-Item "$env:SystemRoot\Temp\Legacy Explorer.reg" -Force
 
-# Restart explorer
+# Restart Explorer
 Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
 
-# Open explorer
+# Open Explorer
 Start-Process explorer.exe
 
 exit
@@ -85,7 +85,7 @@ Write-Host "Default..." -NoNewline
 $regContent = @"
 Windows Registry Editor Version 5.00
 
-; Disable legacy file explorer ribbon
+; Disable legacy File Explorer ribbon
 [-HKEY_CURRENT_USER\Software\Classes\CLSID\{2aa9162e-c906-4dd9-ad0b-3d24a8eef5a0}]
 [-HKEY_CURRENT_USER\Software\Classes\CLSID\{6480100b-5a83-4d1e-9f69-8ae5a88e9a33}]
 
@@ -106,10 +106,10 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Defau
 # Delete reg file
 Remove-Item "$env:SystemRoot\Temp\Default Explorer.reg" -Force
 
-# Restart explorer
+# Restart Explorer
 Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
 
-# Open explorer
+# Open Explorer
 Start-Process explorer.exe
 
 exit
