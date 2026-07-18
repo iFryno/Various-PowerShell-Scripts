@@ -239,9 +239,6 @@ Windows Registry Editor Version 5.00
 [-HKEY_CLASSES_ROOT\exefile\shellex\ContextMenuHandlers\Compatibility]
 
 ; Remove turn on BitLocker
-[HKEY_CLASSES_ROOT\Drive\shell\encrypt-bde]
-"LegacyDisable"=""
-
 [HKEY_CLASSES_ROOT\Drive\shell\encrypt-bde-elev]
 "LegacyDisable"=""
 "@
@@ -771,37 +768,8 @@ Windows Registry Editor Version 5.00
 @="{1d27f844-3a1f-4410-85ac-14651078412d}"
 
 ; Restore turn on BitLocker
-[HKEY_CLASSES_ROOT\Drive\shell\encrypt-bde]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,66,00,\
-  76,00,65,00,77,00,69,00,7a,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,39,00,32,\
-  00,30,00,00,00
-"AppliesTo"="(System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Off OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#OnPreProvisioned) AND System.Volume.BitLockerRequiresAdmin:=System.StructuredQueryType.Boolean#False"
-"MultiSelectModel"="Single"
-"LegacyDisable"=-
-
-[HKEY_CLASSES_ROOT\Drive\shell\encrypt-bde\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,42,00,69,00,\
-  74,00,4c,00,6f,00,63,00,6b,00,65,00,72,00,57,00,69,00,7a,00,61,00,72,00,64,\
-  00,2e,00,65,00,78,00,65,00,20,00,25,00,31,00,20,00,54,00,00,00
-
 [HKEY_CLASSES_ROOT\Drive\shell\encrypt-bde-elev]
-@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
-  00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,66,00,\
-  76,00,65,00,77,00,69,00,7a,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,00,39,00,32,\
-  00,30,00,00,00
-"AppliesTo"="(System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#Off OR System.Volume.BitLockerProtection:=System.Volume.BitLockerProtection#OnPreProvisioned) AND System.Volume.BitLockerRequiresAdmin:=System.StructuredQueryType.Boolean#True"
-"HasLUAShield"=""
-"MultiSelectModel"="Single"
 "LegacyDisable"=-
-
-[HKEY_CLASSES_ROOT\Drive\shell\encrypt-bde-elev\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,42,00,69,00,\
-  74,00,4c,00,6f,00,63,00,6b,00,65,00,72,00,57,00,69,00,7a,00,61,00,72,00,64,\
-  00,45,00,6c,00,65,00,76,00,2e,00,65,00,78,00,65,00,20,00,25,00,31,00,20,00,\
-  54,00,00,00
 "@
 
 # Save reg file
