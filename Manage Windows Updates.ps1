@@ -7,14 +7,17 @@ $Host.UI.RawUI.BackgroundColor = "Black"
 $Host.UI.RawUI.ForegroundColor = "White"
 Clear-Host
 
-Write-Host "Manage Windows Updates`n"
+Write-Host "Windows Updates`n"
 Write-Host "1. Pause"
 Write-Host "2. Disable"
-Write-Host "3. Enable (Default)`n"
+Write-Host "3. Enable`n"
+Write-Host "Driver Updates`n"
+Write-Host "4. Disable"
+Write-Host "5. Enable`n"
 
 while ($true) {
 $choice = Read-Host " "
-if ($choice -match '^[1-3]$') {
+if ($choice -match '^[1-5]$') {
 switch ($choice) {
 
 1 {
@@ -58,7 +61,7 @@ Reg.exe add 'HKU\S-1-5-20\Software\Microsoft\Windows\CurrentVersion\DeliveryOpti
 Disable-ScheduledTask -TaskName 'Microsoft\Windows\WindowsUpdate\Scheduled Start' -ErrorAction SilentlyContinue | Out-Null
 
 Clear-Host
-Write-Host "Restart to apply.`n"
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
@@ -86,7 +89,51 @@ Reg.exe delete 'HKU\S-1-5-20\Software\Microsoft\Windows\CurrentVersion\DeliveryO
 Enable-ScheduledTask -TaskName 'Microsoft\Windows\WindowsUpdate\Scheduled Start' -ErrorAction SilentlyContinue | Out-Null
 
 Clear-Host
-Write-Host "Restart to apply.`n"
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
+Write-Host "Press any key to exit..." -NoNewline
+$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+exit
+}
+
+4 {
+
+Clear-Host
+
+# Disable driver updates
+Reg.exe add 'HKLM\Software\Policies\Microsoft\Windows\DriverSearching' /v 'SearchOrderConfig' /t REG_DWORD /d '0' /f *>$null
+Reg.exe add 'HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate\AU' /v 'EnableFeaturedSoftware' /t REG_DWORD /d '0' /f *>$null
+Reg.exe add 'HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate\AU' /v 'IncludeRecommendedUpdates' /t REG_DWORD /d '0' /f *>$null
+Reg.exe add 'HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate' /v 'SetAllowOptionalContent' /t REG_DWORD /d '0' /f *>$null
+Reg.exe add 'HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate' /v 'ExcludeWUDriversInQualityUpdate' /t REG_DWORD /d '1' /f *>$null
+Reg.exe add 'HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate' /v 'AllowTemporaryEnterpriseFeatureControl' /t REG_DWORD /d '0' /f *>$null
+Reg.exe add 'HKLM\Software\Policies\Microsoft\Windows\Device Metadata' /v 'PreventDeviceMetadataFromNetwork' /t REG_DWORD /d '1' /f *>$null
+Reg.exe add 'HKLM\Software\Policies\Microsoft\Windows\DeviceInstall\Settings' /v 'DisableSendGenericDriverNotFoundToWER' /t REG_DWORD /d '1' /f *>$null
+Reg.exe add 'HKLM\Software\Policies\Microsoft\Windows\DeviceInstall\Settings' /v 'DisableSendRequestAdditionalSoftwareToWER' /t REG_DWORD /d '1' /f *>$null
+
+Clear-Host
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
+Write-Host "Press any key to exit..." -NoNewline
+$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+exit
+}
+
+5 {
+
+Clear-Host
+
+# Enable driver updates
+Reg.exe delete 'HKLM\Software\Policies\Microsoft\Windows\DriverSearching' /v 'SearchOrderConfig' /f *>$null
+Reg.exe delete 'HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate\AU' /v 'EnableFeaturedSoftware' /f *>$null
+Reg.exe delete 'HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate\AU' /v 'IncludeRecommendedUpdates' /f *>$null
+Reg.exe delete 'HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate' /v 'SetAllowOptionalContent' /f *>$null
+Reg.exe delete 'HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate' /v 'ExcludeWUDriversInQualityUpdate' /f *>$null
+Reg.exe delete 'HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate' /v 'AllowTemporaryEnterpriseFeatureControl' /f *>$null
+Reg.exe delete 'HKLM\Software\Policies\Microsoft\Windows\Device Metadata' /v 'PreventDeviceMetadataFromNetwork' /f *>$null
+Reg.exe delete 'HKLM\Software\Policies\Microsoft\Windows\DeviceInstall\Settings' /v 'DisableSendGenericDriverNotFoundToWER' /f *>$null
+Reg.exe delete 'HKLM\Software\Policies\Microsoft\Windows\DeviceInstall\Settings' /v 'DisableSendRequestAdditionalSoftwareToWER' /f *>$null
+
+Clear-Host
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
