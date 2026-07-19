@@ -9,7 +9,7 @@ Clear-Host
 
 Write-Host "Digital Markets Act`n"
 Write-Host "1. Enable"
-Write-Host "2. Disable (Default)`n"
+Write-Host "2. Disable`n"
 
 while ($true) {
 $choice = Read-Host " "
@@ -28,7 +28,7 @@ Copy-Item (Get-Command reg.exe).Source .\reg1.exe -Force -EA 0
 Remove-Item .\reg1.exe -Force -EA 0
 
 Clear-Host
-Write-Host "Restart to apply.`n"
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
@@ -49,7 +49,7 @@ Copy-Item (Get-Command reg.exe).Source .\reg1.exe -Force -EA 0
 Remove-Item .\reg1.exe -Force -EA 0
 
 Clear-Host
-Write-Host "Restart to apply.`n"
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
