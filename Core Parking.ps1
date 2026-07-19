@@ -26,7 +26,7 @@ Write-Host "DC (on battery): $(Get-State $dc)"
 
 Write-Host "Core Parking`n"
 Write-Host "1. Disable"
-Write-Host "2. Enable (Default)`n"
+Write-Host "2. Enable`n"
 
 while ($true) {
 $choice = Read-Host " "
