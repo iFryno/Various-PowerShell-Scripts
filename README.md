@@ -13,7 +13,7 @@
 - **[Higher Scaling No Accel](Higher%20Scaling%20No%20Accel.ps1)** - Removes desktop mouse acceleration when using scaling above 100% (recommended only when all monitors use the same scaling value).
 - **[Legacy File Explorer](Legacy%20File%20Explorer.ps1)** - Restores the classic File Explorer ribbon on Windows 11.
 - **[Legacy Settings](Legacy%20Settings.ps1)** - Adds a Legacy Settings flyout to the desktop context menu with quick access to classic Control Panel applets.
-- **[Manage Windows Updates](Manage%20Windows%20Updates.ps1)** - Pauses updates for 1 year or disables them entirely.
+- **[Manage Windows Updates](Manage%20Windows%20Updates.ps1)** - Pauses Windows updates for 1 year, disables them entirely or disables driver updates.
 - **[NetFx3](NetFx3.ps1)** - Installs .NET Framework 3.5 instantly using local installation media instead of Windows Update servers, avoiding slow download times.
 - **[Open File Security Warning](Open%20File%20Security%20Warning.ps1)** - Removes the security warning and automatic file blocking for downloaded files.
 - **[Start Menu Version](Start%20Menu%20Version.ps1)** - Activates the new 25H2 Start Menu or reverts to the 24H2 version on supported Windows 11 26200 builds.
