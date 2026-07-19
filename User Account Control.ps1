@@ -9,7 +9,7 @@ Clear-Host
 
 Write-Host "User Account Control`n"
 Write-Host "1. Disable"
-Write-Host "2. Enable (Default)`n"
+Write-Host "2. Enable`n"
 
 while ($true) {
 $choice = Read-Host " "
@@ -24,7 +24,7 @@ Reg.exe add 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' /v 
 Reg.exe add 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' /v 'ConsentPromptBehaviorAdmin' /t REG_DWORD /d '0' /f *>$null
 
 Clear-Host
-Write-Host "Restart to apply.`n"
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
@@ -38,7 +38,7 @@ Reg.exe add 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' /v 
 Reg.exe add 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' /v 'ConsentPromptBehaviorAdmin' /t REG_DWORD /d '5' /f *>$null
 
 Clear-Host
-Write-Host "Restart to apply.`n"
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
