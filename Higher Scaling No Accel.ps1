@@ -100,7 +100,7 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\100%.re
 Remove-Item "$env:SystemRoot\Temp\100%.reg" -Force
 
 Clear-Host
-Write-Host "Restart to apply.`n"
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
@@ -185,7 +185,7 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\125%.re
 Remove-Item "$env:SystemRoot\Temp\125%.reg" -Force
 
 Clear-Host
-Write-Host "Restart to apply.`n"
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
@@ -270,7 +270,7 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\150%.re
 Remove-Item "$env:SystemRoot\Temp\150%.reg" -Force
 
 Clear-Host
-Write-Host "Restart to apply.`n"
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
@@ -355,7 +355,7 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\175%.re
 Remove-Item "$env:SystemRoot\Temp\175%.reg" -Force
 
 Clear-Host
-Write-Host "Restart to apply.`n"
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
@@ -440,7 +440,7 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\200%.re
 Remove-Item "$env:SystemRoot\Temp\200%.reg" -Force
 
 Clear-Host
-Write-Host "Restart to apply.`n"
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
@@ -525,7 +525,7 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\225%.re
 Remove-Item "$env:SystemRoot\Temp\225%.reg" -Force
 
 Clear-Host
-Write-Host "Restart to apply.`n"
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
@@ -610,7 +610,7 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\Default
 Remove-Item "$env:SystemRoot\Temp\Default.reg" -Force
 
 Clear-Host
-Write-Host "Restart to apply.`n"
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
