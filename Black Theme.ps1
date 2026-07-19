@@ -95,7 +95,7 @@ Reg.exe add 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP' 
 Reg.exe add 'HKLM\SOFTWARE\Policies\Microsoft\Windows\System' /v 'DisableAcrylicBackgroundOnLogon' /t REG_DWORD /d '1' /f *>$null
 
 Clear-Host
-Write-Host "Restart to apply.`n"
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
@@ -164,7 +164,7 @@ Reg.exe delete 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCS
 Reg.exe delete 'HKLM\SOFTWARE\Policies\Microsoft\Windows\System' /v 'DisableAcrylicBackgroundOnLogon' /f *>$null
 
 Clear-Host
-Write-Host "Restart to apply.`n"
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
