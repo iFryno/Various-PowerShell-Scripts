@@ -253,7 +253,7 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Clean
 Remove-Item "$env:SystemRoot\Temp\Clean Context Menu.reg" -Force
 
 Clear-Host
-Write-Host "Restart to apply.`n"
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
@@ -782,7 +782,7 @@ Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Defau
 Remove-Item "$env:SystemRoot\Temp\Default Context Menu.reg" -Force
 
 Clear-Host
-Write-Host "Restart to apply.`n"
+Write-Host "Restart to apply.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
