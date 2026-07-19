@@ -9,7 +9,7 @@ Clear-Host
 
 Write-Host "DLSS Overlay`n"
 Write-Host "1. Enable"
-Write-Host "2. Disable (Default)`n"
+Write-Host "2. Disable`n"
 
 while ($true) {
 $choice = Read-Host " "
@@ -22,7 +22,7 @@ switch ($choice) {
 Reg.exe add 'HKLM\SOFTWARE\NVIDIA Corporation\Global\NGXCore' /v 'ShowDlssIndicator' /t REG_DWORD /d '1024' /f *>$null
 
 Clear-Host
-Write-Host "Changes will take effect on next game launch.`n"
+Write-Host "Changes will take effect on next game launch.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
@@ -34,7 +34,7 @@ exit
 Reg.exe delete 'HKLM\SOFTWARE\NVIDIA Corporation\Global\NGXCore' /v 'ShowDlssIndicator' /f *>$null
 
 Clear-Host
-Write-Host "Changes will take effect on next game launch.`n"
+Write-Host "Changes will take effect on next game launch.`n" -ForegroundColor Yellow
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
