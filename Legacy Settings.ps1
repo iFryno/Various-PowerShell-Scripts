@@ -37,7 +37,7 @@ Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization\shell\009flyout' /v 'M
 Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization\shell\009flyout\command' /ve /t REG_SZ /d 'rundll32.exe shell32.dll,Control_RunDLL desk.cpl,,0' /f *>$null
 
 Clear-Host
-Write-Host "Legacy Settings added.`n"
+Write-Host "Legacy Settings added.`n" -ForegroundColor Green
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
@@ -49,7 +49,7 @@ exit
 Reg.exe delete 'HKCR\DesktopBackground\Shell\Personalization' /f *>$null
 
 Clear-Host
-Write-Host "Legacy Settings removed.`n"
+Write-Host "Legacy Settings removed.`n" -ForegroundColor Green
 Write-Host "Press any key to exit..." -NoNewline
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 exit
