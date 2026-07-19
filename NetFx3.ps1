@@ -7,7 +7,7 @@ $Host.UI.RawUI.BackgroundColor = "Black"
 $Host.UI.RawUI.ForegroundColor = "White"
 Clear-Host
 
-Write-Host "Installation media (USB boot drive) needs to be connected.`n"
+Write-Host "Installation media (USB boot drive) needs to be connected.`n" -ForegroundColor Yellow
 Write-Host "Press Enter to continue..." -NoNewline
 do {
     $key = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
