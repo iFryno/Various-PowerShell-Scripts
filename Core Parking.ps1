@@ -12,12 +12,16 @@ if ($v -eq 100) { return "unparked" }
 else { return "parked" }
 }
 
+function Get-CPMinCoresValue($isAC) {
+$acdc = if ($isAC) { "ACSettingIndex" } else { "DCSettingIndex" }
+$activeScheme = (Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\User\PowerSchemes" -Name "ActivePowerScheme").ActivePowerScheme
+$path = "HKLM:\SYSTEM\CurrentControlSet\Control\Power\User\PowerSchemes\$activeScheme\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583"
+(Get-ItemProperty -Path $path -Name $acdc).$acdc
+}
+
 function Show-Status {
-$raw = powercfg /qh SCHEME_CURRENT SUB_PROCESSOR CPMINCORES
-$acHex = ($raw | Select-String "AC Power Setting Index").ToString().Split(':')[1].Trim()
-$dcHex = ($raw | Select-String "DC Power Setting Index").ToString().Split(':')[1].Trim()
-$ac = [int]$acHex
-$dc = [int]$dcHex
+$ac = Get-CPMinCoresValue $true
+$dc = Get-CPMinCoresValue $false
 
 Write-Host "Core Parking Status`n"
 Write-Host "AC (plugged in): $(Get-State $ac)"
