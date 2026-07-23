@@ -234,6 +234,8 @@ Windows Registry Editor Version 5.00
 
 [-HKEY_CLASSES_ROOT\SystemFileAssociations\.wdp\Shell\setdesktopwallpaper]
 
+[-HKEY_CLASSES_ROOT\SystemFileAssociations\.webp\Shell\setdesktopwallpaper]
+
 ; Remove share
 [-HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\ModernSharing]
 
@@ -756,6 +758,21 @@ Windows Registry Editor Version 5.00
 "SuppressionSlapiPolicy"="ChangeDesktopBackground-Enabled"
 
 [HKEY_CLASSES_ROOT\SystemFileAssociations\.wdp\Shell\setdesktopwallpaper\Command]
+@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
+  00,5c,00,45,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,78,00,\
+  65,00,00,00
+"DelegateExecute"="{ff609cc7-d34d-4049-a1aa-2293517ffcc6}"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.webp\Shell\setdesktopwallpaper]
+@=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,\
+  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,\
+  74,00,6f,00,62,00,6a,00,65,00,63,00,74,00,2e,00,64,00,6c,00,6c,00,2c,00,2d,\
+  00,34,00,31,00,37,00,00,00
+"MultiSelectModel"="Player"
+"NeverDefault"=""
+"SuppressionSlapiPolicy"="ChangeDesktopBackground-Enabled"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.webp\Shell\setdesktopwallpaper\Command]
 @=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
   00,5c,00,45,00,78,00,70,00,6c,00,6f,00,72,00,65,00,72,00,2e,00,65,00,78,00,\
   65,00,00,00
