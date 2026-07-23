@@ -19,56 +19,44 @@ while ($true) {
             1 {
 
                 Clear-Host
-                Write-Host 'Legacy...' -NoNewline
 
-                # Create reg file
-                $regContent = @'
-Windows Registry Editor Version 5.00
+                # Enable legacy File Explorer ribbon
+                Reg.exe add 'HKCU\Software\Classes\CLSID\{2aa9162e-c906-4dd9-ad0b-3d24a8eef5a0}' /ve /t REG_SZ /d 'CLSID_ItemsViewAdapter' /f *>$null
+                Reg.exe add 'HKCU\Software\Classes\CLSID\{2aa9162e-c906-4dd9-ad0b-3d24a8eef5a0}\InProcServer32' /ve /t REG_SZ /d 'C:\Windows\System32\Windows.UI.FileExplorer.dll_' /f *>$null
+                Reg.exe add 'HKCU\Software\Classes\CLSID\{2aa9162e-c906-4dd9-ad0b-3d24a8eef5a0}\InProcServer32' /v 'ThreadingModel' /t REG_SZ /d 'Apartment' /f *>$null
+                Reg.exe add 'HKCU\Software\Classes\CLSID\{6480100b-5a83-4d1e-9f69-8ae5a88e9a33}' /ve /t REG_SZ /d 'File Explorer Xaml Island View Adapter' /f *>$null
+                Reg.exe add 'HKCU\Software\Classes\CLSID\{6480100b-5a83-4d1e-9f69-8ae5a88e9a33}\InProcServer32' /ve /t REG_SZ /d 'C:\Windows\System32\Windows.UI.FileExplorer.dll_' /f *>$null
+                Reg.exe add 'HKCU\Software\Classes\CLSID\{6480100b-5a83-4d1e-9f69-8ae5a88e9a33}\InProcServer32' /v 'ThreadingModel' /t REG_SZ /d 'Apartment' /f *>$null
+                $ITBar7Layout = [byte[]](
+                    0x13, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00,
+                    0x10, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x07, 0x00, 0x00,
+                    0x5e, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                )
+                New-Item -Path 'HKCU:\Software\Microsoft\Internet Explorer\Toolbar\ShellBrowser' -Force | Out-Null
+                Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Internet Explorer\Toolbar\ShellBrowser' -Name 'ITBar7Layout' -Value $ITBar7Layout -Type Binary -Force
 
-; Enable legacy File Explorer ribbon
-[HKEY_CURRENT_USER\Software\Classes\CLSID\{2aa9162e-c906-4dd9-ad0b-3d24a8eef5a0}]
-@="CLSID_ItemsViewAdapter"
+                # Initialize Explorer for Ribbon settings
+                Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue
 
-[HKEY_CURRENT_USER\Software\Classes\CLSID\{2aa9162e-c906-4dd9-ad0b-3d24a8eef5a0}\InProcServer32]
-@="C:\\Windows\\System32\\Windows.UI.FileExplorer.dll_"
-"ThreadingModel"="Apartment"
+                Start-Process explorer.exe
+                while (!(Get-Process explorer -ErrorAction SilentlyContinue)) {
+                    Start-Sleep -Milliseconds 100
+                }
+                Start-Sleep 1
 
-[HKEY_CURRENT_USER\Software\Classes\CLSID\{6480100b-5a83-4d1e-9f69-8ae5a88e9a33}]
-@="File Explorer Xaml Island View Adapter"
-
-[HKEY_CURRENT_USER\Software\Classes\CLSID\{6480100b-5a83-4d1e-9f69-8ae5a88e9a33}\InProcServer32]
-@="C:\\Windows\\System32\\Windows.UI.FileExplorer.dll_"
-"ThreadingModel"="Apartment"
-
-[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Toolbar\ShellBrowser]
-"ITBar7Layout"=hex:13,00,00,00,00,00,00,00,00,00,00,00,20,00,00,00,\
-10,00,01,00,00,00,00,00,01,00,00,00,01,07,00,00,5e,01,00,00,\
-00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
-00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
-00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
-00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
-00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
-00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
-00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
-00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
-00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Ribbon]
-"MinimizedStateTabletModeOff"=dword:00000000
-"MinimizedStateTabletModeOn"=dword:00000001
-'@
-
-                # Save reg file
-                Set-Content -Path "$env:SystemRoot\Temp\Legacy Explorer.reg" -Value $regContent -Force
-
-                # Import reg file
-                Start-Process -Wait 'regedit.exe' -ArgumentList "/S `"$env:SystemRoot\Temp\Legacy Explorer.reg`"" -WindowStyle Hidden
-
-                # Delete reg file
-                Remove-Item "$env:SystemRoot\Temp\Legacy Explorer.reg" -Force
+                Reg.exe add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Ribbon' /v 'MinimizedStateTabletModeOff' /t REG_DWORD /d 1 /f *> $null
+                Reg.exe add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Ribbon' /v 'MinimizedStateTabletModeOn' /t REG_DWORD /d 1 /f *> $null
 
                 # Restart Explorer
-                Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
+                Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue
 
                 # Open Explorer
                 Start-Process explorer.exe
@@ -78,36 +66,15 @@ Windows Registry Editor Version 5.00
 
             2 {
 
-                Clear-Host
-                Write-Host 'Default...' -NoNewline
-
-                # Create reg file
-                $regContent = @'
-Windows Registry Editor Version 5.00
-
-; Disable legacy File Explorer ribbon
-[-HKEY_CURRENT_USER\Software\Classes\CLSID\{2aa9162e-c906-4dd9-ad0b-3d24a8eef5a0}]
-[-HKEY_CURRENT_USER\Software\Classes\CLSID\{6480100b-5a83-4d1e-9f69-8ae5a88e9a33}]
-
-[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Toolbar\ShellBrowser]
-"ITBar7Layout"=-
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Ribbon]
-"MinimizedStateTabletModeOff"=-
-"MinimizedStateTabletModeOn"=-
-'@
-
-                # Save reg file
-                Set-Content -Path "$env:SystemRoot\Temp\Default Explorer.reg" -Value $regContent -Force
-
-                # Import reg file
-                Start-Process -Wait 'regedit.exe' -ArgumentList "/S `"$env:SystemRoot\Temp\Default Explorer.reg`"" -WindowStyle Hidden
-
-                # Delete reg file
-                Remove-Item "$env:SystemRoot\Temp\Default Explorer.reg" -Force
+                # Disable legacy File Explorer ribbon
+                Reg.exe delete 'HKCU\Software\Classes\CLSID\{2aa9162e-c906-4dd9-ad0b-3d24a8eef5a0}' /f *>$null
+                Reg.exe delete 'HKCU\Software\Classes\CLSID\{6480100b-5a83-4d1e-9f69-8ae5a88e9a33}' /f *>$null
+                Reg.exe delete 'HKCU\Software\Microsoft\Internet Explorer\Toolbar\ShellBrowser' /v 'ITBar7Layout' /f *>$null
+                Reg.exe delete 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Ribbon' /v 'MinimizedStateTabletModeOff' /f *>$null
+                Reg.exe delete 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Ribbon' /v 'MinimizedStateTabletModeOn' /f *>$null
 
                 # Restart Explorer
-                Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
+                Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue
 
                 # Open Explorer
                 Start-Process explorer.exe
@@ -115,7 +82,7 @@ Windows Registry Editor Version 5.00
                 exit
             }
 
-        } 
+        }
     }
-    else { Write-Host "Invalid option.`n" -ForegroundColor Red } 
+    else { Write-Host "Invalid option.`n" -ForegroundColor Red }
 }
