@@ -1,33 +1,33 @@
 if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]'Administrator')) {
-Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-exit
+    Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
+    exit
 }
 
-$Host.UI.RawUI.BackgroundColor = "Black"
-$Host.UI.RawUI.ForegroundColor = "White"
+$Host.UI.RawUI.BackgroundColor = 'Black'
+$Host.UI.RawUI.ForegroundColor = 'White'
 Clear-Host
 
 Write-Host "Higher Scaling No Accel`n"
-Write-Host "1. 100%"
-Write-Host "2. 125%"
-Write-Host "3. 150%"
-Write-Host "4. 175%"
-Write-Host "5. 200%"
-Write-Host "6. 225%"
+Write-Host '1. 100%'
+Write-Host '2. 125%'
+Write-Host '3. 150%'
+Write-Host '4. 175%'
+Write-Host '5. 200%'
+Write-Host '6. 225%'
 Write-Host "7. Default`n"
 
 while ($true) {
-$choice = Read-Host " "
-if ($choice -match '^[1-7]$') {
-switch ($choice) {
+    $choice = Read-Host ' '
+    if ($choice -match '^[1-7]$') {
+        switch ($choice) {
 
-1 {
+            1 {
 
-Clear-Host
-Write-Host "100%..." -NoNewline
+                Clear-Host
+                Write-Host '100%...' -NoNewline
 
-# Create reg file
-$regContent = @"
+                # Create reg file
+                $regContent = @'
 Windows Registry Editor Version 5.00
 
 ; Set pointer speed to 6/11
@@ -88,31 +88,31 @@ c0,cc,0c,00,00,00,00,00,\
 ; Disable fix scaling for apps
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000000
-"@
+'@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\100%.reg" -Value $regContent -Force
+                # Save reg file
+                Set-Content -Path "$env:SystemRoot\Temp\100%.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\100%.reg" -WindowStyle Hidden
+                # Import reg file
+                Start-Process -Wait 'regedit.exe' -ArgumentList "/S $env:SystemRoot\Temp\100%.reg" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\100%.reg" -Force
+                # Delete reg file
+                Remove-Item "$env:SystemRoot\Temp\100%.reg" -Force
 
-Clear-Host
-Write-Host "Restart to apply.`n" -ForegroundColor Yellow
-Write-Host "Press any key to exit..." -NoNewline
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-exit
-}
+                Clear-Host
+                Write-Host "Restart to apply.`n" -ForegroundColor Yellow
+                Write-Host 'Press any key to exit...' -NoNewline
+                $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+                exit
+            }
 
-2 {
+            2 {
 
-Clear-Host
-Write-Host "125%..." -NoNewline
+                Clear-Host
+                Write-Host '125%...' -NoNewline
 
-# Create reg file
-$regContent = @"
+                # Create reg file
+                $regContent = @'
 Windows Registry Editor Version 5.00
 
 ; Set pointer speed to 6/11
@@ -173,31 +173,31 @@ Windows Registry Editor Version 5.00
 ; Enable fix scaling for apps
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
-"@
+'@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\125%.reg" -Value $regContent -Force
+                # Save reg file
+                Set-Content -Path "$env:SystemRoot\Temp\125%.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\125%.reg" -WindowStyle Hidden
+                # Import reg file
+                Start-Process -Wait 'regedit.exe' -ArgumentList "/S $env:SystemRoot\Temp\125%.reg" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\125%.reg" -Force
+                # Delete reg file
+                Remove-Item "$env:SystemRoot\Temp\125%.reg" -Force
 
-Clear-Host
-Write-Host "Restart to apply.`n" -ForegroundColor Yellow
-Write-Host "Press any key to exit..." -NoNewline
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-exit
-}
+                Clear-Host
+                Write-Host "Restart to apply.`n" -ForegroundColor Yellow
+                Write-Host 'Press any key to exit...' -NoNewline
+                $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+                exit
+            }
 
-3 {
+            3 {
 
-Clear-Host
-Write-Host "150%..." -NoNewline
+                Clear-Host
+                Write-Host '150%...' -NoNewline
 
-# Create reg file
-$regContent = @"
+                # Create reg file
+                $regContent = @'
 Windows Registry Editor Version 5.00
 
 ; Set pointer speed to 6/11
@@ -258,31 +258,31 @@ C0,CC,4C,00,00,00,00,00
 ; Enable fix scaling for apps
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
-"@
+'@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\150%.reg" -Value $regContent -Force
+                # Save reg file
+                Set-Content -Path "$env:SystemRoot\Temp\150%.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\150%.reg" -WindowStyle Hidden
+                # Import reg file
+                Start-Process -Wait 'regedit.exe' -ArgumentList "/S $env:SystemRoot\Temp\150%.reg" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\150%.reg" -Force
+                # Delete reg file
+                Remove-Item "$env:SystemRoot\Temp\150%.reg" -Force
 
-Clear-Host
-Write-Host "Restart to apply.`n" -ForegroundColor Yellow
-Write-Host "Press any key to exit..." -NoNewline
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-exit
-}
+                Clear-Host
+                Write-Host "Restart to apply.`n" -ForegroundColor Yellow
+                Write-Host 'Press any key to exit...' -NoNewline
+                $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+                exit
+            }
 
-4 {
+            4 {
 
-Clear-Host
-Write-Host "175%..." -NoNewline
+                Clear-Host
+                Write-Host '175%...' -NoNewline
 
-# Create reg file
-$regContent = @"
+                # Create reg file
+                $regContent = @'
 Windows Registry Editor Version 5.00
 
 ; Set pointer speed to 6/11
@@ -343,31 +343,31 @@ C0,CC,2C,00,00,00,00,00,\
 ; Enable fix scaling for apps
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
-"@
+'@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\175%.reg" -Value $regContent -Force
+                # Save reg file
+                Set-Content -Path "$env:SystemRoot\Temp\175%.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\175%.reg" -WindowStyle Hidden
+                # Import reg file
+                Start-Process -Wait 'regedit.exe' -ArgumentList "/S $env:SystemRoot\Temp\175%.reg" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\175%.reg" -Force
+                # Delete reg file
+                Remove-Item "$env:SystemRoot\Temp\175%.reg" -Force
 
-Clear-Host
-Write-Host "Restart to apply.`n" -ForegroundColor Yellow
-Write-Host "Press any key to exit..." -NoNewline
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-exit
-}
+                Clear-Host
+                Write-Host "Restart to apply.`n" -ForegroundColor Yellow
+                Write-Host 'Press any key to exit...' -NoNewline
+                $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+                exit
+            }
 
-5 {
+            5 {
 
-Clear-Host
-Write-Host "200%..." -NoNewline
+                Clear-Host
+                Write-Host '200%...' -NoNewline
 
-# Create reg file
-$regContent = @"
+                # Create reg file
+                $regContent = @'
 Windows Registry Editor Version 5.00
 
 ; Set pointer speed to 6/11
@@ -428,31 +428,31 @@ B0,CC,4C,00,00,00,00,00,\
 ; Enable fix scaling for apps
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
-"@
+'@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\200%.reg" -Value $regContent -Force
+                # Save reg file
+                Set-Content -Path "$env:SystemRoot\Temp\200%.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\200%.reg" -WindowStyle Hidden
+                # Import reg file
+                Start-Process -Wait 'regedit.exe' -ArgumentList "/S $env:SystemRoot\Temp\200%.reg" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\200%.reg" -Force
+                # Delete reg file
+                Remove-Item "$env:SystemRoot\Temp\200%.reg" -Force
 
-Clear-Host
-Write-Host "Restart to apply.`n" -ForegroundColor Yellow
-Write-Host "Press any key to exit..." -NoNewline
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-exit
-}
+                Clear-Host
+                Write-Host "Restart to apply.`n" -ForegroundColor Yellow
+                Write-Host 'Press any key to exit...' -NoNewline
+                $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+                exit
+            }
 
-6 {
+            6 {
 
-Clear-Host
-Write-Host "225%..." -NoNewline
+                Clear-Host
+                Write-Host '225%...' -NoNewline
 
-# Create reg file
-$regContent = @"
+                # Create reg file
+                $regContent = @'
 Windows Registry Editor Version 5.00
 
 ; Set pointer speed to 6/11
@@ -513,31 +513,31 @@ C0,CC,1C,00,00,00,00,00,\
 ; Enable fix scaling for apps
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=dword:00000001
-"@
+'@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\225%.reg" -Value $regContent -Force
+                # Save reg file
+                Set-Content -Path "$env:SystemRoot\Temp\225%.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\225%.reg" -WindowStyle Hidden
+                # Import reg file
+                Start-Process -Wait 'regedit.exe' -ArgumentList "/S $env:SystemRoot\Temp\225%.reg" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\225%.reg" -Force
+                # Delete reg file
+                Remove-Item "$env:SystemRoot\Temp\225%.reg" -Force
 
-Clear-Host
-Write-Host "Restart to apply.`n" -ForegroundColor Yellow
-Write-Host "Press any key to exit..." -NoNewline
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-exit
-}
+                Clear-Host
+                Write-Host "Restart to apply.`n" -ForegroundColor Yellow
+                Write-Host 'Press any key to exit...' -NoNewline
+                $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+                exit
+            }
 
-7 {
+            7 {
 
-Clear-Host
-Write-Host "Default..." -NoNewline
+                Clear-Host
+                Write-Host 'Default...' -NoNewline
 
-# Create reg file
-$regContent = @"
+                # Create reg file
+                $regContent = @'
 Windows Registry Editor Version 5.00
 
 ; Set pointer speed to 6/11
@@ -598,22 +598,25 @@ fd,11,01,00,00,00,00,00,\
 ; Reset fix scaling for apps
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "EnablePerProcessSystemDPI"=-
-"@
+'@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\Default.reg" -Value $regContent -Force
+                # Save reg file
+                Set-Content -Path "$env:SystemRoot\Temp\Default.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S $env:SystemRoot\Temp\Default.reg" -WindowStyle Hidden
+                # Import reg file
+                Start-Process -Wait 'regedit.exe' -ArgumentList "/S $env:SystemRoot\Temp\Default.reg" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\Default.reg" -Force
+                # Delete reg file
+                Remove-Item "$env:SystemRoot\Temp\Default.reg" -Force
 
-Clear-Host
-Write-Host "Restart to apply.`n" -ForegroundColor Yellow
-Write-Host "Press any key to exit..." -NoNewline
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-exit
+                Clear-Host
+                Write-Host "Restart to apply.`n" -ForegroundColor Yellow
+                Write-Host 'Press any key to exit...' -NoNewline
+                $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+                exit
+            }
+
+        } 
+    }
+    else { Write-Host "Invalid option.`n" -ForegroundColor Red } 
 }
-
-} } else { Write-Host "Invalid option.`n" -ForegroundColor Red } }
