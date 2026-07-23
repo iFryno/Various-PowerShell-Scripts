@@ -1,28 +1,28 @@
 if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]'Administrator')) {
-Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-exit
+    Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
+    exit
 }
 
-$Host.UI.RawUI.BackgroundColor = "Black"
-$Host.UI.RawUI.ForegroundColor = "White"
+$Host.UI.RawUI.BackgroundColor = 'Black'
+$Host.UI.RawUI.ForegroundColor = 'White'
 Clear-Host
 
 Write-Host "File Explorer`n"
-Write-Host "1. Legacy"
+Write-Host '1. Legacy'
 Write-Host "2. Default`n"
 
 while ($true) {
-$choice = Read-Host " "
-if ($choice -match '^[1-2]$') {
-switch ($choice) {
+    $choice = Read-Host ' '
+    if ($choice -match '^[1-2]$') {
+        switch ($choice) {
 
-1 {
+            1 {
 
-Clear-Host
-Write-Host "Legacy..." -NoNewline
+                Clear-Host
+                Write-Host 'Legacy...' -NoNewline
 
-# Create reg file
-$regContent = @"
+                # Create reg file
+                $regContent = @'
 Windows Registry Editor Version 5.00
 
 ; Enable legacy File Explorer ribbon
@@ -56,33 +56,33 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Ribbon]
 "MinimizedStateTabletModeOff"=dword:00000000
 "MinimizedStateTabletModeOn"=dword:00000001
-"@
+'@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\Legacy Explorer.reg" -Value $regContent -Force
+                # Save reg file
+                Set-Content -Path "$env:SystemRoot\Temp\Legacy Explorer.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Legacy Explorer.reg`"" -WindowStyle Hidden
+                # Import reg file
+                Start-Process -Wait 'regedit.exe' -ArgumentList "/S `"$env:SystemRoot\Temp\Legacy Explorer.reg`"" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\Legacy Explorer.reg" -Force
+                # Delete reg file
+                Remove-Item "$env:SystemRoot\Temp\Legacy Explorer.reg" -Force
 
-# Restart Explorer
-Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
+                # Restart Explorer
+                Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
 
-# Open Explorer
-Start-Process explorer.exe
+                # Open Explorer
+                Start-Process explorer.exe
 
-exit
-}
+                exit
+            }
 
-2 {
+            2 {
 
-Clear-Host
-Write-Host "Default..." -NoNewline
+                Clear-Host
+                Write-Host 'Default...' -NoNewline
 
-# Create reg file
-$regContent = @"
+                # Create reg file
+                $regContent = @'
 Windows Registry Editor Version 5.00
 
 ; Disable legacy File Explorer ribbon
@@ -95,24 +95,27 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Ribbon]
 "MinimizedStateTabletModeOff"=-
 "MinimizedStateTabletModeOn"=-
-"@
+'@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\Default Explorer.reg" -Value $regContent -Force
+                # Save reg file
+                Set-Content -Path "$env:SystemRoot\Temp\Default Explorer.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Default Explorer.reg`"" -WindowStyle Hidden
+                # Import reg file
+                Start-Process -Wait 'regedit.exe' -ArgumentList "/S `"$env:SystemRoot\Temp\Default Explorer.reg`"" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\Default Explorer.reg" -Force
+                # Delete reg file
+                Remove-Item "$env:SystemRoot\Temp\Default Explorer.reg" -Force
 
-# Restart Explorer
-Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
+                # Restart Explorer
+                Stop-Process -Force -Name explorer -ErrorAction SilentlyContinue | Out-Null
 
-# Open Explorer
-Start-Process explorer.exe
+                # Open Explorer
+                Start-Process explorer.exe
 
-exit
+                exit
+            }
+
+        } 
+    }
+    else { Write-Host "Invalid option.`n" -ForegroundColor Red } 
 }
-
-} } else { Write-Host "Invalid option.`n" -ForegroundColor Red } }
