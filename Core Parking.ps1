@@ -7,25 +7,19 @@ $Host.UI.RawUI.BackgroundColor = 'Black'
 $Host.UI.RawUI.ForegroundColor = 'White'
 Clear-Host
 
-function Get-State($v) {
-    if ($v -eq 100) { return 'unparked' }
-    else { return 'parked' }
-}
-
-function Get-CPMinCoresValue($isAC) {
-    $acdc = if ($isAC) { 'ACSettingIndex' } else { 'DCSettingIndex' }
+function Get-CPMinCoresValue {
     $activeScheme = (Get-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Power\User\PowerSchemes' -Name 'ActivePowerScheme').ActivePowerScheme
     $path = "HKLM:\SYSTEM\CurrentControlSet\Control\Power\User\PowerSchemes\$activeScheme\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583"
-    (Get-ItemProperty -Path $path -Name $acdc).$acdc
+    return [PSCustomObject]@{
+        AcValue = (Get-ItemProperty -Path $path -Name 'ACSettingIndex').ACSettingIndex
+        DcValue = (Get-ItemProperty -Path $path -Name 'DCSettingIndex').DCSettingIndex
+    }
 }
-
 function Show-Status {
-    $ac = Get-CPMinCoresValue $true
-    $dc = Get-CPMinCoresValue $false
-
+    $minCores = Get-CPMinCoresValue
     Write-Host "Core Parking Status`n"
-    Write-Host "AC (plugged in): $(Get-State $ac)"
-    Write-Host "DC (on battery): $(Get-State $dc)"
+    Write-Host "AC (plugged in): $(@('parked','unparked')[[int]$(($minCores.AcValue)/100)])"
+    Write-Host "DC (on battery): $(@('parked','unparked')[[int]$(($minCores.DcValue)/100)])"
 }
 
 Write-Host "Core Parking`n"
