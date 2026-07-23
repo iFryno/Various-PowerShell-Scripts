@@ -42,6 +42,7 @@ while ($true) {
             2 {
 
                 Clear-Host
+                Write-Host 'Disabling...' -NoNewline
 
                 # Disable Windows updates
                 Reg.exe add 'HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate' /v 'WUServer' /t REG_SZ /d 'https://blocked.invalid/' /f *>$null
@@ -69,6 +70,7 @@ while ($true) {
             3 {
 
                 Clear-Host
+                Write-Host 'Enabling...' -NoNewline
 
                 # Enable Windows updates
                 Reg.exe delete 'HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate' /v 'WUServer' /f *>$null
@@ -95,8 +97,6 @@ while ($true) {
 
             4 {
 
-                Clear-Host
-
                 # Disable driver updates
                 Reg.exe add 'HKLM\Software\Policies\Microsoft\Windows\DriverSearching' /v 'SearchOrderConfig' /t REG_DWORD /d '0' /f *>$null
                 Reg.exe add 'HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate\AU' /v 'EnableFeaturedSoftware' /t REG_DWORD /d '0' /f *>$null
@@ -116,8 +116,6 @@ while ($true) {
             }
 
             5 {
-
-                Clear-Host
 
                 # Enable driver updates
                 Reg.exe delete 'HKLM\Software\Policies\Microsoft\Windows\DriverSearching' /v 'SearchOrderConfig' /f *>$null
