@@ -1,28 +1,28 @@
 if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]'Administrator')) {
-Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-exit
+  Start-Process PowerShell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
+  exit
 }
 
-$Host.UI.RawUI.BackgroundColor = "Black"
-$Host.UI.RawUI.ForegroundColor = "White"
+$Host.UI.RawUI.BackgroundColor = 'Black'
+$Host.UI.RawUI.ForegroundColor = 'White'
 Clear-Host
 
 Write-Host "Context Menu`n"
-Write-Host "1. Clean"
+Write-Host '1. Clean'
 Write-Host "2. Default`n"
 
 while ($true) {
-$choice = Read-Host " "
-if ($choice -match '^[1-2]$') {
-switch ($choice) {
+  $choice = Read-Host ' '
+  if ($choice -match '^[1-2]$') {
+    switch ($choice) {
 
-1 {
+      1 {
 
-Clear-Host
-Write-Host "Clean..." -NoNewline
+        Clear-Host
+        Write-Host 'Clean...' -NoNewline
 
-# Create reg file
-$regContent = @"
+        # Create reg file
+        $regContent = @'
 Windows Registry Editor Version 5.00
 
 ; Remove modern context menu
@@ -73,6 +73,7 @@ Windows Registry Editor Version 5.00
 
 ; Remove pin to Quick access
 [-HKEY_CLASSES_ROOT\Drive\shell\pintohome]
+
 [-HKEY_CLASSES_ROOT\Folder\shell\pintohome]
 
 ; Remove pin to Start
@@ -191,6 +192,7 @@ Windows Registry Editor Version 5.00
 
 ; Remove send to
 [-HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\SendTo]
+
 [-HKEY_CLASSES_ROOT\UserLibraryFolder\shellex\ContextMenuHandlers\SendTo]
 
 ; Remove set as desktop background
@@ -241,31 +243,31 @@ Windows Registry Editor Version 5.00
 ; Remove turn on BitLocker
 [HKEY_CLASSES_ROOT\Drive\shell\encrypt-bde-elev]
 "LegacyDisable"=""
-"@
+'@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\Clean Context Menu.reg" -Value $regContent -Force
+        # Save reg file
+        Set-Content -Path "$env:SystemRoot\Temp\Clean Context Menu.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Clean Context Menu.reg`"" -WindowStyle Hidden
+        # Import reg file
+        Start-Process -Wait 'regedit.exe' -ArgumentList "/S `"$env:SystemRoot\Temp\Clean Context Menu.reg`"" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\Clean Context Menu.reg" -Force
+        # Delete reg file
+        Remove-Item "$env:SystemRoot\Temp\Clean Context Menu.reg" -Force
 
-Clear-Host
-Write-Host "Restart to apply.`n" -ForegroundColor Yellow
-Write-Host "Press any key to exit..." -NoNewline
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-exit
-}
+        Clear-Host
+        Write-Host "Restart to apply.`n" -ForegroundColor Yellow
+        Write-Host 'Press any key to exit...' -NoNewline
+        $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+        exit
+      }
 
-2 {
+      2 {
 
-Clear-Host
-Write-Host "Default..." -NoNewline
+        Clear-Host
+        Write-Host 'Default...' -NoNewline
 
-# Create reg file
-$regContent = @"
+        # Create reg file
+        $regContent = @'
 Windows Registry Editor Version 5.00
 
 ; Restore modern context menu
@@ -770,22 +772,25 @@ Windows Registry Editor Version 5.00
 ; Restore turn on BitLocker
 [HKEY_CLASSES_ROOT\Drive\shell\encrypt-bde-elev]
 "LegacyDisable"=-
-"@
+'@
 
-# Save reg file
-Set-Content -Path "$env:SystemRoot\Temp\Default Context Menu.reg" -Value $regContent -Force
+        # Save reg file
+        Set-Content -Path "$env:SystemRoot\Temp\Default Context Menu.reg" -Value $regContent -Force
 
-# Import reg file
-Start-Process -Wait "regedit.exe" -ArgumentList "/S `"$env:SystemRoot\Temp\Default Context Menu.reg`"" -WindowStyle Hidden
+        # Import reg file
+        Start-Process -Wait 'regedit.exe' -ArgumentList "/S `"$env:SystemRoot\Temp\Default Context Menu.reg`"" -WindowStyle Hidden
 
-# Delete reg file
-Remove-Item "$env:SystemRoot\Temp\Default Context Menu.reg" -Force
+        # Delete reg file
+        Remove-Item "$env:SystemRoot\Temp\Default Context Menu.reg" -Force
 
-Clear-Host
-Write-Host "Restart to apply.`n" -ForegroundColor Yellow
-Write-Host "Press any key to exit..." -NoNewline
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-exit
+        Clear-Host
+        Write-Host "Restart to apply.`n" -ForegroundColor Yellow
+        Write-Host 'Press any key to exit...' -NoNewline
+        $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+        exit
+      }
+
+    } 
+  }
+  else { Write-Host "Invalid option.`n" -ForegroundColor Red } 
 }
-
-} } else { Write-Host "Invalid option.`n" -ForegroundColor Red } }
