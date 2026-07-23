@@ -17,9 +17,10 @@ function Get-CPMinCoresValue {
 }
 function Show-Status {
     $minCores = Get-CPMinCoresValue
+    $options = @('parked', 'unparked')
     Write-Host "Core Parking Status`n"
-    Write-Host "AC (plugged in): $(@('parked','unparked')[[int]$(($minCores.AcValue)/100)])"
-    Write-Host "DC (on battery): $(@('parked','unparked')[[int]$(($minCores.DcValue)/100)])"
+    Write-Host "AC (plugged in): $($options[[int]$(($minCores.AcValue)/100)])"
+    Write-Host "DC (on battery): $($options[[int]$(($minCores.DcValue)/100)])"
 }
 
 Write-Host "Core Parking`n"
