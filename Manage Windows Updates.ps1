@@ -42,7 +42,6 @@ while ($true) {
             2 {
 
                 Clear-Host
-                Write-Host 'Disabling...' -NoNewline
 
                 # Disable Windows updates
                 Reg.exe add 'HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate' /v 'WUServer' /t REG_SZ /d 'https://blocked.invalid/' /f *>$null
@@ -70,7 +69,6 @@ while ($true) {
             3 {
 
                 Clear-Host
-                Write-Host 'Enabling...' -NoNewline
 
                 # Enable Windows updates
                 Reg.exe delete 'HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate' /v 'WUServer' /f *>$null
