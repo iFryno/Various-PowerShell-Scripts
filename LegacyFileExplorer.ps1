@@ -20,7 +20,6 @@ while ($true) {
     }
 
     switch ($choice) {
-
         1 {
             Clear-Host
 
@@ -67,7 +66,6 @@ while ($true) {
 
             exit
         }
-
         2 {
             # Disable legacy File Explorer ribbon
             Reg.exe delete 'HKCU\Software\Classes\CLSID\{2aa9162e-c906-4dd9-ad0b-3d24a8eef5a0}' /f *>$null
