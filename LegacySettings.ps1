@@ -20,7 +20,6 @@ while ($true) {
     }
 
     switch ($choice) {
-
         1 {
             # Add legacy settings to desktop context menu
             Reg.exe add 'HKCR\DesktopBackground\Shell\Personalization' /v 'Icon' /t REG_SZ /d 'shell32.dll,-137' /f *>$null
@@ -49,7 +48,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         2 {
             # Remove legacy settings from desktop context menu
             Reg.exe delete 'HKCR\DesktopBackground\Shell\Personalization' /f *>$null
