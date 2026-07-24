@@ -20,7 +20,6 @@ while ($true) {
     }
 
     switch ($choice) {
-
         1 {
             # Enable DLSS overlay
             Reg.exe add 'HKLM\SOFTWARE\NVIDIA Corporation\Global\NGXCore' /v 'ShowDlssIndicator' /t REG_DWORD /d '1024' /f *>$null
@@ -31,7 +30,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         2 {
             # Disable DLSS overlay
             Reg.exe delete 'HKLM\SOFTWARE\NVIDIA Corporation\Global\NGXCore' /v 'ShowDlssIndicator' /f *>$null
