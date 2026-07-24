@@ -20,7 +20,6 @@ while ($true) {
     }
 
     switch ($choice) {
-
         1 {
             Clear-Host
             Write-Host 'Clean...' -NoNewline
@@ -261,7 +260,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         2 {
             Clear-Host
             Write-Host 'Default...' -NoNewline
