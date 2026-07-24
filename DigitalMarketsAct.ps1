@@ -20,7 +20,6 @@ while ($true) {
     }
 
     switch ($choice) {
-
         1 {
             # Create reg1.exe to bypass UCPD (credit: zoicware)
             Copy-Item (Get-Command reg.exe).Source .\reg1.exe -Force -EA 0
@@ -37,7 +36,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         2 {
             # Get original device setup region
             $Nation = Get-ItemPropertyValue -Path 'Registry::HKEY_USERS\.DEFAULT\Control Panel\International\Geo' -Name 'Nation'
