@@ -20,7 +20,6 @@ while ($true) {
     }
 
     switch ($choice) {
-
         1 {
             # Set Start Menu version to 25H2
             Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829' /v 'EnabledState' /t REG_DWORD /d '2' /f *>$null
@@ -37,7 +36,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         2 {
             # Set Start Menu version to 24H2
             Reg.exe add 'HKLM\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\14\2792562829' /v 'EnabledState' /t REG_DWORD /d '0' /f *>$null
