@@ -37,7 +37,6 @@ while ($true) {
     }
 
     switch ($choice) {
-
         1 {
             Clear-Host
 
@@ -57,7 +56,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         2 {
             Clear-Host
 
