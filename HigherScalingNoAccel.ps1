@@ -25,7 +25,6 @@ while ($true) {
     }
 
     switch ($choice) {
-
         1 {
             Clear-Host
             Write-Host '100%...' -NoNewline
@@ -104,7 +103,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         2 {
             Clear-Host
             Write-Host '125%...' -NoNewline
@@ -183,7 +181,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         3 {
             Clear-Host
             Write-Host '150%...' -NoNewline
@@ -262,7 +259,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         4 {
             Clear-Host
             Write-Host '175%...' -NoNewline
@@ -341,7 +337,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         5 {
             Clear-Host
             Write-Host '200%...' -NoNewline
@@ -420,7 +415,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         6 {
             Clear-Host
             Write-Host '225%...' -NoNewline
@@ -499,7 +493,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         7 {
             Clear-Host
             Write-Host 'Default...' -NoNewline
