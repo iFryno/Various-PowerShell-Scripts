@@ -1,4 +1,4 @@
-<h1 align="center">Various PowerShell Scripts</h1>
+<h1 align="center">PowerShelf</h1>
 <p align="center">A collection of useful PowerShell scripts to configure and customize Windows.</p>
 
 ---
