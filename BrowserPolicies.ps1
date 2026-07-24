@@ -22,7 +22,6 @@ while ($true) {
     }
 
     switch ($choice) {
-
         1 {
             # Add policies to Edge
             Reg.exe add 'HKLM\SOFTWARE\Policies\Microsoft\Edge' /v 'StartupBoostEnabled' /t REG_DWORD /d '0' /f *>$null
@@ -36,7 +35,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         2 {
             # Add policies to Brave
             Reg.exe add 'HKLM\SOFTWARE\Policies\BraveSoftware\Brave' /v 'BackgroundModeEnabled' /t REG_DWORD /d '0' /f *>$null
@@ -49,7 +47,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         3 {
             # Add policies to Chrome
             Reg.exe add 'HKLM\SOFTWARE\Policies\Google\Chrome' /v 'BackgroundModeEnabled' /t REG_DWORD /d '0' /f *>$null
@@ -63,7 +60,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         4 {
             # Remove policies from Edge, Brave and Chrome
             Reg.exe delete 'HKLM\SOFTWARE\Policies\Google\Chrome' /f *>$null
