@@ -24,7 +24,6 @@ while ($true) {
     }
 
     switch ($choice) {
-
         1 {
             $today = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
             $pause = (Get-Date).AddDays(365).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
@@ -42,7 +41,6 @@ while ($true) {
 
             exit
         }
-
         2 {
             Clear-Host
             Write-Host 'Disabling...' -NoNewline
@@ -69,7 +67,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         3 {
             Clear-Host
             Write-Host 'Enabling...' -NoNewline
@@ -96,7 +93,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         4 {
             # Disable driver updates
             Reg.exe add 'HKLM\Software\Policies\Microsoft\Windows\DriverSearching' /v 'SearchOrderConfig' /t REG_DWORD /d '0' /f *>$null
@@ -115,7 +111,6 @@ while ($true) {
             $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
             exit
         }
-
         5 {
             # Enable driver updates
             Reg.exe delete 'HKLM\Software\Policies\Microsoft\Windows\DriverSearching' /v 'SearchOrderConfig' /f *>$null
